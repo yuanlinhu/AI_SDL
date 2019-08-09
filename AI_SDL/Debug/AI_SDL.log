@@ -1,3 +1,0 @@
-﻿main.obj : error LNK2019: 无法解析的外部符号 _SDL_Init，该符号在函数 _main 中被引用
-main.obj : error LNK2019: 无法解析的外部符号 _SDL_Quit，该符号在函数 _main 中被引用
-F:\study\AI_SDL\Debug\AI_SDL.exe : fatal error LNK1120: 2 个无法解析的外部命令

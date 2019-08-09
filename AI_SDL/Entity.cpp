@@ -1,5 +1,6 @@
 #include "Entity.h"
 
+
 #include <stdio.h>      /* printf, scanf, puts, NULL */
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
@@ -23,6 +24,7 @@ void Entity::set_random_target_pos()
 {
 	m_target_pos.x = m_birth.x + rand() % m_round.x;
 	m_target_pos.y = m_birth.y + rand() % m_round.y;
+	
 }
 
 void Entity::set_birth_pos(int x, int y)
@@ -86,6 +88,17 @@ void Entity::show(SDL_Surface* winSurface)
 		SDL_FillRect(winSurface, &rect, SDL_MapRGB(winSurface->format, 0, 90, 120));
 	}
 	
+
+	//»­Ä¿±ê
+	{
+		SDL_Rect rect;
+		rect.x = m_target_pos.x;
+		rect.y = m_target_pos.y;
+		rect.w = 15;		
+		rect.h = 15;
+		SDL_FillRect(winSurface, &rect, SDL_MapRGB(winSurface->format, 0, 0, 120));
+	}
+
 
 	
 	

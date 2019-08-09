@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <time.h>
 #include "Entity.h"
+#include "macro.h"
 
 using namespace std;
 
@@ -20,8 +21,8 @@ Entity gEntity;
 
 //SDL_Rect* rectangle;
 
-static const float fps_60 = 16.666f;
-static const float fps_30 = fps_60 * 2;
+//static const float fps_60 = 16.666f;
+//static const float fps_30 = fps_60 * 2;
 
 //Ö¡ÂÊµ÷½ÚÆ÷
 //Timer fps;
@@ -313,7 +314,7 @@ bool init() {
 		return false;
 	}
 
-	window = SDL_CreateWindow("Example", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1200, 800, SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow("Example", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, window_w, window_h, SDL_WINDOW_SHOWN);
 	if (!window) {
 		cout << "Error creating window: " << SDL_GetError() << endl;
 		return false;

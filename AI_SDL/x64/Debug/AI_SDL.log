@@ -1,4 +1,0 @@
-﻿  Entity.cpp
-f:\study\ai_sdl\ai_sdl\entity.cpp(61): warning C4244: “+=”: 从“float”转换到“int”，可能丢失数据
-f:\study\ai_sdl\ai_sdl\entity.cpp(62): warning C4244: “+=”: 从“float”转换到“int”，可能丢失数据
-  AI_SDL.vcxproj -> F:\study\AI_SDL\x64\Debug\AI_SDL.exe

@@ -3,6 +3,7 @@
 #include <time.h>
 #include "Entity.h"
 #include "macro.h"
+#include "Map.h"
 
 using namespace std;
 
@@ -16,8 +17,10 @@ SDL_Window* window;
 SDL_Surface* winSurface;
 SDL_Surface* image1;
 SDL_Surface* image2;
+SDL_Renderer *render;
 
 Entity gEntity;
+Map		gMap;
 
 //SDL_Rect* rectangle;
 
@@ -211,7 +214,7 @@ int main(int argc, char** args) {
 		// Do rendering loop
 
 		gEntity.update();
-
+		gMap.update();
 
 
 		Uint64 end = SDL_GetPerformanceCounter();
@@ -266,7 +269,10 @@ bool loop() {
 	//	SDL_BlitScaled(image2, NULL, winSurface, &dest);
 	//}
 
-	SDL_FillRect(winSurface, NULL, SDL_MapRGB(winSurface->format, 128, 128, 128));
+	SDL_FillRect(winSurface, NULL, SDL_MapRGB(winSurface->format, 200, 200, 200));
+
+	//render
+	gMap.show(winSurface, render);
 
 	gEntity.show(winSurface);
 
@@ -320,6 +326,13 @@ bool init() {
 		return false;
 	}
 
+	/* Create a Render */
+	render = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	if (render == nullptr) {
+		std::cout << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
+		return 1;
+	}
+
 	winSurface = SDL_GetWindowSurface(window);
 	if (!winSurface) {
 		cout << "Error getting surface: " << SDL_GetError() << endl;
@@ -338,6 +351,7 @@ bool init() {
 	//rectangle = new SDL_Rect();
 
 	gEntity.set_random_birth_pos();
+	gMap.initMap();
 	return true;
 }
 

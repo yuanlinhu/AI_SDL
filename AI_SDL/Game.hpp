@@ -29,7 +29,7 @@ public:
     
     
 private:
-    bool m_is_running;
+    bool m_is_running = false;
     SDL_Window *m_window;
     SDL_Renderer* m_render;
 };

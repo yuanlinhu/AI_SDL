@@ -24,7 +24,7 @@ public:
 public:
 	void setRender(SDL_Renderer* render);
 	void render();
-	void update();
+	void update(Uint32 delta);
 
 	
 

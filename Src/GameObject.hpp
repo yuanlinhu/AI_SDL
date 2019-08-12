@@ -15,7 +15,7 @@ public:
 	~GameObject();
 
 	void render(SDL_Renderer* render);
-	void update();
+	void update(Uint32 delta);
 
 	void add_x(int n);
 	void add_y(int n);
@@ -35,7 +35,7 @@ private:
 
 	Point2D		m_cur_pos;
 	Point2D		m_target_pos;
-	float m_speed = 1.0f;
+	float m_speed = 100.0f;
 };
 
 

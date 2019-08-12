@@ -40,23 +40,30 @@ void Game::go()
 	Uint32 startTicks = 0;
 	Uint32 endTicks = 0;
 	Uint32 ellapseTicks = 0;
+
+	static Uint32 lastTicks = SDL_GetTicks();
 	while (running())
 	{
 		startTicks = SDL_GetTicks();
 		handleEvents();
-		update();
+		update(startTicks - lastTicks);
 		render();
 		m_countedFrames++;
 
 		endTicks = SDL_GetTicks();
 		ellapseTicks = endTicks - startTicks;
+		lastTicks = SDL_GetTicks();
 		if (ellapseTicks < 1000 / FRAMES_PER_SECOND)
 		{
 			//休眠一段时间，时长为当前帧的剩余时间。
 			SDL_Delay((1000 / FRAMES_PER_SECOND) - ellapseTicks);
 		}
 
-		cout << "Frame: " << int(m_countedFrames / ((SDL_GetTicks() - frameTick) / 1000.f)) << endl;
+		cout << "ellapseTicks: " << ellapseTicks << endl;
+		//cout << "Frame: " << int(m_countedFrames / ((SDL_GetTicks() - frameTick) / 1000.f)) << endl;
+
+
+		
 	}
 
 	clean();
@@ -176,10 +183,11 @@ void Game::handleKeyboard(SDL_Event& event)
 	}
 }
 
-void Game::update()
+void Game::update(Uint32 delta)
 {
+	//cout << "delta: " << delta << endl;
 	HighCpuFunc();
-	m_gameObjMgr->update();
+	m_gameObjMgr->update(delta);
 }
 
 void Game::render()

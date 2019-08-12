@@ -25,7 +25,7 @@ public:
     void init(const char* title, int x, int y, int w, int h, bool full_screen);
     
     void handleEvents();
-    void update();
+    void update(Uint32 delta);
     void render();
     void clean();
     
@@ -49,13 +49,13 @@ private:
 
 
 private:
-	bool	m_needHighCPU = false;
+	
 	int	m_countedFrames = 0;
     bool m_is_running = false;
     SDL_Window *m_window;
 	SDL_Renderer* m_render;
 	GameObjectMgr*	m_gameObjMgr;
-
+	bool	m_needHighCPU = true;
 };
 
 

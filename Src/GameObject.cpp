@@ -40,7 +40,7 @@ void GameObject::render(SDL_Renderer* render)
 	SDL_RenderCopy(m_render, m_Texture, NULL, &m_rect);
 }
 
-void GameObject::update()
+void GameObject::update(Uint32 delta)
 {
 	if (m_cur_pos == m_target_pos)
 	{
@@ -57,8 +57,8 @@ void GameObject::update()
 	x_mul = (m_target_pos.x == m_cur_pos.x) ? 0 : x_mul;
 	y_mul = (m_target_pos.y == m_cur_pos.y) ? 0 : y_mul;
 
-	m_cur_pos.x += (x_mul * m_speed);
-	m_cur_pos.y += (y_mul * m_speed);
+	m_cur_pos.x += (x_mul * m_speed * delta) / 1000;
+	m_cur_pos.y += (y_mul * m_speed * delta) / 1000;
 }
 
 void GameObject::add_x(int n)

@@ -35,11 +35,11 @@ void GameObjectMgr::render()
 	}
 }
 
-void GameObjectMgr::update()
+void GameObjectMgr::update(Uint32 delta)
 {
 	for (auto &tmp : m_obj_list)
 	{
-		tmp->update();
+		tmp->update(delta);
 	}
 }
 

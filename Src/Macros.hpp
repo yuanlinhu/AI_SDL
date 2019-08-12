@@ -38,6 +38,9 @@ const int WINDOW_HEIGHT = 800;
 //每秒的帧数
 const int FRAMES_PER_SECOND = 60;
 
+//模拟高延迟
+//bool	m_needHighCPU = true;
+
 //static SDL_Renderer* g_render = nullptr;
 
 enum GameObjectType

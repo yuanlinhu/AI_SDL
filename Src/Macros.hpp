@@ -25,6 +25,9 @@ using namespace std;
 const int WINDOW_WIDTH = 1000;
 const int WINDOW_HEIGHT = 800;
 
+//Ã¿ÃëµÄÖ¡Êý
+const int FRAMES_PER_SECOND = 20;
+
 //static SDL_Renderer* g_render = nullptr;
 
 #endif //Macros_hpp

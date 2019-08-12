@@ -20,6 +20,9 @@ private:
 	SDL_Texture *	m_Texture;
 	SDL_Rect		m_rect;
 	SDL_Renderer*	m_render;
+
+	int				m_origin_w;
+	int				m_origin_h;
 };
 
 

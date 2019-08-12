@@ -22,6 +22,8 @@ void GameObject::init(int x, int y, int w, int h, string path)
 	}
 
 	m_Texture = SDL_CreateTextureFromSurface(m_render, tmp_surface);
+	m_origin_w = tmp_surface->w;
+	m_origin_h = tmp_surface->h;
 }
 
 GameObject::~GameObject()

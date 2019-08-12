@@ -11,6 +11,8 @@
 
 #include "Macros.hpp"
 
+class GameObjectMgr;
+
 
 class Game
 {
@@ -28,11 +30,16 @@ public:
     bool running();
     
 
+public:
+	void loadGameObj();
     
 private:
     bool m_is_running = false;
     SDL_Window *m_window;
 	SDL_Renderer* m_render;
+
+	GameObjectMgr*	m_gameObjMgr;
+
 };
 
 

@@ -37,4 +37,6 @@ void GameObject::render(SDL_Renderer* render)
 
 void GameObject::update()
 {
+	m_rect.x += 1;
+	m_rect.y += 1;
 }

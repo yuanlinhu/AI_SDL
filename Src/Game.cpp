@@ -7,8 +7,10 @@
 //
 
 
-#include "GameObject.hpp"
+
 #include "Game.hpp"
+#include "GameObject.hpp"
+#include "GameObjectMgr.hpp"
 
 
 //SDL_Surface *image;
@@ -17,16 +19,26 @@
 //SDL_Texture *hello_texture;
 
 
-GameObject* gameObj;
+//GameObject* gameObj;
 
 Game::Game()
 {
-    
+	m_gameObjMgr = new GameObjectMgr();
 }
 
 Game::~Game()
 {
     
+}
+
+void Game::loadGameObj()
+{
+	
+	m_gameObjMgr->createGameObject(0, 0, 100, 100, "../Asset/grass.jpg");
+
+	m_gameObjMgr->createGameObject(150, 0, 100, 100, "../Asset/grass.jpg");
+
+	m_gameObjMgr->createGameObject(100, 100, 100, 100, "../Asset/grass.jpg");
 }
 
 void Game::init(const char* title, int x, int y, int w, int h, bool full_screen)
@@ -47,39 +59,15 @@ void Game::init(const char* title, int x, int y, int w, int h, bool full_screen)
 
 		IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
 
-        m_is_running = true;
+        //m_is_running = true;
     }
+
+	m_gameObjMgr->setRender(m_render);
     
 
-	gameObj = new GameObject(m_render);
-	gameObj->init(0, 0, 100, 100, "../Asset/grass.jpg");
-
-
-	//IMG_Init(IMG_INIT_JPG);
-	//IMG_Init(IMG_INIT_PNG);
-	//IMG_Init(IMG_INIT_TIF);
-	//IMG_Init(IMG_INIT_WEBP);
-	// load sample.png into image
-	//image = IMG_Load("../Asset/grass.jpg");
-	//if (!image) {
-	//	printf("IMG_Load: %s\n", IMG_GetError());
-	//	// handle error
-	//}
-
-	//texture = SDL_CreateTextureFromSurface(m_render, image);
-
-	//gHelloWorld = SDL_LoadBMP("../Asset/1.bmp");
-	//if (gHelloWorld == NULL)
-	//{
-	//	printf("Unable to load image %s! SDL Error: %s\n", "02_getting_an_image_on_the_screen/hello_world.bmp", SDL_GetError());
-	//}
-
-	//hello_texture = SDL_CreateTextureFromSurface(m_render, gHelloWorld);
-
-	//texture
-
-	int jj = 0;
-    
+	loadGameObj();
+	m_is_running = true;
+	
 }
 
 void Game::handleEvents()
@@ -99,7 +87,7 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	gameObj->update();
+	m_gameObjMgr->update();
 }
 
 void Game::render()
@@ -138,8 +126,8 @@ void Game::render()
 	//SDL_SetRenderDrawColor(m_render, 0x00, 0x00, 0xFF, 0xFF);
 	//SDL_RenderDrawLine(m_render, 0, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT / 2);
 
-	gameObj->render(m_render);
-
+	//gameObj->render(m_render);
+	m_gameObjMgr->render();
     SDL_RenderPresent(m_render);
 }
 

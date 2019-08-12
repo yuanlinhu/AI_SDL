@@ -9,15 +9,8 @@
 #ifndef Game_hpp
 #define Game_hpp
 
-#include <stdio.h>
+#include "Macros.hpp"
 
-#ifdef _WINDOWS_
-#include "SDL.h"
-#else
-//#include "SDL2/SDL.h"
-#endif
-
-#include "SDL.h"
 
 class Game
 {
@@ -34,11 +27,12 @@ public:
     
     bool running();
     
+
     
 private:
     bool m_is_running = false;
     SDL_Window *m_window;
-    SDL_Renderer* m_render;
+	SDL_Renderer* m_render;
 };
 
 

@@ -7,18 +7,17 @@
 //
 
 
-
+#include "GameObject.hpp"
 #include "Game.hpp"
 
-#include "SDL_image.h"
 
-SDL_Surface *image;
-SDL_Texture *texture;
-SDL_Surface *gHelloWorld;
-SDL_Texture *hello_texture;
+//SDL_Surface *image;
+//SDL_Texture *texture;
+//SDL_Surface *gHelloWorld;
+//SDL_Texture *hello_texture;
 
-const int SCREEN_HEIGHT = 500;
-const int SCREEN_WIDTH = 300;
+
+GameObject* gameObj;
 
 Game::Game()
 {
@@ -42,12 +41,18 @@ void Game::init(const char* title, int x, int y, int w, int h, bool full_screen)
     {
         m_window = SDL_CreateWindow(title, x, y, w, h, flags);
         
-        m_render = SDL_CreateRenderer(m_window, -1, 0);
+		m_render = SDL_CreateRenderer(m_window, -1, 0);
         
         SDL_SetRenderDrawColor(m_render, 255, 255, 255, 255);
+
+		IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
+
         m_is_running = true;
     }
     
+
+	gameObj = new GameObject(m_render);
+	gameObj->init(0, 0, 100, 100, "../Asset/grass.jpg");
 
 
 	//IMG_Init(IMG_INIT_JPG);
@@ -55,21 +60,21 @@ void Game::init(const char* title, int x, int y, int w, int h, bool full_screen)
 	//IMG_Init(IMG_INIT_TIF);
 	//IMG_Init(IMG_INIT_WEBP);
 	// load sample.png into image
-	image = IMG_Load("../Asset/grass.jpg");
-	if (!image) {
-		printf("IMG_Load: %s\n", IMG_GetError());
-		// handle error
-	}
+	//image = IMG_Load("../Asset/grass.jpg");
+	//if (!image) {
+	//	printf("IMG_Load: %s\n", IMG_GetError());
+	//	// handle error
+	//}
 
-	texture = SDL_CreateTextureFromSurface(m_render, image);
+	//texture = SDL_CreateTextureFromSurface(m_render, image);
 
-	gHelloWorld = SDL_LoadBMP("../Asset/1.bmp");
-	if (gHelloWorld == NULL)
-	{
-		printf("Unable to load image %s! SDL Error: %s\n", "02_getting_an_image_on_the_screen/hello_world.bmp", SDL_GetError());
-	}
+	//gHelloWorld = SDL_LoadBMP("../Asset/1.bmp");
+	//if (gHelloWorld == NULL)
+	//{
+	//	printf("Unable to load image %s! SDL Error: %s\n", "02_getting_an_image_on_the_screen/hello_world.bmp", SDL_GetError());
+	//}
 
-	hello_texture = SDL_CreateTextureFromSurface(m_render, gHelloWorld);
+	//hello_texture = SDL_CreateTextureFromSurface(m_render, gHelloWorld);
 
 	//texture
 
@@ -94,7 +99,7 @@ void Game::handleEvents()
 
 void Game::update()
 {
-    
+	gameObj->update();
 }
 
 void Game::render()
@@ -109,29 +114,31 @@ void Game::render()
 	topLeftViewport.h = 50;
 	//SDL_RenderSetViewport(m_render, &topLeftViewport);
 
-	{
-		SDL_Rect srcrect;
-		srcrect.x = 0;
-		srcrect.y = 0;
-		srcrect.w = 100;
-		srcrect.h = 100;
+	//{
+	//	SDL_Rect srcrect;
+	//	srcrect.x = 0;
+	//	srcrect.y = 0;
+	//	srcrect.w = 100;
+	//	srcrect.h = 100;
 
-		SDL_RenderCopy(m_render, texture, NULL, &srcrect);
-	}
+	//	SDL_RenderCopy(m_render, texture, NULL, &srcrect);
+	//}
 
-	{
-		SDL_Rect srcrect;
-		srcrect.x = 200;
-		srcrect.y = 200;
-		srcrect.w = 100;
-		srcrect.h = 100;
+	//{
+	//	SDL_Rect srcrect;
+	//	srcrect.x = 200;
+	//	srcrect.y = 200;
+	//	srcrect.w = 100;
+	//	srcrect.h = 100;
 
-		SDL_RenderCopy(m_render, hello_texture, NULL, &srcrect);
-	}
+	//	SDL_RenderCopy(m_render, hello_texture, NULL, &srcrect);
+	//}
 	
 	
 	//SDL_SetRenderDrawColor(m_render, 0x00, 0x00, 0xFF, 0xFF);
 	//SDL_RenderDrawLine(m_render, 0, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT / 2);
+
+	gameObj->render(m_render);
 
     SDL_RenderPresent(m_render);
 }

@@ -4,6 +4,8 @@
 
 #include "Macros.hpp"
 
+
+
 class GameObject
 {
 public:
@@ -15,6 +17,11 @@ public:
 	void render(SDL_Renderer* render);
 	void update();
 
+	void add_x(int n);
+	void add_y(int n);
+
+	void setType(GameObjectType type);
+	GameObjectType getType();
 
 private:
 	SDL_Texture *	m_Texture;
@@ -23,6 +30,8 @@ private:
 
 	int				m_origin_w;
 	int				m_origin_h;
+
+	GameObjectType	m_type;
 };
 
 

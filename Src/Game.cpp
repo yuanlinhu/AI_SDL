@@ -64,11 +64,12 @@ void Game::go()
 void Game::loadGameObj()
 {
 	
-	m_gameObjMgr->createGameObject(0, 0, 100, 100, "../Asset/grass.jpg");
+	//m_gameObjMgr->createGameObject(0, 0, 100, 100, "../Asset/grass.jpg");
 
-	m_gameObjMgr->createGameObject(150, 0, 100, 100, "../Asset/grass.jpg");
+	//m_gameObjMgr->createGameObject(150, 0, 100, 100, "../Asset/grass.jpg");
 
-	m_gameObjMgr->createGameObject(100, 100, 100, 100, "../Asset/grass.jpg");
+	auto player = m_gameObjMgr->createGameObject(100, 100, 100, 100, "../Asset/player.jpg");
+	player->setType(GOT_PLAYER);
 }
 
 void Game::init(const char* title, int x, int y, int w, int h, bool full_screen)
@@ -142,24 +143,34 @@ void Game::handleEvents()
 
 void Game::handleKeyboard(SDL_Event& event)
 {
+	GameObject* player = m_gameObjMgr->getPlayer();
+	if (nullptr == player)
+	{
+		return;
+	}
+	int speed = 5;
 	switch (event.key.keysym.sym)
 	{
-	case SDLK_1:
-	{
-		break;
-	}
-	case SDLK_DOWN:
-	{
-		break;
-	}
-	case SDLK_LEFT:
-	{
-		break;
-	}
-	case SDLK_RIGHT:
-	{
-		break;
-	}
+		case SDLK_w:
+		{
+			player->add_y(-speed);
+			break;
+		}
+		case SDLK_s:
+		{
+			player->add_y(speed);
+			break;
+		}
+		case SDLK_a:
+		{
+			player->add_x(-speed);
+			break;
+		}
+		case SDLK_d:
+		{
+			player->add_x(speed);
+			break;
+		}
 	}
 }
 

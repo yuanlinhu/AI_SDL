@@ -31,4 +31,15 @@ const int FRAMES_PER_SECOND = 60;
 
 //static SDL_Renderer* g_render = nullptr;
 
+enum GameObjectType
+{
+	GOT_NULL = 0,
+
+	GOT_PLAYER,
+	GOT_ENEMY,
+
+
+	GOT_MAX
+};
+
 #endif //Macros_hpp

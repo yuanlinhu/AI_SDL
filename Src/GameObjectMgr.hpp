@@ -14,12 +14,19 @@ public:
 	GameObjectMgr();
 	~GameObjectMgr();
 
+public:
+	GameObject* createGameObject(int x, int y, int w, int h, string path);
+	GameObject* getPlayer();
+	GameObject* getObjectByType(GameObjectType type);
+
+
+
+public:
 	void setRender(SDL_Renderer* render);
-
-	void createGameObject(int x, int y, int w, int h, string path);
-
 	void render();
 	void update();
+
+	
 
 public:
 	//static GameObjectMgr *m_pInstance;

@@ -29,6 +29,8 @@ public:
     
     bool running();
     
+public:
+	void setViewPort();
 
 public:
 	void loadGameObj();

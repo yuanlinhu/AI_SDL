@@ -13,7 +13,7 @@ int main(int argc, char * argv[]) {
     
     Game game;
     
-    game.init("AI_SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_HEIGHT, WINDOW_WIDTH, false);
+    game.init("AI_SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, false);
     while(game.running())
     {
         game.handleEvents();

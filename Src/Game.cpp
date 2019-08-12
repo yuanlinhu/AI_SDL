@@ -59,15 +59,15 @@ void Game::init(const char* title, int x, int y, int w, int h, bool full_screen)
 
 		IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
 
-        //m_is_running = true;
     }
 
+	setViewPort();
+
 	m_gameObjMgr->setRender(m_render);
-    
 
 	loadGameObj();
+
 	m_is_running = true;
-	
 }
 
 void Game::handleEvents()
@@ -142,4 +142,14 @@ void Game::clean()
 bool Game::running()
 {
     return m_is_running;
+}
+
+void Game::setViewPort()
+{
+	SDL_Rect topRightViewport;
+	topRightViewport.x = 0;
+	topRightViewport.y = 0;
+	topRightViewport.w = WINDOW_WIDTH;
+	topRightViewport.h = WINDOW_HEIGHT;
+	SDL_RenderSetViewport(m_render, &topRightViewport);
 }

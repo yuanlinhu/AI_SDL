@@ -10,6 +10,11 @@
 
 #include "Game.hpp"
 
+#include "SDL_image.h"
+
+SDL_Surface *image;
+SDL_Texture *texture;
+
 Game::Game()
 {
     
@@ -38,6 +43,24 @@ void Game::init(const char* title, int x, int y, int w, int h, bool full_screen)
         m_is_running = true;
     }
     
+
+
+	//IMG_Init(IMG_INIT_JPG);
+	//IMG_Init(IMG_INIT_PNG);
+	//IMG_Init(IMG_INIT_TIF);
+	//IMG_Init(IMG_INIT_WEBP);
+	// load sample.png into image
+	image = IMG_Load("../Asset/1.bmp");
+	if (!image) {
+		printf("IMG_Load: %s\n", IMG_GetError());
+		// handle error
+	}
+
+	texture = SDL_CreateTextureFromSurface(m_render, image);
+
+	//texture
+
+	int jj = 0;
     
 }
 
@@ -65,7 +88,7 @@ void Game::render()
 {
     SDL_RenderClear(m_render);
     
-    
+	SDL_RenderCopy(m_render, texture, nullptr, nullptr);
     SDL_RenderPresent(m_render);
 }
 

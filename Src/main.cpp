@@ -6,18 +6,9 @@
 //  Copyright © 2019 yuanlinhu. All rights reserved.
 //
 
-#define main SDL_main
 #include <iostream>
 #include "Game.hpp"
 
-#include <SDL_main.h>
-
-
-
-#define SDL_MAIN_HANDLED
-
-//int
-//main(int argc, char *argv[])
 int main(int argc, char * argv[]) {
     
     Game game;

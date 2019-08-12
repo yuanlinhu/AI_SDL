@@ -9,15 +9,15 @@
 #ifndef Game_hpp
 #define Game_hpp
 
-#define main SDL_main
-
 #include <stdio.h>
 
-#ifdef MACOS
-#include "SDL2/SDL.h"
-#else
+#ifdef _WINDOWS_
 #include "SDL.h"
+#else
+//#include "SDL2/SDL.h"
 #endif
+
+#include "SDL.h"
 
 class Game
 {

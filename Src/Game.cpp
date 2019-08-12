@@ -35,6 +35,7 @@ void Game::go()
 {
 	init("AI_SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, false);
 
+	Uint32 frameTick = SDL_GetTicks();
 	Uint32 startTicks = 0;
 	Uint32 endTicks = 0;
 	Uint32 ellapseTicks = 0;
@@ -54,6 +55,7 @@ void Game::go()
 			SDL_Delay((1000 / FRAMES_PER_SECOND) - ellapseTicks);
 		}
 
+		cout << "Frame: " << int(m_countedFrames / ((SDL_GetTicks() - frameTick) / 1000.f)) << endl;
 	}
 
 	clean();
@@ -128,9 +130,37 @@ void Game::handleEvents()
 			SDL_GetMouseState(&x, &y);
 			break;
 		}
+		case SDL_KEYDOWN:
+		{
+			handleKeyboard(event);
+			break;
+		}
         default:
             break;
     }
+}
+
+void Game::handleKeyboard(SDL_Event& event)
+{
+	switch (event.key.keysym.sym)
+	{
+	case SDLK_1:
+	{
+		break;
+	}
+	case SDLK_DOWN:
+	{
+		break;
+	}
+	case SDLK_LEFT:
+	{
+		break;
+	}
+	case SDLK_RIGHT:
+	{
+		break;
+	}
+	}
 }
 
 void Game::update()

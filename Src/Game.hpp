@@ -37,6 +37,9 @@ public:
 public:
 	void loadGameObj();
     
+
+private:
+	void handleKeyboard(SDL_Event& event);
 private:
 	int	m_countedFrames = 0;
     bool m_is_running = false;

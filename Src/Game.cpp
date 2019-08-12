@@ -23,6 +23,7 @@
 
 Game::Game()
 {
+	srand((unsigned int)time(NULL));
 	m_gameObjMgr = new GameObjectMgr();
 }
 
@@ -74,6 +75,7 @@ void Game::loadGameObj()
 
 void Game::init(const char* title, int x, int y, int w, int h, bool full_screen)
 {
+	HighCpuFunc();
     int flags = 0;
     if(full_screen)
     {
@@ -176,6 +178,7 @@ void Game::handleKeyboard(SDL_Event& event)
 
 void Game::update()
 {
+	HighCpuFunc();
 	m_gameObjMgr->update();
 }
 
@@ -209,4 +212,33 @@ void Game::setViewPort()
 	topRightViewport.w = WINDOW_WIDTH;
 	topRightViewport.h = WINDOW_HEIGHT;
 	SDL_RenderSetViewport(m_render, &topRightViewport);
+}
+
+
+void Game::HighCpuFunc()
+{
+	if (false == m_needHighCPU)
+	{
+		return;
+	}
+	long tick = SDL_GetTicks();
+	long  i = 0;
+
+	long d = 1000000;	//约 200ms
+	long c = 0;
+	float x = 0, y = 0;
+
+	
+	for (long i = 0; i < d; ++i)
+	{
+		x = (float)rand() / RAND_MAX;
+		y = (float)rand() / RAND_MAX;
+		if (sqrt(x * x + y * y) <= 1)
+		{
+			//++c;
+		}
+	}
+	acos(-1.0);
+	//cout << setiosflags(ios::fixed) << setprecision(20) << acos(-1.0) << endl;
+	cout << "tick: " << SDL_GetTicks() - tick << endl;
 }

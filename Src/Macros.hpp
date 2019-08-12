@@ -20,6 +20,15 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <time.h>
+
+#include <stdlib.h>
+#include <cmath>
+#include <iomanip>
+
+
+#include "Point2D.hpp"
+
 
 using namespace std;
 

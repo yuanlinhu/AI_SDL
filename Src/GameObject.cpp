@@ -35,13 +35,30 @@ GameObject::~GameObject()
 
 void GameObject::render(SDL_Renderer* render)
 {
+	m_rect.x = m_cur_pos.x;
+	m_rect.y = m_cur_pos.y;
 	SDL_RenderCopy(m_render, m_Texture, NULL, &m_rect);
 }
 
 void GameObject::update()
 {
-	m_rect.x += 0;
-	//m_rect.y += 1;
+	if (m_cur_pos == m_target_pos)
+	{
+		//设置随机目标点
+		m_target_pos.x = rand() % (WINDOW_WIDTH - m_rect.w);
+		m_target_pos.y = rand() % (WINDOW_HEIGHT - m_rect.h);
+
+		cout << "目标为 " << m_target_pos.x << ", " << m_target_pos.y << endl;
+	}
+
+	int x_mul = (m_target_pos.x > m_cur_pos.x) ? 1 : -1;
+	int y_mul = (m_target_pos.y > m_cur_pos.y) ? 1 : -1;
+
+	x_mul = (m_target_pos.x == m_cur_pos.x) ? 0 : x_mul;
+	y_mul = (m_target_pos.y == m_cur_pos.y) ? 0 : y_mul;
+
+	m_cur_pos.x += (x_mul * m_speed);
+	m_cur_pos.y += (y_mul * m_speed);
 }
 
 void GameObject::add_x(int n)

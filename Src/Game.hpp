@@ -30,6 +30,8 @@ public:
     void clean();
     
     bool running();
+
+	bool setNeedHighCPU(bool b) { m_needHighCPU = b; }
     
 public:
 	void setViewPort();
@@ -38,17 +40,21 @@ public:
 	void loadGameObj();
     
 
+	//模拟高延迟逻辑
+	void HighCpuFunc();
+
 private:
 	void handleKeyboard(SDL_Event& event);
+
+
+
 private:
+	bool	m_needHighCPU = false;
 	int	m_countedFrames = 0;
     bool m_is_running = false;
     SDL_Window *m_window;
 	SDL_Renderer* m_render;
 	GameObjectMgr*	m_gameObjMgr;
-
-
-
 
 };
 

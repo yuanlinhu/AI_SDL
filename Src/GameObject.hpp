@@ -32,6 +32,10 @@ private:
 	int				m_origin_h;
 
 	GameObjectType	m_type;
+
+	Point2D		m_cur_pos;
+	Point2D		m_target_pos;
+	float m_speed = 1.0f;
 };
 
 

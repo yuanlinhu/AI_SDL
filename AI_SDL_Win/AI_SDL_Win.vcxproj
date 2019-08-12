@@ -23,14 +23,17 @@
     <ClCompile Include="..\Src\GameObject.cpp" />
     <ClCompile Include="..\Src\GameObjectMgr.cpp" />
     <ClCompile Include="..\Src\main.cpp" />
+    <ClCompile Include="..\Src\Point2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Game.hpp" />
     <ClInclude Include="..\Src\GameObject.hpp" />
     <ClInclude Include="..\Src\GameObjectMgr.hpp" />
     <ClInclude Include="..\Src\Macros.hpp" />
+    <ClInclude Include="..\Src\Point2D.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\Asset\grass1.jpg" />
     <Image Include="1.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

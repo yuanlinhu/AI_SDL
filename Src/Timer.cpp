@@ -7,17 +7,25 @@ Timer::Timer()
 
 }
 
-void Timer::setTimer(int second)
+void Timer::setTimer(int milliSec)
+{
+	m_milsec = milliSec;
+	m_startTicks = SDL_GetTicks();
+	m_expireTicks = m_startTicks + m_milsec;
+}
+
+void Timer::restart()
 {
 	m_startTicks = SDL_GetTicks();
-	m_expireTicks = m_startTicks + second * 1000;
+	m_startTicks = SDL_GetTicks();
+	m_expireTicks = m_startTicks + m_milsec;
 }
 
 void Timer::reset()
 {
 	m_startTicks = 0;
 	m_endTicks = 0;
-	m_expireTicks = 0;
+	//m_expireTicks = 0;
 }
 
 void Timer::start()

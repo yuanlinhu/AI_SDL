@@ -8,10 +8,11 @@ class Timer
 public:
 	Timer();
 	
-	void setTimer(int second);
+	void setTimer(int milliSec);
 	void start();
 	void end();
 	void reset();
+	void restart();
 
 	bool isExpire();
 	
@@ -20,6 +21,7 @@ public:
 	int m_startTicks = 0;
 	int m_endTicks = 0;
 	int m_expireTicks = 0;
+	int m_milsec = 0;
 
 };
 

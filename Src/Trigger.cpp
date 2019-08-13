@@ -15,12 +15,26 @@ void Trigger::init(TriggerType type, int x, int y)
 	m_birthPos.x = x;
 	m_birthPos.y = y;
 
-	m_Radius = 20;
+	m_Radius = 50;
+}
+
+bool Trigger::canErase()
+{
+	if (m_curIndex > m_maxIndex)
+	{
+		return true;
+	}
+	return false;
 }
 
 void Trigger::update(Game* game)
 {
 	if (nullptr == game)
+	{
+		return;
+	}
+
+	if (false == m_Timer.isExpire())
 	{
 		return;
 	}
@@ -33,11 +47,14 @@ void Trigger::update(Game* game)
 		int randHp = Math::getRand(100, 200);
 		tmp->addHP(-randHp);
 	}
+
+	m_curIndex++;
+	m_Timer.restart();
 }
 
 void Trigger::render(SDL_Renderer* render)
 {
-	SDL_SetRenderDrawColor(render, 255, 0, 0, 0);
+	SDL_SetRenderDrawColor(render, 255 - m_curIndex * 20, 255, 50, 0);
 	Geometry::DrawCircle(render, m_Radius, m_birthPos.x, m_birthPos.y);
 }
 

@@ -61,6 +61,16 @@ void GameObject::render(SDL_Renderer* render)
 	m_nameFont->render();
 
 	m_hpFont->render();
+
+	//»­Ä¿±êµã
+	SDL_SetRenderDrawColor(render, 255, 0, 50, 0);
+	SDL_Rect  rect;
+	rect.x = m_target_pos.x;
+	rect.y = m_target_pos.y;
+	rect.w = 10;
+	rect.h = 10;
+	SDL_RenderFillRect(render, &rect);
+	
 }
 
 void GameObject::update(Uint32 delta)

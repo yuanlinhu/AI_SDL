@@ -236,27 +236,6 @@ void Game::handleKeyboard(SDL_Event& event)
 			player->add_x(speed);
 			break;
 		}
-
-		case SDLK_j:
-		{
-			m_FpsFont->addFontSize(speed);
-			break;
-		}
-		case SDLK_k:
-		{
-			m_FpsFont->addFontSize(-speed);
-			break;
-		}
-		case SDLK_n:
-		{
-			m_FpsFont->addWidth(speed);
-			break;
-		}
-		case SDLK_m:
-		{
-			m_FpsFont->addWidth(-speed);
-			break;
-		}
 		case SDLK_g:
 		{
 			player->addHP(speed);
@@ -282,6 +261,11 @@ void Game::update(Uint32 delta)
 	m_FpsFont->update(delta);
 	m_triggerMgr->update(this);
 	m_gameObjMgr->update(delta);
+
+	stringstream strss;
+	strss << "fps:" << m_Fps;
+	m_FpsFont->setMessage(strss.str(), 200, 10, 50, 20);
+
 }
 
 void Game::render()

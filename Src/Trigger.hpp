@@ -16,6 +16,27 @@ public:
 
 	void render(SDL_Renderer* render);
 
+	bool canErase();
+
+	void setMaxIndex(int index)
+	{
+		m_maxIndex = index;
+	}
+
+	void setTimer(int milliSec)
+	{
+		m_Timer.setTimer(milliSec);
+	}
+
+	bool isExpire()
+	{
+		return m_Timer.isExpire();
+	}
+
+	void startTimer()
+	{
+		m_Timer.start();
+	}
 
 private:
 	TriggerType		m_Type;

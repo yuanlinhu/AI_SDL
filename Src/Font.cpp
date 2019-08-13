@@ -58,7 +58,7 @@ void Font::render()
 		cout << nowTicks - m_dispearTicks<< endl;
 		if (nowTicks >= m_dispearTicks)
 		{
-			cout << "字体消失" << endl;
+			//cout << "字体消失" << endl;
 			m_fontTexture = nullptr;
 			m_dispearTicks = 0;
 		}
@@ -79,15 +79,15 @@ void Font::setTimer(int second)
 	m_dispearTicks = SDL_GetTicks() + second * 1000;
 }
 
-void Font::addWidth(int w)
-{
-	m_rect.w += w;
-}
-
-void Font::addFontSize(int s)
-{
-	m_fontSize += s;
-}
+//void Font::addWidth(int w)
+//{
+//	m_rect.w += w;
+//}
+//
+//void Font::addFontSize(int s)
+//{
+//	m_fontSize += s;
+//}
 //void Font::render(std::string message, int x, int y, int w, int h, std::string fontFile,
 //	SDL_Color color, int fontSize)
 //{

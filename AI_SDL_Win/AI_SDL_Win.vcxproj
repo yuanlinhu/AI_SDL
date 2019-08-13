@@ -36,6 +36,9 @@
     <Image Include="..\Asset\grass1.jpg" />
     <Image Include="1.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{3EB713A7-66E6-4D1C-8686-728C82C60090}</ProjectGuid>

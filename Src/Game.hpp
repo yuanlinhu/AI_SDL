@@ -49,6 +49,9 @@ public:
 	void HighCpuFunc();
 
 private:
+	void handleMouseDown(int x, int y);
+	void handleMouseUp(int x, int y);
+	void handleMouseMotion(int x, int y);
 	void handleKeyboard(SDL_Event& event);
 
 
@@ -67,6 +70,7 @@ private:
 
 	int				m_Fps;
 	Font*			m_FpsFont;
+	Point2D			m_MousePos;
 };
 
 

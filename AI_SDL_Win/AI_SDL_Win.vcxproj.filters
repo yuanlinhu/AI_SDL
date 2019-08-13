@@ -19,6 +19,9 @@
     <ClCompile Include="..\Src\Font.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\Geometry.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Game.hpp">
@@ -39,6 +42,9 @@
     <ClInclude Include="..\Src\Font.hpp">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Src\Geometry.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="1.bmp">
@@ -49,14 +55,19 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\README.md" />
-  </ItemGroup>
-  <ItemGroup>
     <Filter Include="Asset">
       <UniqueIdentifier>{b5ee1ec2-995f-4f9c-a42d-4513296410e9}</UniqueIdentifier>
     </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{6b2c605c-0831-4ed9-8a4e-2234ce92144e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="文档">
+      <UniqueIdentifier>{85fd90b0-9db4-4e1d-a178-7c3c84b486e3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Filter>文档</Filter>
+    </None>
   </ItemGroup>
 </Project>

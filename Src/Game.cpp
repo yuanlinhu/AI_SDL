@@ -12,9 +12,10 @@
 #include "GameObject.hpp"
 #include "GameObjectMgr.hpp"
 #include "Font.hpp"
+#include "Geometry.hpp"
 
-SDL_Surface *message = NULL;
-TTF_Font *font = NULL;
+//SDL_Surface *message = NULL;
+//TTF_Font *font = NULL;
 //字体的颜色
 
 
@@ -149,6 +150,7 @@ void Game::handleEvents()
 			int x = 0;
 			int y = 0;
 			SDL_GetMouseState(&x, &y);
+			handleMouseDown(x, y);
 			break;
 		}
 		case SDL_MOUSEBUTTONUP:
@@ -156,6 +158,7 @@ void Game::handleEvents()
 			int x = 0;
 			int y = 0;
 			SDL_GetMouseState(&x, &y);
+			handleMouseUp(x, y);
 			break;
 		}
 		case SDL_MOUSEMOTION:
@@ -163,6 +166,7 @@ void Game::handleEvents()
 			int x = 0;
 			int y = 0;
 			SDL_GetMouseState(&x, &y);
+			handleMouseMotion(x, y);
 			break;
 		}
 		case SDL_KEYDOWN:
@@ -174,6 +178,26 @@ void Game::handleEvents()
             break;
     }
 }
+void Game::handleMouseDown(int x, int y)
+{
+	//SDL_SetRenderDrawColor(m_render, 0xFF, 0, 0x00, 0xFF);
+	//Geometry::DrawCircle(m_render, 10, x, y);
+	//Geometry::DrawRect(m_render, x, y, 100, 50);
+
+	m_MousePos.x = x;
+	m_MousePos.y = y;
+}
+
+void Game::handleMouseUp(int x, int y)
+{
+
+}
+
+void Game::handleMouseMotion(int x, int y)
+{
+
+}
+
 
 void Game::handleKeyboard(SDL_Event& event)
 {
@@ -236,6 +260,11 @@ void Game::handleKeyboard(SDL_Event& event)
 			player->addHP(-speed);
 			break;
 		}
+		case SDLK_z:
+		{
+			player->addHP(-speed);
+			break;
+		}
 	}
 }
 
@@ -254,10 +283,18 @@ void Game::update(Uint32 delta)
 
 void Game::render()
 {
+	SDL_SetRenderDrawColor(m_render, 255, 255, 255, 0xFF);
     SDL_RenderClear(m_render);
 	
+	SDL_SetRenderDrawColor(m_render, 0, 0xFF, 0xFF, 0);
+	Geometry::DrawCircle(m_render, 50, m_MousePos.x, m_MousePos.y);
+	//Geometry::DrawRect(m_render, m_MousePos.x, m_MousePos.y, 100, 50);
+
+
 	m_gameObjMgr->render();
 	m_FpsFont->render();
+
+
     
 	SDL_RenderPresent(m_render);
 }

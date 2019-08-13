@@ -29,6 +29,9 @@ public:
     void render();
     void clean();
     
+	SDL_Texture* RenderText(std::string message, std::string fontFile,
+		SDL_Color color, int fontSize);
+
     bool running();
 
 	bool setNeedHighCPU(bool b) { m_needHighCPU = b; }
@@ -56,6 +59,9 @@ private:
 	SDL_Renderer* m_render;
 	GameObjectMgr*	m_gameObjMgr;
 	bool	m_needHighCPU = true;
+
+	SDL_Texture*		m_font_texture;
+	SDL_Rect		m_font_rect;
 };
 
 

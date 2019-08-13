@@ -11,6 +11,12 @@
 #include "Game.hpp"
 #include "GameObject.hpp"
 #include "GameObjectMgr.hpp"
+#include "SDL_ttf.h"
+
+SDL_Surface *message = NULL;
+TTF_Font *font = NULL;
+//字体的颜色
+SDL_Color textColor = { 255, 0, 0 };
 
 
 //SDL_Surface *image;
@@ -97,9 +103,23 @@ void Game::init(const char* title, int x, int y, int w, int h, bool full_screen)
         
         SDL_SetRenderDrawColor(m_render, 255, 255, 255, 255);
 
+		//
 		IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
 
+		//初始化SDL_ttf
+		if (TTF_Init() == -1)
+		{
+			
+		}
+
     }
+
+	m_font_texture = RenderText("nihao", "arial.TTF", textColor, 20);
+	//font = TTF_OpenFont("lazy.ttf", 28);
+	//message = TTF_RenderText_Solid(font, "The quick brown fox jumps over the lazy dog", textColor);
+
+	//设置窗口标题
+	//SDL_WM_SetCaption("TTF Test",NULL);
 
 	setViewPort();
 
@@ -195,7 +215,14 @@ void Game::render()
     SDL_RenderClear(m_render);
     
 
-	m_gameObjMgr->render();
+	//m_gameObjMgr->render();
+
+	m_font_rect.x = 100;
+	m_font_rect.y = 100;
+	m_font_rect.h = 30;
+	m_font_rect.w = 100;
+	SDL_RenderCopy(m_render, m_font_texture, NULL, &m_font_rect);
+	
     SDL_RenderPresent(m_render);
 }
 
@@ -249,4 +276,26 @@ void Game::HighCpuFunc()
 	acos(-1.0);
 	//cout << setiosflags(ios::fixed) << setprecision(20) << acos(-1.0) << endl;
 	cout << "tick: " << SDL_GetTicks() - tick << endl;
+}
+
+SDL_Texture* Game::RenderText(std::string message, std::string fontFile,
+	SDL_Color color, int fontSize)
+{
+	//Open the font
+	TTF_Font *font = nullptr;
+	string absolute_path = "../Asset/ttf/" + fontFile;
+	font = TTF_OpenFont(absolute_path.c_str(), fontSize);
+	if (font == nullptr)
+	{
+		cout << "Failed to load font: " << fontFile << TTF_GetError() << endl;
+	}
+
+	//Render the message to an SDL_Surface, as that's what TTF_RenderText_X returns
+	SDL_Surface *surf = TTF_RenderText_Blended(font, message.c_str(), color);
+	SDL_Texture *texture = SDL_CreateTextureFromSurface(m_render, surf);
+	//Clean up unneeded stuff
+	SDL_FreeSurface(surf);
+	TTF_CloseFont(font);
+
+	return texture;
 }

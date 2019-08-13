@@ -27,9 +27,19 @@ void GameObject::init(int x, int y, int w, int h, string path)
 	m_type = GOT_ENEMY;
 
 
-	m_nameFont = new Font(m_render);
-	SDL_Color textColor = { 255, 0, 0 };
-	m_nameFont->init("LATINWD.TTF", textColor, 10);
+	{
+		m_nameFont = new Font(m_render);
+		SDL_Color textColor = { 0, 0, 255 };
+		m_nameFont->init("LATINWD.TTF", textColor, 20);
+	}
+	
+
+	{
+		m_hpFont = new Font(m_render);
+		SDL_Color textColor = { 255, 0, 0 };
+		m_hpFont->init("LATINWD.TTF", textColor, 10);
+	}
+	
 
 
 	m_hp = 10000;
@@ -49,6 +59,8 @@ void GameObject::render(SDL_Renderer* render)
 	SDL_RenderCopy(m_render, m_Texture, NULL, &m_rect);
 
 	m_nameFont->render();
+
+	m_hpFont->render();
 }
 
 void GameObject::update(Uint32 delta)
@@ -71,13 +83,14 @@ void GameObject::update(Uint32 delta)
 	m_cur_pos.x += (x_mul * m_speed * delta) / 1000;
 	m_cur_pos.y += (y_mul * m_speed * delta) / 1000;
 
-
-	m_hp--;
-
 	stringstream strss;
-	strss << m_name << "  hp:"<<m_hp;
-	m_nameFont->setMessage(strss.str(), m_cur_pos.x + 5, m_cur_pos.y - 20, 50, 20);
+	strss << m_name << "  hp:" << m_hp;
+	m_nameFont->setMessage(strss.str(), m_cur_pos.x + 5, m_cur_pos.y - 20, 70, 20);
+
+	m_hpFont->setPos(m_cur_pos.x + 5, m_cur_pos.y - 30);
 }
+
+
 
 void GameObject::add_x(int n)
 {
@@ -115,4 +128,14 @@ void GameObject::setType(GameObjectType type)
 GameObjectType GameObject::getType()
 {
 	return m_type;
+}
+
+void GameObject::addHP(int hp)
+{
+	m_hp += hp;
+
+	stringstream strss;
+	strss << hp;
+	m_hpFont->setMessage(strss.str(), m_cur_pos.x + 5, m_cur_pos.y + 30, 10, 10);
+	m_hpFont->setTimer(2);
 }

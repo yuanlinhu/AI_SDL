@@ -42,8 +42,25 @@ void Font::setMessage(std::string message, int x, int y, int w, int h)
 	m_rect.h = h;
 }
 
+void Font::setPos(int x, int y)
+{
+	m_rect.x = x;
+	m_rect.y = y;
+}
+
 void Font::render()
 {
+	if (m_dispearTicks > 0)
+	{
+		int nowTicks = SDL_GetTicks();
+		cout << nowTicks - m_dispearTicks<< endl;
+		if (nowTicks >= m_dispearTicks)
+		{
+			cout << "×ÖÌåÏûÊ§" << endl;
+			m_fontTexture = nullptr;
+			m_dispearTicks = 0;
+		}
+	}
 	if (nullptr != m_fontTexture)
 	{
 		SDL_RenderCopy(m_render, m_fontTexture, NULL, &m_rect);
@@ -53,6 +70,11 @@ void Font::render()
 void Font::update(Uint32 delta)
 {
 
+}
+
+void Font::setTimer(int second)
+{
+	m_dispearTicks = SDL_GetTicks() + second * 1000;
 }
 
 void Font::addWidth(int w)

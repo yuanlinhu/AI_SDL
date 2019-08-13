@@ -65,13 +65,12 @@ void Game::go()
 			SDL_Delay((1000 / FRAMES_PER_SECOND) - ellapseTicks);
 		}
 
+		m_Fps = int(m_countedFrames / ((SDL_GetTicks() - frameTick) / 1000.f));
 		//cout << "ellapseTicks: " << ellapseTicks << endl;
-		cout << "Frame: " << int(m_countedFrames / ((SDL_GetTicks() - frameTick) / 1000.f)) << endl;
+		//cout << "Frame: " << int(m_countedFrames / ((SDL_GetTicks() - frameTick) / 1000.f)) << endl;
 
-		int fps = int(m_countedFrames / ((SDL_GetTicks() - frameTick) / 1000.f));
-		stringstream strss;
-		strss << "fps:" << fps;
-		m_FpsFont->setMessage(strss.str(), 200, 10, 50, 20);
+		//int fps = int(m_countedFrames / ((SDL_GetTicks() - frameTick) / 1000.f));
+		
 
 		
 	}
@@ -227,6 +226,16 @@ void Game::handleKeyboard(SDL_Event& event)
 			m_FpsFont->addWidth(-speed);
 			break;
 		}
+		case SDLK_g:
+		{
+			player->addHP(speed);
+			break;
+		}
+		case SDLK_h:
+		{
+			player->addHP(-speed);
+			break;
+		}
 	}
 }
 
@@ -236,6 +245,11 @@ void Game::update(Uint32 delta)
 	HighCpuFunc();
 	m_gameObjMgr->update(delta);
 	m_FpsFont->update(delta);
+
+	stringstream strss;
+	strss << "fps:" << m_Fps;
+	//m_FpsFont->setMessage(strss.str(), 200, 10, 50, 20);
+
 }
 
 void Game::render()

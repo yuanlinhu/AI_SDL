@@ -11,10 +11,11 @@ public:
 	void setMessage(std::string message);
 	void setMessage(std::string message, int x, int y, int w, int h);
 
+	void setPos(int x, int y);
 	void update(Uint32 delta);
 	void render();
 
-
+	void setTimer(int second);
 	void addWidth(int w);
 	void addFontSize(int s);
 
@@ -30,6 +31,8 @@ public:
 	SDL_Color		m_color;			//×ÖÌåÑÕÉ«
 	SDL_Rect		m_rect;
 	SDL_Renderer*	m_render;
+
+	int				m_dispearTicks;
 };
 
 #endif	//Font_HPP

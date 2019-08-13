@@ -20,6 +20,8 @@ public:
 	void add_x(int n);
 	void add_y(int n);
 
+	void addHP(int hp);
+
 	void setType(GameObjectType type);
 	GameObjectType getType();
 
@@ -29,6 +31,7 @@ private:
 	SDL_Renderer*	m_render;
 
 	Font* m_nameFont;
+	Font* m_hpFont;
 
 	//ͼƬԭʼ�ߴ�
 	int				m_origin_w;

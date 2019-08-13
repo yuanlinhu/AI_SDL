@@ -65,6 +65,7 @@ private:
 	//SDL_Texture*		m_font_texture;
 	//SDL_Rect		m_font_rect;
 
+	int				m_Fps;
 	Font*			m_FpsFont;
 };
 

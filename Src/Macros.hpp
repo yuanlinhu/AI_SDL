@@ -24,9 +24,9 @@
 
 #endif
 
-
-#include <map>
 #include <vector>
+#include <list>
+#include <map>
 #include <string>
 #include <iostream>
 #include <sstream>
@@ -45,6 +45,21 @@
 
 
 using namespace std;
+
+
+
+class Game;
+class GameObjectMgr;
+class GameObject;
+class Timer;
+class TriggerMgr;
+class Trigger;
+
+
+
+
+
+
 
 const int WINDOW_WIDTH = 1000;
 const int WINDOW_HEIGHT = 800;
@@ -65,6 +80,16 @@ enum GameObjectType
 	GOT_ENEMY,
 
 	GOT_MAX
+};
+
+enum TriggerType
+{
+	TRT_NULL = 0,
+
+	TRT_AREA,
+	TRT_COLLIDE,
+
+	TRT_MAX
 };
 
 #endif //Macros_hpp

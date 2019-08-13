@@ -2,7 +2,7 @@
 #include "GameObjectMgr.hpp"
 #include "Game.hpp"
 #include "GameObject.hpp"
-
+#include "Math.hpp"
 
 GameObjectMgr::GameObjectMgr()
 {
@@ -61,5 +61,22 @@ GameObject* GameObjectMgr::getObjectByType(GameObjectType type)
 	}
 
 	return retInfo;
+}
+
+void GameObjectMgr::getObjectByCircle(int radius, Point2D& pos, std::vector<GameObject *>& retObjList)
+{
+	retObjList.clear();
+	for (auto &tmp : m_obj_list)
+	{
+		if (nullptr == tmp)
+		{
+			continue;
+		}
+		bool isIn = Math::isInCircle(tmp->getCurPos().x, tmp->getCurPos().y, pos.x, pos.y, radius);
+		if (isIn)
+		{
+			retObjList.push_back(tmp);
+		}
+	}
 }
 

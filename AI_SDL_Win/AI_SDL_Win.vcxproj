@@ -25,7 +25,11 @@
     <ClCompile Include="..\Src\GameObjectMgr.cpp" />
     <ClCompile Include="..\Src\Geometry.cpp" />
     <ClCompile Include="..\Src\main.cpp" />
+    <ClCompile Include="..\Src\Math.cpp" />
     <ClCompile Include="..\Src\Point2D.cpp" />
+    <ClCompile Include="..\Src\Timer.cpp" />
+    <ClCompile Include="..\Src\Trigger.cpp" />
+    <ClCompile Include="..\Src\TriggerMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Font.hpp" />
@@ -34,7 +38,11 @@
     <ClInclude Include="..\Src\GameObjectMgr.hpp" />
     <ClInclude Include="..\Src\Geometry.hpp" />
     <ClInclude Include="..\Src\Macros.hpp" />
+    <ClInclude Include="..\Src\Math.hpp" />
     <ClInclude Include="..\Src\Point2D.hpp" />
+    <ClInclude Include="..\Src\Timer.hpp" />
+    <ClInclude Include="..\Src\Trigger.hpp" />
+    <ClInclude Include="..\Src\TriggerMgr.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Asset\grass1.jpg" />

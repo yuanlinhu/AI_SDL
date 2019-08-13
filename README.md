@@ -8,9 +8,12 @@
 
 * 时间类  delta_Time 优化 
 
-* 动画
-
 * trigger 伤害，AOE等
+
+* cast spell
+
+
+* 动画
 
 * Map类 (九宫格管理， 资源加载)
 

@@ -14,7 +14,9 @@
 class Font;
 
 class GameObjectMgr;
+class TriggerMgr;
 
+class GameObject;
 
 class Game
 {
@@ -48,6 +50,13 @@ public:
 	//模拟高延迟逻辑
 	void HighCpuFunc();
 
+
+	void getObjectByCircle(int radius, Point2D& pos, std::vector<GameObject *>& retObjList);
+
+	Point2D&		getMousePos()
+	{
+		return	m_MousePos;
+	}
 private:
 	void handleMouseDown(int x, int y);
 	void handleMouseUp(int x, int y);
@@ -65,6 +74,7 @@ private:
 	GameObjectMgr*	m_gameObjMgr;
 	bool	m_needHighCPU = false;
 
+	TriggerMgr*			m_triggerMgr;
 	//SDL_Texture*		m_font_texture;
 	//SDL_Rect		m_font_rect;
 

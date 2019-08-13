@@ -13,6 +13,8 @@
 #include "GameObjectMgr.hpp"
 #include "Font.hpp"
 #include "Geometry.hpp"
+#include "TriggerMgr.hpp"
+#include "Trigger.hpp"
 
 //SDL_Surface *message = NULL;
 //TTF_Font *font = NULL;
@@ -32,6 +34,8 @@ Game::Game()
 {
 	srand((unsigned int)time(NULL));
 	m_gameObjMgr = new GameObjectMgr();
+
+	
 }
 
 Game::~Game()
@@ -130,6 +134,7 @@ void Game::init(const char* title, int x, int y, int w, int h, bool full_screen)
 	setViewPort();
 
 	m_gameObjMgr->setRender(m_render);
+	m_triggerMgr = new TriggerMgr(m_render);
 
 	loadGameObj();
 
@@ -186,6 +191,8 @@ void Game::handleMouseDown(int x, int y)
 
 	m_MousePos.x = x;
 	m_MousePos.y = y;
+
+	m_triggerMgr->createTrigger(TRT_AREA, x, y);
 }
 
 void Game::handleMouseUp(int x, int y)
@@ -272,13 +279,9 @@ void Game::update(Uint32 delta)
 {
 	//cout << "delta: " << delta << endl;
 	HighCpuFunc();
-	m_gameObjMgr->update(delta);
 	m_FpsFont->update(delta);
-
-	stringstream strss;
-	strss << "fps:" << m_Fps;
-	//m_FpsFont->setMessage(strss.str(), 200, 10, 50, 20);
-
+	m_triggerMgr->update(this);
+	m_gameObjMgr->update(delta);
 }
 
 void Game::render()
@@ -286,15 +289,9 @@ void Game::render()
 	SDL_SetRenderDrawColor(m_render, 255, 255, 255, 0xFF);
     SDL_RenderClear(m_render);
 	
-	SDL_SetRenderDrawColor(m_render, 0, 0xFF, 0xFF, 0);
-	Geometry::DrawCircle(m_render, 50, m_MousePos.x, m_MousePos.y);
-	//Geometry::DrawRect(m_render, m_MousePos.x, m_MousePos.y, 100, 50);
-
-
-	m_gameObjMgr->render();
 	m_FpsFont->render();
-
-
+	m_triggerMgr->render();
+	m_gameObjMgr->render();
     
 	SDL_RenderPresent(m_render);
 }
@@ -349,6 +346,11 @@ void Game::HighCpuFunc()
 	acos(-1.0);
 	//cout << setiosflags(ios::fixed) << setprecision(20) << acos(-1.0) << endl;
 	cout << "tick: " << SDL_GetTicks() - tick << endl;
+}
+
+void Game::getObjectByCircle(int radius, Point2D& pos, std::vector<GameObject *>& retObjList)
+{
+	return m_gameObjMgr->getObjectByCircle(radius, pos, retObjList);
 }
 
 //SDL_Texture* Game::RenderText(std::string message, std::string fontFile,

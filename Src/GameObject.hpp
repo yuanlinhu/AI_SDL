@@ -25,6 +25,10 @@ public:
 	void setType(GameObjectType type);
 	GameObjectType getType();
 
+	Point2D& getCurPos() 
+	{
+		return m_cur_pos;
+	}
 private:
 	SDL_Texture *	m_Texture;
 	SDL_Rect		m_rect;

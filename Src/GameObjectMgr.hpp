@@ -20,6 +20,7 @@ public:
 	GameObject* getObjectByType(GameObjectType type);
 
 
+	void getObjectByCircle(int radius, Point2D& pos, std::vector<GameObject *>& retObjList);
 
 public:
 	void setRender(SDL_Renderer* render);

@@ -50,6 +50,8 @@ void Font::setPos(int x, int y)
 
 void Font::render()
 {
+	SDL_SetRenderDrawColor(m_render, 0, 0, 255, 0);
+
 	if (m_dispearTicks > 0)
 	{
 		int nowTicks = SDL_GetTicks();

@@ -22,6 +22,18 @@
     <ClCompile Include="..\Src\Geometry.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\Timer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Trigger.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TriggerMgr.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Math.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Game.hpp">
@@ -43,6 +55,18 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\Geometry.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Timer.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Trigger.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TriggerMgr.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Math.hpp">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

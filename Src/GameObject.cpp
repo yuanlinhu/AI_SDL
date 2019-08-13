@@ -25,6 +25,15 @@ void GameObject::init(int x, int y, int w, int h, string path)
 	m_origin_w = tmp_surface->w;
 	m_origin_h = tmp_surface->h;
 	m_type = GOT_ENEMY;
+
+
+	m_nameFont = new Font(m_render);
+	SDL_Color textColor = { 255, 0, 0 };
+	m_nameFont->init("LATINWD.TTF", textColor, 10);
+
+
+	m_hp = 10000;
+	m_name = "pika";
 }
 
 GameObject::~GameObject()
@@ -38,6 +47,8 @@ void GameObject::render(SDL_Renderer* render)
 	m_rect.x = m_cur_pos.x;
 	m_rect.y = m_cur_pos.y;
 	SDL_RenderCopy(m_render, m_Texture, NULL, &m_rect);
+
+	m_nameFont->render();
 }
 
 void GameObject::update(Uint32 delta)
@@ -59,6 +70,13 @@ void GameObject::update(Uint32 delta)
 
 	m_cur_pos.x += (x_mul * m_speed * delta) / 1000;
 	m_cur_pos.y += (y_mul * m_speed * delta) / 1000;
+
+
+	m_hp--;
+
+	stringstream strss;
+	strss << m_name << "  hp:"<<m_hp;
+	m_nameFont->setMessage(strss.str(), m_cur_pos.x + 5, m_cur_pos.y - 20, 50, 20);
 }
 
 void GameObject::add_x(int n)

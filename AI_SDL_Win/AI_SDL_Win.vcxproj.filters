@@ -16,6 +16,9 @@
     <ClCompile Include="..\Src\Point2D.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\Font.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Game.hpp">
@@ -31,6 +34,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\Point2D.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Font.hpp">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,7 +3,7 @@
 #define Game_Object_hpp
 
 #include "Macros.hpp"
-
+#include "Font.hpp"
 
 
 class GameObject
@@ -28,6 +28,9 @@ private:
 	SDL_Rect		m_rect;
 	SDL_Renderer*	m_render;
 
+	Font* m_nameFont;
+
+	//ͼƬԭʼ�ߴ�
 	int				m_origin_w;
 	int				m_origin_h;
 
@@ -36,6 +39,9 @@ private:
 	Point2D		m_cur_pos;
 	Point2D		m_target_pos;
 	float m_speed = 100.0f;
+
+	string			m_name;
+	int				m_hp;
 };
 
 

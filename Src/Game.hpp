@@ -11,6 +11,8 @@
 
 #include "Macros.hpp"
 
+class Font;
+
 class GameObjectMgr;
 
 
@@ -29,8 +31,8 @@ public:
     void render();
     void clean();
     
-	SDL_Texture* RenderText(std::string message, std::string fontFile,
-		SDL_Color color, int fontSize);
+	//SDL_Texture* RenderText(std::string message, std::string fontFile,
+	//	SDL_Color color, int fontSize);
 
     bool running();
 
@@ -58,10 +60,12 @@ private:
     SDL_Window *m_window;
 	SDL_Renderer* m_render;
 	GameObjectMgr*	m_gameObjMgr;
-	bool	m_needHighCPU = true;
+	bool	m_needHighCPU = false;
 
-	SDL_Texture*		m_font_texture;
-	SDL_Rect		m_font_rect;
+	//SDL_Texture*		m_font_texture;
+	//SDL_Rect		m_font_rect;
+
+	Font*			m_FpsFont;
 };
 
 

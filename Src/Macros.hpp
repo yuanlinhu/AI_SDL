@@ -5,13 +5,23 @@
 
 
 #ifdef _WIN64
+
 	#include "SDL.h"
 	#include "SDL_image.h"
+#include "SDL_ttf.h"
+
 #elif _WIN32
+
 #include "SDL.h"
 #include "SDL_image.h"
+#include "SDL_ttf.h"
+
 #else
+
 	#include "SDL2/SDL.h"
+#include "SDL_image.h"
+#include "SDL_ttf.h"
+
 #endif
 
 
@@ -49,7 +59,6 @@ enum GameObjectType
 
 	GOT_PLAYER,
 	GOT_ENEMY,
-
 
 	GOT_MAX
 };

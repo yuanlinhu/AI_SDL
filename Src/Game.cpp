@@ -11,7 +11,7 @@
 #include "Game.hpp"
 #include "GameObject.hpp"
 #include "GameObjectMgr.hpp"
-#include "SDL_ttf.h"
+
 
 SDL_Surface *message = NULL;
 TTF_Font *font = NULL;

@@ -55,7 +55,7 @@ void Font::render()
 	if (m_dispearTicks > 0)
 	{
 		int nowTicks = SDL_GetTicks();
-		cout << nowTicks - m_dispearTicks<< endl;
+		//cout << nowTicks - m_dispearTicks<< endl;
 		if (nowTicks >= m_dispearTicks)
 		{
 			//cout << "×ÖÌåÏûÊ§" << endl;

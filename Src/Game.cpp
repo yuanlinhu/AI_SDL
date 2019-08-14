@@ -90,7 +90,7 @@ void Game::loadGameObj()
 
 	//m_gameObjMgr->createGameObject(150, 0, 100, 100, "../Asset/grass.jpg");
 
-	auto player = m_gameObjMgr->createGameObject(100, 100, 100, 100, "../Asset/player.jpg");
+	auto player = m_gameObjMgr->createGameObject(100, 100, 50, 50, "../Asset/player.jpg");
 	player->setType(GOT_PLAYER);
 }
 

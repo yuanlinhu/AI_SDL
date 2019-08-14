@@ -37,7 +37,7 @@ void GameObject::init(int x, int y, int w, int h, string path)
 	{
 		m_hpFont = new Font(m_render);
 		SDL_Color textColor = { 255, 0, 0 };
-		m_hpFont->init("LATINWD.TTF", textColor, 10);
+		m_hpFont->init("LATINWD.TTF", textColor, 20);
 	}
 	
 

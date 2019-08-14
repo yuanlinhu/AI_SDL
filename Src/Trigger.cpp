@@ -44,7 +44,7 @@ void Trigger::update(Game* game)
 
 	for (auto &tmp : retObjList)
 	{
-		int randHp = Math::getRand(100, 200);
+		int randHp = Math::getRand(55, 55);
 		tmp->addHP(-randHp);
 	}
 

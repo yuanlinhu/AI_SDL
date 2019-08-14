@@ -17,6 +17,10 @@ public:
 	void addBlock(int rowIndex, int colIndex, BlockType type);
 
 
+	void update(Uint32 delta);
+
+	void render();
+
 private:
 	int					m_MapW = 0;
 	int					m_MapH = 0;

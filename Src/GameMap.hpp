@@ -10,7 +10,9 @@ public:
 
 	void init(int mapW, int mapH);
 
+	void update(Uint32 delta);
 
+	void render();
 private:
 	BlockMgr * m_BlockMgr;
 };

@@ -31,6 +31,8 @@
 
 //GameObject* gameObj;
 
+SDL_Renderer* g_render;
+
 Game::Game()
 {
 	srand((unsigned int)time(NULL));
@@ -126,6 +128,7 @@ void Game::init(const char* title, int x, int y, int w, int h, bool full_screen)
 
     }
 
+	g_render = m_render;
 	m_FpsFont = new Font(m_render);
 	SDL_Color textColor = { 255, 0, 0 };
 	m_FpsFont->init("LATINWD.TTF", textColor, 10);
@@ -266,6 +269,7 @@ void Game::update(Uint32 delta)
 	m_FpsFont->update(delta);
 	m_triggerMgr->update(this);
 	m_gameObjMgr->update(delta);
+	m_GameMap->update(delta);
 
 	stringstream strss;
 	strss << "fps:" << m_Fps;
@@ -278,6 +282,8 @@ void Game::render()
 	SDL_SetRenderDrawColor(m_render, 255, 255, 255, 0xFF);
     SDL_RenderClear(m_render);
 	
+	m_GameMap->render();
+
 	m_FpsFont->render();
 	m_triggerMgr->render();
 	m_gameObjMgr->render();

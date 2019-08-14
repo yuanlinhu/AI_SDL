@@ -39,7 +39,7 @@ void BlockMgr::init(int mapW, int mapH, int blockW, int blockH)
 			//Block* newBlock = &(m_BlockList[i][j]);
 
 			Block* newBlock = new Block();
-			newBlock->setConfig(m_BlockW, m_BlockH, m_Row, m_Col);
+			newBlock->setConfig(mapW, mapH, m_BlockW, m_BlockH, m_Row, m_Col);
 			newBlock->init(i, j, index);
 			m_BlockVec.push_back(newBlock);
 			index++;
@@ -85,5 +85,30 @@ Block* BlockMgr::getBlock(int rowIndex, int colIndex)
 
 void BlockMgr::addBlock(int rowIndex, int colIndex, BlockType type)
 {
+	Block* tmp = getBlock(rowIndex, colIndex);
+	if (nullptr != tmp)
+	{
+		tmp->setType(type);
+	}
+}
 
+void BlockMgr::update(Uint32 delta)
+{
+
+}
+
+void BlockMgr::render()
+{
+	for (auto &tmp : m_BlockVec)
+	{
+		(tmp)->render();
+	}
+
+	//SDL_SetRenderDrawColor(g_render, 255, 255, 50, 0);
+	//SDL_Rect  rect;
+	//rect.x = 100;
+	//rect.y = 100;
+	//rect.w = 100;
+	//rect.h = 100;
+	//SDL_RenderFillRect(g_render, &rect);
 }

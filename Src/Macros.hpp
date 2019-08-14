@@ -59,7 +59,7 @@ class BlockMgr;
 class Block;
 
 
-
+extern SDL_Renderer* g_render;
 
 
 

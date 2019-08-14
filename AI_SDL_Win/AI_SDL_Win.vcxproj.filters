@@ -34,6 +34,15 @@
     <ClCompile Include="..\Src\Math.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\GameMap.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Block.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BlockMgr.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Game.hpp">
@@ -67,6 +76,15 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\Math.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GameMap.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Block.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BlockMgr.hpp">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

@@ -19,12 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Src\Block.cpp" />
+    <ClCompile Include="..\Src\BlockMgr.cpp" />
     <ClCompile Include="..\Src\Font.cpp" />
     <ClCompile Include="..\Src\Game.cpp" />
     <ClCompile Include="..\Src\GameObject.cpp" />
     <ClCompile Include="..\Src\GameObjectMgr.cpp" />
     <ClCompile Include="..\Src\Geometry.cpp" />
     <ClCompile Include="..\Src\main.cpp" />
+    <ClCompile Include="..\Src\GameMap.cpp" />
     <ClCompile Include="..\Src\Math.cpp" />
     <ClCompile Include="..\Src\Point2D.cpp" />
     <ClCompile Include="..\Src\Timer.cpp" />
@@ -32,12 +35,15 @@
     <ClCompile Include="..\Src\TriggerMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Src\Block.hpp" />
+    <ClInclude Include="..\Src\BlockMgr.hpp" />
     <ClInclude Include="..\Src\Font.hpp" />
     <ClInclude Include="..\Src\Game.hpp" />
     <ClInclude Include="..\Src\GameObject.hpp" />
     <ClInclude Include="..\Src\GameObjectMgr.hpp" />
     <ClInclude Include="..\Src\Geometry.hpp" />
     <ClInclude Include="..\Src\Macros.hpp" />
+    <ClInclude Include="..\Src\GameMap.hpp" />
     <ClInclude Include="..\Src\Math.hpp" />
     <ClInclude Include="..\Src\Point2D.hpp" />
     <ClInclude Include="..\Src\Timer.hpp" />

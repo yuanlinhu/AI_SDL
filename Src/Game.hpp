@@ -81,6 +81,9 @@ private:
 	int				m_Fps;
 	Font*			m_FpsFont;
 	Point2D			m_MousePos;
+
+
+	GameMap*			m_GameMap;
 };
 
 

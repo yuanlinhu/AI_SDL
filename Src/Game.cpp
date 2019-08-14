@@ -15,6 +15,7 @@
 #include "Geometry.hpp"
 #include "TriggerMgr.hpp"
 #include "Trigger.hpp"
+#include "GameMap.hpp"
 
 //SDL_Surface *message = NULL;
 //TTF_Font *font = NULL;
@@ -34,8 +35,7 @@ Game::Game()
 {
 	srand((unsigned int)time(NULL));
 	m_gameObjMgr = new GameObjectMgr();
-
-	
+	m_GameMap = new GameMap();
 }
 
 Game::~Game()
@@ -89,9 +89,14 @@ void Game::loadGameObj()
 	//m_gameObjMgr->createGameObject(0, 0, 100, 100, "../Asset/grass.jpg");
 
 	//m_gameObjMgr->createGameObject(150, 0, 100, 100, "../Asset/grass.jpg");
+	
+	m_GameMap->init(0, 0);
 
 	auto player = m_gameObjMgr->createGameObject(100, 100, 50, 50, "../Asset/player.jpg");
 	player->setType(GOT_PLAYER);
+
+
+
 }
 
 void Game::init(const char* title, int x, int y, int w, int h, bool full_screen)

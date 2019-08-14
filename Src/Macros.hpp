@@ -54,7 +54,9 @@ class GameObject;
 class Timer;
 class TriggerMgr;
 class Trigger;
-
+class GameMap;
+class BlockMgr;
+class Block;
 
 
 
@@ -90,6 +92,17 @@ enum TriggerType
 	TRT_COLLIDE,
 
 	TRT_MAX
+};
+
+
+enum BlockType
+{
+	BLT_NULL = 0,
+
+	BLT_ROCK,
+
+
+	BLT_MAX
 };
 
 #endif //Macros_hpp

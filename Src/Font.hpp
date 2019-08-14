@@ -24,10 +24,10 @@ public:
 
 public:
 	string			m_font_path;	//字体路径
-	TTF_Font*		m_font;			//
+	TTF_Font*		m_font = nullptr;			//
 	int				m_fontSize;		//字体大小
 	string			m_message;		//显示内容
-	SDL_Texture*	m_fontTexture;
+	SDL_Texture*	m_fontTexture = nullptr;
 	SDL_Color		m_color;			//字体颜色
 	SDL_Rect		m_rect;
 	SDL_Renderer*	m_render;

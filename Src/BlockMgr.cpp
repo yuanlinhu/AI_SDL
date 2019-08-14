@@ -88,7 +88,7 @@ void BlockMgr::addBlock(int rowIndex, int colIndex, BlockType type)
 	Block* tmp = getBlock(rowIndex, colIndex);
 	if (nullptr != tmp)
 	{
-		tmp->setType(type);
+		//tmp->setType(type);
 	}
 }
 

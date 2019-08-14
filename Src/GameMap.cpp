@@ -9,10 +9,10 @@ GameMap::GameMap()
 
 void GameMap::init(int mapW, int mapH)
 {
-	m_BlockMgr->init(800, 600, 50, 50);
-	m_BlockMgr->addBlock(2, 3, BLT_ROCK);
-	m_BlockMgr->addBlock(3, 5, BLT_ROCK);
-	m_BlockMgr->addBlock(6, 7, BLT_ROCK);
+	m_BlockMgr->init(MAP_WIDTH, MAP_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT);
+	//m_BlockMgr->addBlock(2, 3, BLT_ROCK);
+	//m_BlockMgr->addBlock(3, 5, BLT_ROCK);
+	//m_BlockMgr->addBlock(6, 7, BLT_ROCK);
 
 }
 

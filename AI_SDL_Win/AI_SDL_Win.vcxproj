@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Src\AStar.cpp" />
     <ClCompile Include="..\Src\Block.cpp" />
     <ClCompile Include="..\Src\BlockMgr.cpp" />
     <ClCompile Include="..\Src\Font.cpp" />
@@ -35,6 +36,7 @@
     <ClCompile Include="..\Src\TriggerMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Src\AStar.hpp" />
     <ClInclude Include="..\Src\Block.hpp" />
     <ClInclude Include="..\Src\BlockMgr.hpp" />
     <ClInclude Include="..\Src\Font.hpp" />

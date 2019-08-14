@@ -59,15 +59,25 @@ class BlockMgr;
 class Block;
 
 
+//每秒的帧数
+const int FRAMES_PER_SECOND = 60;
+
 extern SDL_Renderer* g_render;
 
 
-
+//窗口大小
 const int WINDOW_WIDTH = 1000;
 const int WINDOW_HEIGHT = 800;
 
-//每秒的帧数
-const int FRAMES_PER_SECOND = 60;
+//地图大小
+const int MAP_WIDTH = 800;
+const int MAP_HEIGHT = 600;
+
+//障碍物最小单位
+const int BLOCK_WIDTH = 50;
+const int BLOCK_HEIGHT = 50;
+
+
 
 //模拟高延迟
 //bool	m_needHighCPU = true;

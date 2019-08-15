@@ -1,7 +1,7 @@
 
 #include "BlockMgr.hpp"
 #include "Block.hpp"
-
+#include "AStar.hpp"
 
 //Block		g_BlockArray[11][15];
 
@@ -157,6 +157,11 @@ void BlockMgr::get9GridBlockList(Block* curBlock, vector<Block*>& outList)
 		{
 
 			Block* tmpBlock = getBlock(curRowIndex + i, curColIndex + j);
+			if (i == 0 && j == 0)
+			{
+				//过滤自己
+				continue;
+			}
 			if (nullptr != tmpBlock)
 			{
 				outList.push_back(tmpBlock);
@@ -209,24 +214,120 @@ void BlockMgr::findPath(int x, int y, int target_x, int target_y)
 		return;
 	}
 
-	vector<Block*> vec;
-	get9GridBlockList(tar_block, vec);
+	//1. 把起点加入 open list
+	AddToOpenList(src_block);
 
-	for (auto& tmp : vec)
+	//2. 重复如下过程：
+	//	a.遍历 open list ，查找 F 值最小的节点，把它作为当前要处理的节点。
+	//	b.把这个节点移到 close list 。
+	//	c.对当前方格的 8 个相邻方格的每一个方格？
+	//	◆     如果它是不可抵达的或者它在 close list 中，忽略它。否则，做如下操作。
+	//	◆     如果它不在 open list 中，把它加入 open list ，并且把当前方格设置为它的父亲，
+	//			记录该方格的 F ， G 和 H 值。
+	//	◆     如果它已经在 open list 中，检查这条路径(即经由当前方格到达它那里) 是否更好，
+	//			用 G 值作参考。更小的 G 值表示这是更好的路径。
+	//			如果是这样，把它的父亲设置为当前方格，并重新计算它的 G 和 F 值。
+	//			如果你的 open list 是按 F 值排序的话，改变后你可能需要重新排序。
+
+	vector<Block*> nearBlockVec;
+
+	while (Block* curBlockOpen = getAndDelMinCostBlockFromOpenList())
 	{
-		AddToOpenList(tmp->m_costG, tmp);
-	}
+		
+		AddToCloseList(curBlockOpen);
 
+		get9GridBlockList(curBlockOpen, nearBlockVec);
 
-	for (int i = 0; i < 12; ++i)
-	{
-		Block* popBlock = getMinCostBlockFromOpenList();
-		if (popBlock)
+		for (auto& tmpNear : nearBlockVec)
 		{
-			cout << "popBlock: " << popBlock->m_index << ", m_costG:" << popBlock->m_costG << endl;
-			delBlockFromOpenList(popBlock);
+			if (true == tmpNear->isObtacle())
+			{
+				//过滤障碍点
+				continue;
+			}
+			if (true == isInCloseList(tmpNear))
+			{
+				//过滤 closelist里的点
+				continue;
+			}
+
+			if (false == isInOpenList(tmpNear))
+			{
+				//不在open列表
+				//
+				tmpNear->setParent(curBlockOpen);
+				tmpNear->calculateG(curBlockOpen);
+				tmpNear->calculateH(tar_block);
+
+				if (curBlockOpen->m_index == tar_block->m_index)
+				{
+					//结束
+					break;
+				}
+
+				//
+				AddToOpenList(tmpNear);
+			}
+			else
+			{
+				//	◆     如果它已经在 open list 中，检查这条路径(即经由当前方格到达它那里) 是否更好，
+				//			用 G 值作参考。更小的 G 值表示这是更好的路径。
+				//			如果是这样，把它的父亲设置为当前方格，并重新计算它的 G 和 F 值。
+				//			如果你的 open list 是按 F 值排序的话，改变后你可能需要重新排序。
+
+				int costG = curBlockOpen->getCostG() + AStar::calculateG(tmpNear, curBlockOpen);
+				int costParentG = AStar::calculateG(tmpNear, curBlockOpen->getParent());
+				if (costParentG <= costG)
+				{
+					curBlockOpen = curBlockOpen->getParent();
+					int newCostG = curBlockOpen->getCostG() + AStar::calculateG(tmpNear, curBlockOpen);
+					tmpNear->setCostG(newCostG);
+					//tmpNear->calculateG();
+					//curBlockOpen->calculateG();
+				}
+				int kk = 0;
+				kk++;
+
+				sortOpenList();
+			}
 		}
+
 	}
+
+
+
+	int kk1 = 0;
+
+
+
+	return;
+
+
+
+
+
+
+
+
+
+	//vector<Block*> vec;
+	//get9GridBlockList(tar_block, vec);
+
+	//for (auto& tmp : vec)
+	//{
+	//	AddToOpenList(tmp->getCostF(), tmp);
+	//}
+
+
+	//for (int i = 0; i < 12; ++i)
+	//{
+	//	Block* popBlock = getMinCostBlockFromOpenList();
+	//	if (popBlock)
+	//	{
+	//		cout << "popBlock: " << popBlock->m_index << ", m_costG:" << popBlock->m_costG << endl;
+	//		delBlockFromOpenList(popBlock);
+	//	}
+	//}
 
 	//for (auto& tmp : vec)
 	//{
@@ -240,9 +341,26 @@ void BlockMgr::findPath(int x, int y, int target_x, int target_y)
 
 bool BlockMgr::isInOpenList(Block* block)
 {
+	map<int, list<Block *>>::iterator mapIter;
+	list<Block *>::iterator iter;
+	for (mapIter = m_OpenList.begin(); mapIter != m_OpenList.end(); ++mapIter)
+	{
+		list<Block *>& block_list = mapIter->second;
+		for (iter = block_list.begin(); iter != block_list.end(); ++iter)
+		{
+			if ((*iter)->m_index == block->m_index)
+			{
+				return true;
+			}
+		}
+	}
 	return false;
 }
 
+void BlockMgr::AddToOpenList(Block* block)
+{
+	AddToOpenList(block->getCostF(), block);
+}
 void BlockMgr::AddToOpenList(int costF, Block* block)
 {
 	map<int, list<Block *>>::iterator iter = m_OpenList.find(costF);
@@ -287,6 +405,16 @@ void BlockMgr::delBlockFromOpenList(Block* block)
 	}
 }
 
+Block* BlockMgr::getAndDelMinCostBlockFromOpenList()
+{
+	Block* retInfo = getMinCostBlockFromOpenList();
+	if (nullptr != retInfo)
+	{
+		delBlockFromOpenList(retInfo);
+	}
+
+	return retInfo;
+}
 Block* BlockMgr::getMinCostBlockFromOpenList()
 {
 	Block* retInfo = nullptr;
@@ -312,10 +440,24 @@ Block* BlockMgr::getMinCostBlockFromOpenList()
 
 bool BlockMgr::isInCloseList(Block* block)
 {
+	map<int, Block *>::iterator iter = m_CloseList.find(block->m_index);
+	if (iter != m_CloseList.end())
+	{
+		return true;
+	}
+
 	return false;
 }
 
-void BlockMgr::AddToCloseList(int costF, Block* block)
+void BlockMgr::AddToCloseList(Block* block)
+{
+	if (false == isInCloseList(block))
+	{
+		m_CloseList[block->m_index] = block;
+	}
+}
+
+void BlockMgr::sortOpenList()
 {
 
 }

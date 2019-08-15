@@ -1,5 +1,6 @@
 #include "Block.hpp"
 #include "Font.hpp"
+#include "AStar.hpp"
 
 //16 * 12
 int blockBitMap[][20] =
@@ -153,4 +154,49 @@ void Block::renderCostH()
 	strss << m_costG;
 	m_costGFont->setMessage(strss.str(), rect.x, rect.y, rect.w, rect.h);
 	m_costGFont->render();
+}
+
+int Block::getCostF()
+{
+	return m_costG + m_costH;
+}
+
+bool Block::isObtacle()
+{
+	if (BLT_NULL != m_type)
+	{
+		return true;
+	}
+	return false;
+}
+
+void Block::setParent(Block* parent)
+{ 
+	m_parent = parent; 
+}
+
+Block* Block::getParent()
+{ 
+	return m_parent; 
+}
+
+void Block::calculateG(Block* curBlock)
+{
+	int costG = AStar::calculateG(this, curBlock);
+	setCostG(costG);
+}
+
+void Block::calculateH(Block* tarBlock)
+{
+	m_costH = AStar::calculateH(this, tarBlock);
+}
+
+int Block::getCostG()
+{
+	return m_costG;
+}
+
+void Block::setCostG(int val)
+{
+	m_costG = val;
 }

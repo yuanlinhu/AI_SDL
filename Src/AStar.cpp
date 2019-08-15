@@ -31,7 +31,7 @@ int AStar::calculateH(Block* a, Block* b)
 	int deltaRow = (a->m_RowIndex - b->m_RowIndex);
 	int deltaCol = (a->m_ColIndex - b->m_ColIndex);
 
-	return abs(deltaRow) + abs(deltaCol);
+	return 10 * (abs(deltaRow) + abs(deltaCol));
 }
 
 

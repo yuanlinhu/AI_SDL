@@ -28,14 +28,30 @@ public:
 
 	void setSelect(int s) { m_select = s; }
 
-	void setCostG(int n) { m_costG = n; };
+//	void setCostG(int n) { m_costG = n; };
+
+	int getCostF();
+
+	//是否是障碍点
+	bool isObtacle();
+
+	void setParent(Block* parent);
+
+	Block* getParent();
+
+	int getCostG();
+	void setCostG(int val);
+
+	void calculateG(Block* curBlock);
+	void calculateH(Block* tarBlock);
+
 //private:
 
 	int		m_RowIndex = 0;
 	int		m_ColIndex = 0;
 	int		m_index = 0;			//总索引
 
-	int		m_costG = 0;
+	
 
 	BlockType m_type;
 
@@ -57,6 +73,12 @@ public:
 
 	int		m_select = 0;
 	Font*	m_costGFont;
+
+
+private:
+	int		m_costG = 0;		//
+	int		m_costH = 0;		//预测值
+	Block*	m_parent = nullptr;
 };
 
 #endif	//Block_HPP

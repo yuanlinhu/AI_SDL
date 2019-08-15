@@ -18,6 +18,7 @@
 #include "GameMap.hpp"
 #include "BlockMgr.hpp"
 #include "Block.hpp"
+#include "AStar.hpp"
 
 //SDL_Surface *message = NULL;
 //TTF_Font *font = NULL;
@@ -207,18 +208,27 @@ void Game::handleMouseDown(int x, int y)
 	{
 		BlockMgr * blockMgr = m_GameMap->getBlockMgr();
 		Block* block = blockMgr->getBlockByPoint(x, y);
+		Block* scr_block = blockMgr->getBlockByPoint(1, 1);
 		
 
 		blockMgr->resetSelect();
+		blockMgr->resetCostG();
 		vector<Block*> vec;
 		blockMgr->get9GridBlockList(block, vec);
 		for (auto& tmp : vec)
 		{
+			int costG = AStar::calculateG(block, tmp);
+			tmp->setCostG(costG);
+			int RowIndex = tmp->m_RowIndex;
+			int ColIndex = tmp->m_ColIndex;
+			cout << "RowIndex : " << RowIndex << ", ColIndex : " << ColIndex << ", costG: " << costG << endl;
 			tmp->setSelect(2);
 		}
 
 		if (nullptr != block)
 		{
+			int costH = AStar::calculateH(scr_block, block);
+			cout << "costH : " << costH << endl;
 			block->setSelect(1);
 		}
 	}

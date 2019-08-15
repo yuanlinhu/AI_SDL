@@ -1,4 +1,5 @@
 #include "Block.hpp"
+#include "Font.hpp"
 
 //16 * 12
 int blockBitMap[][20] =
@@ -65,6 +66,13 @@ void Block::init(int rowIndex, int colIndex, int index)
 
 	//ÉèÖÃÕÏ°­Îï
 	m_type = (BlockType)blockBitMap[colIndex][rowIndex];
+
+
+	{
+		m_costGFont = new Font(g_render);
+		SDL_Color textColor = { 0, 0, 0 };
+		m_costGFont->init("LATINWD.TTF", textColor, 100);
+	}
 }
 
 void Block::renderFrame()
@@ -89,6 +97,8 @@ void Block::renderBlock()
 		rect.w = m_maxX - m_minX - 10;
 		rect.h = m_maxY - m_minY - 10;
 		SDL_RenderFillRect(g_render, &rect);
+
+		
 	}
 }
 
@@ -113,6 +123,16 @@ void Block::renderSelect()
 		rect.w = m_maxX - m_minX - 10;
 		rect.h = m_maxY - m_minY - 10;
 		SDL_RenderFillRect(g_render, &rect);
+
+
+		{
+			SDL_SetRenderDrawColor(g_render, 220, 220, 220, 0);
+			stringstream strss;
+			strss << m_costG;
+			m_costGFont->setMessage(strss.str(), rect.x, rect.y, rect.w, rect.h);
+			m_costGFont->render();
+		}
+		
 	}
 }
 

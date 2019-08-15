@@ -89,6 +89,16 @@ void BlockMgr::resetSelect()
 	}
 }
 
+void BlockMgr::resetCostG()
+{
+	for (auto& tmp : m_BlockVec)
+	{
+		tmp->setCostG(0);
+	}
+}
+
+
+
 Block* BlockMgr::getBlock(int rowIndex, int colIndex)
 {
 	if ((rowIndex < 0) || (rowIndex >= m_Row))

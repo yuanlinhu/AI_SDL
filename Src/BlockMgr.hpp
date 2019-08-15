@@ -19,6 +19,7 @@ public:
 	Block* getBlockByPoint(int x, int y);
 
 	void resetSelect();
+	void resetCostG();
 
 	void get9GridBlockListByPoint(int x, int y, vector<Block*>& outList);
 	void get9GridBlockList(Block* curBlock, vector<Block*>& outList);

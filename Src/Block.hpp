@@ -26,11 +26,15 @@ public:
 	void setType(BlockType type) { m_type = type; }
 
 	void setSelect(int s) { m_select = s; }
+
+	void setCostG(int n) { m_costG = n; };
 //private:
 
 	int		m_RowIndex = 0;
 	int		m_ColIndex = 0;
 	int		m_index = 0;			//×ÜË÷Òý
+
+	int		m_costG = 0;
 
 	BlockType m_type;
 
@@ -51,7 +55,7 @@ public:
 
 
 	int		m_select = 0;
-
+	Font*	m_costGFont;
 };
 
 #endif	//Block_HPP

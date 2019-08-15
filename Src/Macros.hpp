@@ -47,7 +47,7 @@
 using namespace std;
 
 
-
+class Font;
 class Game;
 class GameObjectMgr;
 class GameObject;

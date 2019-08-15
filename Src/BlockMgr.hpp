@@ -18,6 +18,11 @@ public:
 
 	Block* getBlockByPoint(int x, int y);
 
+	void resetSelect();
+
+	void get9GridBlockListByPoint(int x, int y, vector<Block*>& outList);
+	void get9GridBlockList(Block* curBlock, vector<Block*>& outList);
+
 	void update(Uint32 delta);
 
 	void render();

@@ -204,12 +204,25 @@ void Game::handleMouseDown(int x, int y)
 
 	//m_triggerMgr->createTrigger(TRT_AREA, x, y);
 
-	BlockMgr * blockMgr = m_GameMap->getBlockMgr();
-	Block* block = blockMgr->getBlockByPoint(x, y);
-	if (nullptr != block)
 	{
-		block->setSelect(1);
+		BlockMgr * blockMgr = m_GameMap->getBlockMgr();
+		Block* block = blockMgr->getBlockByPoint(x, y);
+		
+
+		blockMgr->resetSelect();
+		vector<Block*> vec;
+		blockMgr->get9GridBlockList(block, vec);
+		for (auto& tmp : vec)
+		{
+			tmp->setSelect(2);
+		}
+
+		if (nullptr != block)
+		{
+			block->setSelect(1);
+		}
 	}
+	
 }
 
 void Game::handleMouseUp(int x, int y)

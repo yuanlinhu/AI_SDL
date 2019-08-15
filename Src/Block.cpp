@@ -98,7 +98,15 @@ void Block::renderSelect()
 	if (0 != m_select)
 	{
 		int n = 5;
-		SDL_SetRenderDrawColor(g_render, 100, 200, 0, 0);
+		if (1 == m_select)
+		{
+			SDL_SetRenderDrawColor(g_render, 220, 100, 0, 0);
+		}
+		else
+		{
+			SDL_SetRenderDrawColor(g_render, 0, 0, 220, 0);
+		}
+
 		SDL_Rect  rect;
 		rect.x = m_minX + n;
 		rect.y = m_minY + n;

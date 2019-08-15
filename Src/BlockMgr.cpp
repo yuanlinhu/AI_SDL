@@ -81,18 +81,27 @@ void BlockMgr::init(int mapW, int mapH, int blockW, int blockH)
 	kk++;
 }
 
+void BlockMgr::resetSelect()
+{
+	for (auto& tmp : m_BlockVec)
+	{
+		tmp->setSelect(0);
+	}
+}
+
 Block* BlockMgr::getBlock(int rowIndex, int colIndex)
 {
-	//if (rowIndex >= m)
-	//{
-
-	//}
-
-	int index = rowIndex + colIndex * m_Row;
-	if (index < 0 || index > m_BlockVec.size())
+	if ((rowIndex < 0) || (rowIndex >= m_Row))
 	{
 		return nullptr;
 	}
+
+	if ((colIndex < 0) || (colIndex >= m_Col))
+	{
+		return nullptr;
+	}
+
+	int index = rowIndex + colIndex * m_Row;
 
 	return m_BlockVec[index];
 }
@@ -108,8 +117,42 @@ Block* BlockMgr::getBlockByPoint(int x, int y)
 	Block* blk = getBlock(x_index, y_index);
 
 	cout << "x: " << x << ", y:" << y << endl;
-	cout << "x_index: " << x_index << ", y_index:" << y_index << ", blk:" << blk->m_index << endl;
+	cout << "x_index: " << x_index << ", y_index:" << y_index << endl;
+	if (nullptr != blk)
+	{
+		cout << " blk:" << blk->m_index << endl;
+	}
 	return getBlock(x_index, y_index);
+}
+
+void BlockMgr::get9GridBlockListByPoint(int x, int y, vector<Block*>& outList)
+{
+	Block* curBlock = getBlockByPoint(x, y);
+	get9GridBlockList(curBlock, outList);
+}
+
+void BlockMgr::get9GridBlockList(Block* curBlock, vector<Block*>& outList)
+{
+	if (nullptr == curBlock)
+	{
+		return;
+	}
+
+	outList.clear();
+	int curRowIndex = curBlock->m_RowIndex;
+	int curColIndex = curBlock->m_ColIndex;
+	for (int i = -1; i <= 1; ++i)
+	{
+		for (int j = -1; j <= 1; ++j)
+		{
+
+			Block* tmpBlock = getBlock(curRowIndex + i, curColIndex + j);
+			if (nullptr != tmpBlock)
+			{
+				outList.push_back(tmpBlock);
+			}
+		}
+	}
 }
 
 void BlockMgr::addBlock(int rowIndex, int colIndex, BlockType type)

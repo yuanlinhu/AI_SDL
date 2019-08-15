@@ -218,11 +218,23 @@ void BlockMgr::findPath(int x, int y, int target_x, int target_y)
 	}
 
 
-	for (auto& tmp : vec)
+	for (int i = 0; i < 12; ++i)
 	{
-		delBlockFromOpenList(tmp);
+		Block* popBlock = getMinCostBlockFromOpenList();
+		if (popBlock)
+		{
+			cout << "popBlock: " << popBlock->m_index << ", m_costG:" << popBlock->m_costG << endl;
+			delBlockFromOpenList(popBlock);
+		}
 	}
 
+	//for (auto& tmp : vec)
+	//{
+	//	delBlockFromOpenList(tmp);
+	//}
+
+
+	int kk = 0;
 }
 
 
@@ -277,7 +289,25 @@ void BlockMgr::delBlockFromOpenList(Block* block)
 
 Block* BlockMgr::getMinCostBlockFromOpenList()
 {
-	return nullptr;
+	Block* retInfo = nullptr;
+
+	map<int, list<Block *>>::iterator mapIter;
+	list<Block *>::iterator iter;
+	for (mapIter = m_OpenList.begin(); mapIter != m_OpenList.end(); ++mapIter)
+	{
+		list<Block *>& block_list = mapIter->second;
+		
+		if (false == block_list.empty())
+		{
+			//查找权重最小的列表里的最后一个元素
+			retInfo = block_list.back();
+			//block_list.pop_back();
+			return retInfo;
+		}
+		
+	}
+
+	return retInfo;
 }
 
 bool BlockMgr::isInCloseList(Block* block)

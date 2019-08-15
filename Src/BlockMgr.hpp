@@ -35,6 +35,8 @@ public:
 	void AddToOpenList(int costF, Block* block);
 	void delBlockFromOpenList(Block* block);
 	bool isInOpenList(Block* block);
+
+	//获取权重最小的Block， 不负责从openlist里删除，需要调用del函数
 	Block* getMinCostBlockFromOpenList();
 
 	bool isInCloseList(Block* block);

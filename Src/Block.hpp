@@ -26,6 +26,10 @@ public:
 
 //private:
 
+	int		m_RowIndex = 0;
+	int		m_ColIndex = 0;
+	int		m_index = 0;			//总索引
+
 	BlockType m_type;
 
 	int		m_MapW = 0;
@@ -35,9 +39,7 @@ public:
 	
 	int		m_RowIndexMax = 0;
 	int		m_ColIndexMax = 0;
-	int		m_RowIndex = 0;
-	int		m_ColIndex = 0;
-	int		m_index = 0;			//总索引
+	
 
 	//计算出对应的坐标
 	int		m_minX = 0;

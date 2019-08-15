@@ -32,9 +32,9 @@ void BlockMgr::init(int mapW, int mapH, int blockW, int blockH)
 
 
 	int index = 0;
-	for (int i =0; i < m_Row; i++)
+	for (int j =0; j < m_Col; j++)
 	{
-		for (int j = 0; j < m_Col; j++)
+		for (int i = 0; i < m_Row; i++)
 		{
 			//Block* newBlock = &(m_BlockList[i][j]);
 
@@ -49,27 +49,30 @@ void BlockMgr::init(int mapW, int mapH, int blockW, int blockH)
 		}
 	}
 
-	for (int i = 0; i < m_Row; i++)
+	for (int j = 0; j < m_Col; j++)
 	{
-		for (int j = 0; j < m_Col; j++)
+		for (int i = 0; i < m_Row; i++)
 		{
-			int tmpIndex = i * m_Col + j;
+			int tmpIndex = i + j * m_Row;
 			Block * tmpBlock = getBlock(i, j);//m_BlockVec[i*m_Col + j];
 			if (tmpBlock->m_RowIndex != i )
 			{
 				int jj = 0;
 				jj++;
+				cout << "error m_RowIndex: " << tmpBlock->m_RowIndex << ", i:" << i << endl;
 			}
 			if (tmpBlock->m_ColIndex != j)
 			{
 				int jj = 0;
 				jj++;
+				cout << "error m_ColIndex: " << tmpBlock->m_ColIndex << ", j:" << j << endl;
 			}
 
 			if (tmpBlock->m_index != tmpIndex)
 			{
 				int jj = 0;
 				jj++;
+				cout << "error m_index: " << tmpBlock->m_index << ", tmpIndex:" << tmpIndex << endl;
 			}
 		}
 	}
@@ -85,13 +88,13 @@ Block* BlockMgr::getBlock(int rowIndex, int colIndex)
 
 	//}
 
-	int index = rowIndex * m_Col + colIndex;
+	int index = rowIndex + colIndex * m_Row;
 	if (index < 0 || index > m_BlockVec.size())
 	{
 		return nullptr;
 	}
 
-	return m_BlockVec[rowIndex*m_Col + colIndex];
+	return m_BlockVec[index];
 }
 
 Block* BlockMgr::getBlockByPoint(int x, int y)

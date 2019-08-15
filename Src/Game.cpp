@@ -231,6 +231,8 @@ void Game::handleMouseDown(int x, int y)
 			cout << "costH : " << costH << endl;
 			block->setSelect(1);
 		}
+
+		blockMgr->findPath(0, 0, x, y);
 	}
 	
 }

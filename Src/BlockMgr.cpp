@@ -194,3 +194,98 @@ void BlockMgr::render()
 	//rect.h = 100;
 	//SDL_RenderFillRect(g_render, &rect);
 }
+
+void BlockMgr::findPath(int x, int y, int target_x, int target_y)
+{
+	Block* src_block = getBlockByPoint(x, y);
+	if (NULL == src_block)
+	{
+		return;
+	}
+
+	Block* tar_block = getBlockByPoint(target_x, target_y);
+	if (NULL == tar_block)
+	{
+		return;
+	}
+
+	vector<Block*> vec;
+	get9GridBlockList(tar_block, vec);
+
+	for (auto& tmp : vec)
+	{
+		AddToOpenList(tmp->m_costG, tmp);
+	}
+
+
+	for (auto& tmp : vec)
+	{
+		delBlockFromOpenList(tmp);
+	}
+
+}
+
+
+bool BlockMgr::isInOpenList(Block* block)
+{
+	return false;
+}
+
+void BlockMgr::AddToOpenList(int costF, Block* block)
+{
+	map<int, list<Block *>>::iterator iter = m_OpenList.find(costF);
+	if (iter == m_OpenList.end())
+	{
+		//Œ¥’“µΩ
+		list<Block *> block_list;
+		block_list.push_back(block);
+
+		m_OpenList[costF] = block_list;
+	}
+	else
+	{
+		//’“µΩ
+		iter->second.push_back(block);
+	}
+}
+
+void BlockMgr::delBlockFromOpenList(Block* block)
+{
+	map<int, list<Block *>>::iterator mapIter;
+	list<Block *>::iterator iter;
+	for (mapIter = m_OpenList.begin(); mapIter != m_OpenList.end();)
+	{
+		list<Block *>& block_list = mapIter->second;
+		for (iter = block_list.begin(); iter != block_list.end(); ++iter)
+		{
+			if ((*iter)->m_index == block->m_index)
+			{
+				block_list.erase(iter);
+				break;
+			}
+		}
+		if (block_list.empty())
+		{
+			m_OpenList.erase(mapIter++);
+		}
+		else
+		{
+			++mapIter;
+		}
+	}
+}
+
+Block* BlockMgr::getMinCostBlockFromOpenList()
+{
+	return nullptr;
+}
+
+bool BlockMgr::isInCloseList(Block* block)
+{
+	return false;
+}
+
+void BlockMgr::AddToCloseList(int costF, Block* block)
+{
+
+}

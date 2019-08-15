@@ -28,6 +28,23 @@ public:
 
 	void render();
 
+	void findPath(int x, int y, int target_x, int target_y);
+
+
+	//OpenList º¯Êý
+	void AddToOpenList(int costF, Block* block);
+	void delBlockFromOpenList(Block* block);
+	bool isInOpenList(Block* block);
+	Block* getMinCostBlockFromOpenList();
+
+	bool isInCloseList(Block* block);
+	void AddToCloseList(int costF, Block* block);
+
+
+private:
+	map<int /*costF*/, list<Block*> > m_OpenList;
+	map<int/*blockIndex*/, Block*>	m_ClostList;
+
 private:
 	int					m_MapW = 0;
 	int					m_MapH = 0;

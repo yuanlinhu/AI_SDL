@@ -20,6 +20,7 @@ public:
 	void renderFrame();
 	void renderBlock();
 	void renderSelect();
+	void renderCostH();
 
 	//void copy(Block* b);
 

@@ -71,7 +71,7 @@ void Block::init(int rowIndex, int colIndex, int index)
 	{
 		m_costGFont = new Font(g_render);
 		SDL_Color textColor = { 0, 0, 0 };
-		m_costGFont->init("LATINWD.TTF", textColor, 100);
+		m_costGFont->init("LATINWD.TTF", textColor, 10);
 	}
 }
 
@@ -114,24 +114,19 @@ void Block::renderSelect()
 		}
 		else
 		{
-			SDL_SetRenderDrawColor(g_render, 0, 0, 220, 0);
+			SDL_SetRenderDrawColor(g_render, 100, 0, 100, 0);
 		}
 
 		SDL_Rect  rect;
-		rect.x = m_minX + n;
-		rect.y = m_minY + n;
-		rect.w = m_maxX - m_minX - 10;
-		rect.h = m_maxY - m_minY - 10;
+		rect.w = (m_maxX - m_minX) / 3;
+		rect.h = (m_maxY - m_minY) / 3;
+		rect.x = m_minX + rect.w;
+		rect.y = m_minY + rect.h;
+		
 		SDL_RenderFillRect(g_render, &rect);
 
 
-		{
-			SDL_SetRenderDrawColor(g_render, 220, 220, 220, 0);
-			stringstream strss;
-			strss << m_costG;
-			m_costGFont->setMessage(strss.str(), rect.x, rect.y, rect.w, rect.h);
-			m_costGFont->render();
-		}
+		
 		
 	}
 }
@@ -142,4 +137,20 @@ void Block::render()
 	renderFrame();
 	renderBlock();
 	renderSelect();
+	renderCostH();
+}
+
+void Block::renderCostH()
+{
+	int n = 10;
+	SDL_SetRenderDrawColor(g_render, 220, 0, 220, 0);
+	SDL_Rect  rect;
+	rect.x = m_minX + n;
+	rect.y = m_maxY - n;
+	rect.w = (m_maxX - m_minX) / 5;
+	rect.h = (m_maxY - m_minY) / 5;
+	stringstream strss;
+	strss << m_costG;
+	m_costGFont->setMessage(strss.str(), rect.x, rect.y, rect.w, rect.h);
+	m_costGFont->render();
 }

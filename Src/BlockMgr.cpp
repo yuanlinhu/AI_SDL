@@ -233,7 +233,8 @@ void BlockMgr::findPath(int x, int y, int target_x, int target_y)
 
 	while (Block* curBlockOpen = getAndDelMinCostBlockFromOpenList())
 	{
-		
+
+		cout << "curBlockOpen m_RowIndex: " << curBlockOpen->m_RowIndex << ", m_ColIndex:" << curBlockOpen->m_ColIndex << endl;
 		AddToCloseList(curBlockOpen);
 
 		get9GridBlockList(curBlockOpen, nearBlockVec);
@@ -259,7 +260,7 @@ void BlockMgr::findPath(int x, int y, int target_x, int target_y)
 				tmpNear->calculateG(curBlockOpen);
 				tmpNear->calculateH(tar_block);
 
-				if (curBlockOpen->m_index == tar_block->m_index)
+				if (tmpNear->m_index == tar_block->m_index)
 				{
 					//结束
 					break;
@@ -274,17 +275,21 @@ void BlockMgr::findPath(int x, int y, int target_x, int target_y)
 				//			用 G 值作参考。更小的 G 值表示这是更好的路径。
 				//			如果是这样，把它的父亲设置为当前方格，并重新计算它的 G 和 F 值。
 				//			如果你的 open list 是按 F 值排序的话，改变后你可能需要重新排序。
-
-				int costG = curBlockOpen->getCostG() + AStar::calculateG(tmpNear, curBlockOpen);
-				int costParentG = AStar::calculateG(tmpNear, curBlockOpen->getParent());
-				if (costParentG <= costG)
+				Block* parent = curBlockOpen->getParent();
+				if (nullptr != parent)
 				{
-					curBlockOpen = curBlockOpen->getParent();
-					int newCostG = curBlockOpen->getCostG() + AStar::calculateG(tmpNear, curBlockOpen);
-					tmpNear->setCostG(newCostG);
-					//tmpNear->calculateG();
-					//curBlockOpen->calculateG();
+					int costG = curBlockOpen->getCostG() + AStar::calculateG(tmpNear, curBlockOpen);
+					int costParentG = AStar::calculateG(tmpNear, curBlockOpen->getParent());
+					if (costParentG <= costG)
+					{
+						curBlockOpen = curBlockOpen->getParent();
+						int newCostG = curBlockOpen->getCostG() + AStar::calculateG(tmpNear, curBlockOpen);
+						tmpNear->setCostG(newCostG);
+						//tmpNear->calculateG();
+						//curBlockOpen->calculateG();
+					}
 				}
+				
 				int kk = 0;
 				kk++;
 
@@ -425,12 +430,19 @@ Block* BlockMgr::getMinCostBlockFromOpenList()
 	{
 		list<Block *>& block_list = mapIter->second;
 		
-		if (false == block_list.empty())
+		for (iter = block_list.begin(); iter != block_list.end(); ++iter)
 		{
-			//查找权重最小的列表里的最后一个元素
-			retInfo = block_list.back();
-			//block_list.pop_back();
-			return retInfo;
+			if (nullptr == retInfo)
+			{
+				retInfo = *iter;
+			}
+			else
+			{
+				if ((*iter)->getCostF() < retInfo->getCostF())
+				{
+					retInfo = *iter;
+				}
+			}
 		}
 		
 	}

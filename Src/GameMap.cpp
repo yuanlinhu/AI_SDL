@@ -25,3 +25,9 @@ void GameMap::render()
 {
 	m_BlockMgr->render();
 }
+
+
+BlockMgr* GameMap::getBlockMgr()
+{ 
+	return m_BlockMgr;
+}

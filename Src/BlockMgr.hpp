@@ -16,6 +16,7 @@ public:
 	Block* getBlock(int rowIndex, int colIndex);
 	void addBlock(int rowIndex, int colIndex, BlockType type);
 
+	Block* getBlockByPoint(int x, int y);
 
 	void update(Uint32 delta);
 

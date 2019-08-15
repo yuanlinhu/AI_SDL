@@ -80,7 +80,33 @@ void BlockMgr::init(int mapW, int mapH, int blockW, int blockH)
 
 Block* BlockMgr::getBlock(int rowIndex, int colIndex)
 {
+	//if (rowIndex >= m)
+	//{
+
+	//}
+
+	int index = rowIndex * m_Col + colIndex;
+	if (index < 0 || index > m_BlockVec.size())
+	{
+		return nullptr;
+	}
+
 	return m_BlockVec[rowIndex*m_Col + colIndex];
+}
+
+Block* BlockMgr::getBlockByPoint(int x, int y)
+{
+	int x_index = x / m_BlockW;
+	int y_index = y / m_BlockH;
+
+	//x_index = ((x % m_BlockW) > 0) ? x_index + 1 : x_index;
+	//y_index = ((y % m_BlockH) > 0) ? y_index + 1 : y_index;
+
+	Block* blk = getBlock(x_index, y_index);
+
+	cout << "x: " << x << ", y:" << y << endl;
+	cout << "x_index: " << x_index << ", y_index:" << y_index << ", blk:" << blk->m_index << endl;
+	return getBlock(x_index, y_index);
 }
 
 void BlockMgr::addBlock(int rowIndex, int colIndex, BlockType type)

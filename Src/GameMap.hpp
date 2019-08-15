@@ -13,6 +13,8 @@ public:
 	void update(Uint32 delta);
 
 	void render();
+
+	BlockMgr * getBlockMgr();
 private:
 	BlockMgr * m_BlockMgr;
 };

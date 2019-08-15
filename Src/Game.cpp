@@ -16,6 +16,7 @@
 #include "TriggerMgr.hpp"
 #include "Trigger.hpp"
 #include "GameMap.hpp"
+#include "BlockMgr.hpp"
 
 //SDL_Surface *message = NULL;
 //TTF_Font *font = NULL;
@@ -200,7 +201,10 @@ void Game::handleMouseDown(int x, int y)
 	m_MousePos.x = x;
 	m_MousePos.y = y;
 
-	m_triggerMgr->createTrigger(TRT_AREA, x, y);
+	//m_triggerMgr->createTrigger(TRT_AREA, x, y);
+
+	BlockMgr * blockMgr = m_GameMap->getBlockMgr();
+	blockMgr->getBlockByPoint(x, y);
 }
 
 void Game::handleMouseUp(int x, int y)

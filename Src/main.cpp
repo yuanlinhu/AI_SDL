@@ -11,6 +11,27 @@
 
 int main(int argc, char * argv[]) {
     
+	map<int, char> m;
+	m[11] = 11;
+	m[2] = 22;
+	m[4] = 33;
+	m[1] = 44;
+
+	map<int, char>::const_iterator it = m.begin();
+	while (it != m.end())
+	{
+		cout << it->first << " " << it->second << endl;
+		it++;
+	}
+
+	it = m.begin();//相当于获取了平衡树最左下面（most left）的结点的迭代器 
+	cout << "min " << it->first << " " << it->second << endl;//最小的key值 
+
+	it = m.end();//相当于获取了平衡树最右下面（most right）的结点的迭代器 
+	it--;
+	cout << "max " << it->first << " " << it->second << endl; //最大的key值 
+
+
     Game game;
 
 	game.go();

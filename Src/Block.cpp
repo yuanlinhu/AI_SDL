@@ -67,19 +67,22 @@ void Block::init(int rowIndex, int colIndex, int index)
 	m_type = (BlockType)blockBitMap[colIndex][rowIndex];
 }
 
-void Block::render()
+void Block::renderFrame()
 {
-	int n = 5;
 	SDL_SetRenderDrawColor(g_render, 0, 100, 0, 0);
-	
 	SDL_RenderDrawLine(g_render, m_minX, m_minY, m_minX, m_maxY);
 	SDL_RenderDrawLine(g_render, m_minX, m_minY, m_maxX, m_minY);
 	SDL_RenderDrawLine(g_render, m_maxX, m_maxY, m_maxX, m_minY);
 	SDL_RenderDrawLine(g_render, m_maxX, m_maxY, m_minX, m_maxY);
+}
 
+void Block::renderBlock()
+{
+	//×èµ²µã
 	if (BLT_NULL != m_type)
 	{
-		SDL_SetRenderDrawColor(g_render, 100*m_type, 200, 200 - 50 * m_type, 0);
+		int n = 5;
+		SDL_SetRenderDrawColor(g_render, 100 * m_type, 200, 200 - 50 * m_type, 0);
 		SDL_Rect  rect;
 		rect.x = m_minX + n;
 		rect.y = m_minY + n;
@@ -87,4 +90,28 @@ void Block::render()
 		rect.h = m_maxY - m_minY - 10;
 		SDL_RenderFillRect(g_render, &rect);
 	}
+}
+
+void Block::renderSelect()
+{
+	//×èµ²µã
+	if (0 != m_select)
+	{
+		int n = 5;
+		SDL_SetRenderDrawColor(g_render, 100, 200, 0, 0);
+		SDL_Rect  rect;
+		rect.x = m_minX + n;
+		rect.y = m_minY + n;
+		rect.w = m_maxX - m_minX - 10;
+		rect.h = m_maxY - m_minY - 10;
+		SDL_RenderFillRect(g_render, &rect);
+	}
+}
+
+
+void Block::render()
+{
+	renderFrame();
+	renderBlock();
+	renderSelect();
 }

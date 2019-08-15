@@ -16,14 +16,16 @@ public:
 	void setConfig(int mapW, int mapH, int blockW, int blockH, int rowIndexMax, int colIndexMax);
 
 	void init(int rowIndex, int colIndex, int index);
-
-
 	void render();
+	void renderFrame();
+	void renderBlock();
+	void renderSelect();
 
 	//void copy(Block* b);
 
 	void setType(BlockType type) { m_type = type; }
 
+	void setSelect(int s) { m_select = s; }
 //private:
 
 	int		m_RowIndex = 0;
@@ -47,6 +49,8 @@ public:
 	int		m_minY = 0;
 	int		m_maxY = 0;
 
+
+	int		m_select = 0;
 
 };
 

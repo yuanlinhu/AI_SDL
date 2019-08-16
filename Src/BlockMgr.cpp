@@ -205,6 +205,9 @@ void BlockMgr::render()
 
 void BlockMgr::findPath(int x, int y, int target_x, int target_y, list<Block*>& outResultList)
 {
+	m_OpenList.clear();
+	m_CloseList.clear();
+
 	Block* src_block = getBlockByPoint(x, y);
 	if (NULL == src_block)
 	{
@@ -212,6 +215,8 @@ void BlockMgr::findPath(int x, int y, int target_x, int target_y, list<Block*>& 
 	}
 
 	Block* tar_block = getBlockByPoint(target_x, target_y);
+	src_block->setSelect(PT_Target);
+
 	if (NULL == tar_block)
 	{
 		return;
@@ -250,6 +255,10 @@ void BlockMgr::findPath(int x, int y, int target_x, int target_y, list<Block*>& 
 		
 		for (auto& tmpNear : nearBlockVec)
 		{
+			if (tmpNear->m_RowIndex == 1 && tmpNear->m_ColIndex == 1)
+			{
+				int jjj = 0;
+			}
 			if (true == tmpNear->isObtacle())
 			{
 				//π˝¬À’œ∞≠µ„
@@ -289,12 +298,13 @@ void BlockMgr::findPath(int x, int y, int target_x, int target_y, list<Block*>& 
 				if (nullptr != parent)
 				{
 					int costG = curBlockOpen->getCostG() + AStar::calculateG(tmpNear, curBlockOpen);
-					int costParentG = AStar::calculateG(tmpNear, curBlockOpen->getParent());
+					int costParentG = AStar::calculateG(tmpNear, parent);
 					if (costParentG <= costG)
 					{
-						curBlockOpen = curBlockOpen->getParent();
+						//curBlockOpen = parent;
 						int newCostG = curBlockOpen->getCostG() + AStar::calculateG(tmpNear, curBlockOpen);
 						tmpNear->setCostG(newCostG);
+						tmpNear->setParent(parent);
 						//tmpNear->calculateG();
 						//curBlockOpen->calculateG();
 					}
@@ -312,6 +322,7 @@ void BlockMgr::findPath(int x, int y, int target_x, int target_y, list<Block*>& 
 
 	while (nullptr != finalBlock)
 	{
+		finalBlock->setSelect(PT_Final);
 		outResultList.push_front(finalBlock);
 		finalBlock = finalBlock->getParent();
 	}
@@ -380,6 +391,7 @@ bool BlockMgr::isInOpenList(Block* block)
 
 void BlockMgr::AddToOpenList(Block* block)
 {
+	block->setSelect(PT_Open);
 	AddToOpenList(block->getCostF(), block);
 }
 void BlockMgr::AddToOpenList(int costF, Block* block)
@@ -481,6 +493,7 @@ void BlockMgr::AddToCloseList(Block* block)
 {
 	if (false == isInCloseList(block))
 	{
+		block->setSelect(PT_Close);
 		m_CloseList[block->m_index] = block;
 	}
 }

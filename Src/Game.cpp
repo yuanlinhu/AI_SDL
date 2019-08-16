@@ -203,14 +203,22 @@ void Game::handleMouseDown(int x, int y)
 	m_MousePos.x = x;
 	m_MousePos.y = y;
 
+	
 	//m_triggerMgr->createTrigger(TRT_AREA, x, y);
 
 	{
 		BlockMgr * blockMgr = m_GameMap->getBlockMgr();
+		
+		
+		blockMgr->resetSelect();
+		blockMgr->resetCostG();
+		list<Block*> outResultList;
+		blockMgr->findPath(0, 0, x, y, outResultList);
+		
+		return;
+
 		Block* block = blockMgr->getBlockByPoint(x, y);
 		Block* scr_block = blockMgr->getBlockByPoint(1, 1);
-		
-
 		blockMgr->resetSelect();
 		blockMgr->resetCostG();
 		vector<Block*> vec;
@@ -218,22 +226,20 @@ void Game::handleMouseDown(int x, int y)
 		for (auto& tmp : vec)
 		{
 			int costG = AStar::calculateG(block, tmp);
-			tmp->setCostG(costG);
+			//tmp->setCostG(costG);
 			int RowIndex = tmp->m_RowIndex;
 			int ColIndex = tmp->m_ColIndex;
-			cout << "RowIndex : " << RowIndex << ", ColIndex : " << ColIndex << ", costG: " << costG << endl;
-			tmp->setSelect(2);
+			//cout << "RowIndex : " << RowIndex << ", ColIndex : " << ColIndex << ", costG: " << costG << endl;
+			//tmp->setSelect(2);
 		}
 
 		if (nullptr != block)
 		{
 			int costH = AStar::calculateH(scr_block, block);
-			cout << "costH : " << costH << endl;
-			block->setSelect(1);
+			//cout << "costH : " << costH << endl;
+			//block->setSelect(1);
 		}
 
-		list<Block*> outResultList;
-		blockMgr->findPath(0, 0, x, y, outResultList);
 
 		int kk = 0;
 	}

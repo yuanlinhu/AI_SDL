@@ -115,4 +115,15 @@ enum BlockType
 	BLT_MAX
 };
 
+
+enum PathType
+{
+	PT_Null = 0,
+	PT_Open = 1,
+	PT_Close = 2,
+	PT_Final = 3,
+	PT_Target = 4,
+};
+
+
 #endif //Macros_hpp

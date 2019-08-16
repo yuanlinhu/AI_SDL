@@ -66,7 +66,7 @@ void Block::init(int rowIndex, int colIndex, int index)
 	}
 
 	//…Ë÷√’œ∞≠ŒÔ
-	m_type = (BlockType)blockBitMap[colIndex][rowIndex];
+	//m_type = (BlockType)blockBitMap[colIndex][rowIndex];
 
 
 	{
@@ -106,16 +106,28 @@ void Block::renderBlock()
 void Block::renderSelect()
 {
 	//◊Ëµ≤µ„
-	if (0 != m_select)
+	if (PT_Null != m_select)
 	{
 		int n = 5;
-		if (1 == m_select)
+		if (PT_Open == m_select)
 		{
-			SDL_SetRenderDrawColor(g_render, 220, 100, 0, 0);
+			SDL_SetRenderDrawColor(g_render, 220, 0, 0, 0);
+		}
+		else if (PT_Close == m_select)
+		{
+			SDL_SetRenderDrawColor(g_render, 0, 220, 0, 0);
+		}
+		else if(PT_Final == m_select)
+		{
+			SDL_SetRenderDrawColor(g_render, 0, 0, 220, 0);
+		}
+		else if (PT_Target == m_select)
+		{
+			SDL_SetRenderDrawColor(g_render, 0, 220, 220, 0);
 		}
 		else
 		{
-			SDL_SetRenderDrawColor(g_render, 100, 0, 100, 0);
+			SDL_SetRenderDrawColor(g_render, 120, 120, 120, 0);
 		}
 
 		SDL_Rect  rect;

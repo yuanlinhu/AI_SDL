@@ -156,7 +156,7 @@ void BlockMgr::get9GridBlockList(Block* curBlock, vector<Block*>& outList)
 		for (int j = -1; j <= 1; ++j)
 		{
 
-			Block* tmpBlock = getBlock(curRowIndex + i, curColIndex + j);
+			Block* tmpBlock = getBlock(curRowIndex + j, curColIndex + i);
 			if (i == 0 && j == 0)
 			{
 				//过滤自己
@@ -203,7 +203,7 @@ void BlockMgr::render()
 	//SDL_RenderFillRect(g_render, &rect);
 }
 
-void BlockMgr::findPath(int x, int y, int target_x, int target_y)
+void BlockMgr::findPath(int x, int y, int target_x, int target_y, list<Block*>& outResultList)
 {
 	Block* src_block = getBlockByPoint(x, y);
 	if (NULL == src_block)
@@ -232,16 +232,22 @@ void BlockMgr::findPath(int x, int y, int target_x, int target_y)
 	//			如果是这样，把它的父亲设置为当前方格，并重新计算它的 G 和 F 值。
 	//			如果你的 open list 是按 F 值排序的话，改变后你可能需要重新排序。
 
+	Block* finalBlock = nullptr;
 	vector<Block*> nearBlockVec;
 
 	while (Block* curBlockOpen = getAndDelMinCostBlockFromOpenList())
 	{
-
+		if (nullptr != finalBlock)
+		{
+			//已找到目标点
+			break;
+		}
 		cout << "curBlockOpen m_RowIndex: " << curBlockOpen->m_RowIndex << ", m_ColIndex:" << curBlockOpen->m_ColIndex << endl;
 		AddToCloseList(curBlockOpen);
 
 		get9GridBlockList(curBlockOpen, nearBlockVec);
 
+		
 		for (auto& tmpNear : nearBlockVec)
 		{
 			if (true == tmpNear->isObtacle())
@@ -266,6 +272,7 @@ void BlockMgr::findPath(int x, int y, int target_x, int target_y)
 				if (tmpNear->m_index == tar_block->m_index)
 				{
 					//结束
+					finalBlock = tmpNear;
 					break;
 				}
 
@@ -302,6 +309,12 @@ void BlockMgr::findPath(int x, int y, int target_x, int target_y)
 
 	}
 
+
+	while (nullptr != finalBlock)
+	{
+		outResultList.push_front(finalBlock);
+		finalBlock = finalBlock->getParent();
+	}
 
 
 	int kk1 = 0;

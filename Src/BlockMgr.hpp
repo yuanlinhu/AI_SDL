@@ -28,7 +28,7 @@ public:
 
 	void render();
 
-	void findPath(int x, int y, int target_x, int target_y);
+	void findPath(int x, int y, int target_x, int target_y, list<Block*>& outResultList);
 
 
 	//OpenList º¯Êı

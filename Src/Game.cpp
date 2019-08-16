@@ -232,7 +232,10 @@ void Game::handleMouseDown(int x, int y)
 			block->setSelect(1);
 		}
 
-		blockMgr->findPath(0, 0, x, y);
+		list<Block*> outResultList;
+		blockMgr->findPath(0, 0, x, y, outResultList);
+
+		int kk = 0;
 	}
 	
 }

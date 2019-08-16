@@ -125,10 +125,6 @@ void Block::renderSelect()
 		rect.y = m_minY + rect.h;
 		
 		SDL_RenderFillRect(g_render, &rect);
-
-
-		
-		
 	}
 }
 
@@ -143,17 +139,26 @@ void Block::render()
 
 void Block::renderCostH()
 {
-	int n = 10;
 	SDL_SetRenderDrawColor(g_render, 220, 0, 220, 0);
-	SDL_Rect  rect;
-	rect.x = m_minX + n;
-	rect.y = m_maxY - n;
-	rect.w = (m_maxX - m_minX) / 5;
-	rect.h = (m_maxY - m_minY) / 5;
-	stringstream strss;
-	strss << m_costG;
-	m_costGFont->setMessage(strss.str(), rect.x, rect.y, rect.w, rect.h);
 	m_costGFont->render();
+}
+
+void Block::update(Uint32 delta)
+{
+	if (m_costG > 0)
+	{
+		int n = 10;
+
+		SDL_Rect  rect;
+		rect.x = m_minX + n;
+		rect.y = m_maxY - n;
+		rect.w = (m_maxX - m_minX) / 5;
+		rect.h = (m_maxY - m_minY) / 5;
+		stringstream strss;
+		strss << m_costG;
+		m_costGFont->setMessage(strss.str(), rect.x, rect.y, rect.w, rect.h);
+	}
+	
 }
 
 int Block::getCostF()

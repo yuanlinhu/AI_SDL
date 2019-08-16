@@ -181,7 +181,10 @@ void BlockMgr::addBlock(int rowIndex, int colIndex, BlockType type)
 
 void BlockMgr::update(Uint32 delta)
 {
-
+	for (auto &tmp : m_BlockVec)
+	{
+		(tmp)->update(delta);
+	}
 }
 
 void BlockMgr::render()

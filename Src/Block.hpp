@@ -22,6 +22,8 @@ public:
 	void renderSelect();
 	void renderCostH();
 
+
+	void update(Uint32 delta);
 	//void copy(Block* b);
 
 	void setType(BlockType type) { m_type = type; }

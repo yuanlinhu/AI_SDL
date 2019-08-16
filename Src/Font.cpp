@@ -29,7 +29,7 @@ void Font::setMessage(std::string message)
 	SDL_Surface *surf = TTF_RenderText_Blended(m_font, message.c_str(), m_color);
 	m_fontTexture = SDL_CreateTextureFromSurface(m_render, surf);
 	//Clean up unneeded stuff
-	//SDL_FreeSurface(surf);
+	SDL_FreeSurface(surf);
 	//TTF_CloseFont(m_font);
 }
 
@@ -67,6 +67,9 @@ void Font::render()
 	{
 		SDL_RenderCopy(m_render, m_fontTexture, NULL, &m_rect);
 	}
+
+	//SDL_DestroyTexture(m_fontTexture);
+	
 }
 
 void Font::update(Uint32 delta)

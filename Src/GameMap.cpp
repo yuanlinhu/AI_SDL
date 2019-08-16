@@ -18,7 +18,7 @@ void GameMap::init(int mapW, int mapH)
 
 void GameMap::update(Uint32 delta)
 {
-
+	m_BlockMgr->update(delta);
 }
 
 void GameMap::render()

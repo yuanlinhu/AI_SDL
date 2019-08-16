@@ -316,13 +316,14 @@ void Game::render()
 	SDL_SetRenderDrawColor(m_render, 255, 255, 255, 0xFF);
     SDL_RenderClear(m_render);
 	
+	m_FpsFont->render();
+
 	m_GameMap->render();
 
 	
 	m_triggerMgr->render();
 	m_gameObjMgr->render();
     
-	m_FpsFont->render();
 	SDL_RenderPresent(m_render);
 }
 

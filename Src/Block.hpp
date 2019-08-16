@@ -47,6 +47,9 @@ public:
 	void calculateG(Block* curBlock);
 	void calculateH(Block* tarBlock);
 
+
+	void initAstarData();
+
 //private:
 
 	int		m_RowIndex = 0;

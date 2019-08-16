@@ -203,10 +203,16 @@ void BlockMgr::render()
 	//SDL_RenderFillRect(g_render, &rect);
 }
 
+
 void BlockMgr::findPath(int x, int y, int target_x, int target_y, list<Block*>& outResultList)
 {
 	m_OpenList.clear();
 	m_CloseList.clear();
+
+	for (auto& tmp : m_BlockVec)
+	{
+		tmp->initAstarData();
+	}
 
 	Block* src_block = getBlockByPoint(x, y);
 	if (NULL == src_block)
@@ -514,4 +520,24 @@ void BlockMgr::AddToCloseList(Block* block)
 void BlockMgr::sortOpenList()
 {
 
+}
+
+Block* BlockMgr::randomWalkableBlock()
+{
+	Block* retBlock = nullptr;
+	for (int i = 0; i < 100; ++i)
+	{
+		//设置随机目标点
+		int index = rand() % (m_BlockVec.size() - 1);
+		
+		Block* b = m_BlockVec[index];
+		if (nullptr == b || BLT_NULL != b->m_type)
+		{
+			continue;
+		}
+		retBlock = b;
+		break;
+	}
+
+	return retBlock;
 }

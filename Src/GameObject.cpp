@@ -1,6 +1,9 @@
 
 #include "GameObject.hpp"
 #include "Game.hpp"
+#include "GameMap.hpp"
+#include "BlockMgr.hpp"
+#include "Block.hpp"
 
 GameObject::GameObject(SDL_Renderer* render)
 {
@@ -70,17 +73,43 @@ void GameObject::render(SDL_Renderer* render)
 	rect.w = 10;
 	rect.h = 10;
 	SDL_RenderFillRect(render, &rect);
-	
+}
+
+void GameObject::SetRandomTargetPos()
+{
+	if (m_target_pos_list.empty())
+	{
+		BlockMgr* blockMgr= g_GameMap->getBlockMgr();
+		Block* targetBlock = blockMgr->randomWalkableBlock();
+		blockMgr->findPath(m_cur_pos.x, m_cur_pos.y, targetBlock->m_minX, targetBlock->m_minY, m_target_pos_list);
+	}
+}
+
+
+void GameObject::GetTargetPos(int& x, int& y)
+{
+	if (m_target_pos_list.empty())
+	{
+		//目标点为空， 重新找个随机目标
+		SetRandomTargetPos();
+	}
+
+	Block * blk = m_target_pos_list.front();
+	x = blk->m_minX;
+	y = blk->m_minY;
+	m_target_pos_list.pop_front();
 }
 
 void GameObject::update(Uint32 delta)
 {
+	delta = 10;
 	if (m_cur_pos == m_target_pos)
 	{
 		//设置随机目标点
-		m_target_pos.x = rand() % (WINDOW_WIDTH - m_rect.w);
-		m_target_pos.y = rand() % (WINDOW_HEIGHT - m_rect.h);
+		//m_target_pos.x = rand() % (WINDOW_WIDTH - m_rect.w);
+		//m_target_pos.y = rand() % (WINDOW_HEIGHT - m_rect.h);
 
+		GetTargetPos(m_target_pos.x, m_target_pos.y);
 		cout << "目标为 " << m_target_pos.x << ", " << m_target_pos.y << endl;
 	}
 
@@ -93,8 +122,9 @@ void GameObject::update(Uint32 delta)
 	int xSept = (x_mul * m_speed * delta) / 1000;
 	int ySept = (y_mul * m_speed * delta) / 1000;
 	
-	xSept = (xSept == 0) ? 1 : xSept;
-	ySept = (ySept == 0) ? 1 : ySept;
+	//xSept = (xSept == 0) ? 1 : xSept;
+	//ySept = (ySept == 0) ? 1 : ySept;
+
 
 	m_cur_pos.x += xSept;
 	m_cur_pos.y += ySept;

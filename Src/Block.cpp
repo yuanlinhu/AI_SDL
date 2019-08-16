@@ -149,7 +149,7 @@ void Block::renderSelect()
 		int n = 5;
 		if (PT_Open == m_select)
 		{
-			SDL_SetRenderDrawColor(g_render, 220, 0, 0, 0);
+			SDL_SetRenderDrawColor(g_render, 220, 220, 0, 0);
 		}
 		else if (PT_Close == m_select)
 		{
@@ -239,6 +239,15 @@ void Block::calculateG(Block* curBlock)
 {
 	int costG = AStar::calculateG(this, curBlock);
 	setCostG(costG);
+}
+
+void Block::initAstarData()
+{
+	m_select = 0;
+
+	m_costG = 0;		//
+	m_costH = 0;		//Ô¤²âÖµ
+	m_parent = nullptr;
 }
 
 void Block::calculateH(Block* tarBlock)

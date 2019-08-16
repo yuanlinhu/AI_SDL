@@ -35,12 +35,14 @@
 //GameObject* gameObj;
 
 SDL_Renderer* g_render;
+GameMap* g_GameMap;
 
 Game::Game()
 {
 	srand((unsigned int)time(NULL));
 	m_gameObjMgr = new GameObjectMgr();
 	m_GameMap = new GameMap();
+	g_GameMap = m_GameMap;
 }
 
 Game::~Game()
@@ -208,7 +210,6 @@ void Game::handleMouseDown(int x, int y)
 
 	{
 		BlockMgr * blockMgr = m_GameMap->getBlockMgr();
-		
 		
 		blockMgr->resetSelect();
 		blockMgr->resetCostG();

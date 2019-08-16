@@ -29,6 +29,13 @@ public:
 	{
 		return m_cur_pos;
 	}
+
+private:
+	void SetRandomTargetPos();
+	void GetTargetPos(int& x, int& y);
+
+
+
 private:
 	SDL_Texture *	m_Texture;
 	SDL_Rect		m_rect;
@@ -49,6 +56,7 @@ private:
 
 	string			m_name;
 	int				m_hp;
+	list<Block*>		m_target_pos_list;
 };
 
 

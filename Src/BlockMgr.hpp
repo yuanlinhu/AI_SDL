@@ -46,6 +46,8 @@ public:
 
 	void sortOpenList();
 
+	Block* randomWalkableBlock();
+
 private:
 	map<int /*costF*/, list<Block*> > m_OpenList;
 	map<int/*blockIndex*/, Block*>	m_CloseList;

@@ -63,6 +63,7 @@ class Block;
 const int FRAMES_PER_SECOND = 60;
 
 extern SDL_Renderer* g_render;
+extern GameMap* g_GameMap;
 
 
 //´°¿Ú´óÐ¡

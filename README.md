@@ -1,21 +1,28 @@
 * 字体加载		封装类， 头顶显示	ok
-
 * 头顶飘字							ok
+* Map类			ok
+* 障碍点，		ok
+* A_Star，		ok
 
 
 
-* 时间类  delta_Time 优化			ok
+* 时间类  delta_Time 			
+
+* Map类 (九宫格管理， 同步人数)	
+
+* AI  （状态机，行为树）
+
+
+
+
+
+*UI 系统 嵌入
 
 * trigger 伤害，AOE等			初步架构
 
-
-* 障碍点，		ok
-* A_Star，		ok
 * navMesh
 
-* Map类 (九宫格管理)	
 
-* AI  （状态机，行为树）
 
 * cast spell
 

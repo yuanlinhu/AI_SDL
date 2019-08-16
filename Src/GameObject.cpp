@@ -110,7 +110,7 @@ void GameObject::update(Uint32 delta)
 		//m_target_pos.y = rand() % (WINDOW_HEIGHT - m_rect.h);
 
 		GetTargetPos(m_target_pos.x, m_target_pos.y);
-		cout << "目标为 " << m_target_pos.x << ", " << m_target_pos.y << endl;
+		//cout << "目标为 " << m_target_pos.x << ", " << m_target_pos.y << endl;
 	}
 
 	int x_mul = (m_target_pos.x > m_cur_pos.x) ? 1 : -1;

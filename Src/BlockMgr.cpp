@@ -126,11 +126,11 @@ Block* BlockMgr::getBlockByPoint(int x, int y)
 
 	Block* blk = getBlock(x_index, y_index);
 
-	cout << "x: " << x << ", y:" << y << endl;
-	cout << "x_index: " << x_index << ", y_index:" << y_index << endl;
+	//cout << "x: " << x << ", y:" << y << endl;
+	//cout << "x_index: " << x_index << ", y_index:" << y_index << endl;
 	if (nullptr != blk)
 	{
-		cout << " blk:" << blk->m_index << endl;
+		//cout << " blk:" << blk->m_index << endl;
 	}
 	return getBlock(x_index, y_index);
 }
@@ -206,6 +206,8 @@ void BlockMgr::render()
 
 void BlockMgr::findPath(int x, int y, int target_x, int target_y, list<Block*>& outResultList)
 {
+	int start_path_ticks = SDL_GetTicks();
+	
 	m_OpenList.clear();
 	m_CloseList.clear();
 
@@ -253,7 +255,7 @@ void BlockMgr::findPath(int x, int y, int target_x, int target_y, list<Block*>& 
 			//已找到目标点
 			break;
 		}
-		cout << "curBlockOpen m_RowIndex: " << curBlockOpen->m_RowIndex << ", m_ColIndex:" << curBlockOpen->m_ColIndex << endl;
+		//cout << "curBlockOpen m_RowIndex: " << curBlockOpen->m_RowIndex << ", m_ColIndex:" << curBlockOpen->m_ColIndex << endl;
 		AddToCloseList(curBlockOpen);
 
 		get9GridBlockList(curBlockOpen, nearBlockVec);
@@ -350,6 +352,8 @@ void BlockMgr::findPath(int x, int y, int target_x, int target_y, list<Block*>& 
 	int kk1 = 0;
 
 
+	cout << "寻路消耗： " << SDL_GetTicks() - start_path_ticks << endl;
+
 
 	return;
 
@@ -410,7 +414,7 @@ bool BlockMgr::isInOpenList(Block* block)
 
 void BlockMgr::AddToOpenList(Block* block)
 {
-	block->setSelect(PT_Open);
+	//block->setSelect(PT_Open);
 	AddToOpenList(block->getCostF(), block);
 }
 void BlockMgr::AddToOpenList(int costF, Block* block)
@@ -512,7 +516,7 @@ void BlockMgr::AddToCloseList(Block* block)
 {
 	if (false == isInCloseList(block))
 	{
-		block->setSelect(PT_Close);
+		//block->setSelect(PT_Close);
 		m_CloseList[block->m_index] = block;
 	}
 }

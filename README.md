@@ -9,11 +9,11 @@
 * trigger 伤害，AOE等			初步架构
 
 
-* 障碍点，  
-* A_Star，  
+* 障碍点，		ok
+* A_Star，		ok
 * navMesh
 
-* Map类 (九宫格管理， 资源加载)
+* Map类 (九宫格管理)	
 
 * AI  （状态机，行为树）
 

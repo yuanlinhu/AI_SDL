@@ -79,7 +79,7 @@ const int BLOCK_WIDTH = 20;		//40*30
 const int BLOCK_HEIGHT = 20;
 
 
-
+extern int blockBitMap[][40];
 //Ä£Äâ¸ßÑÓ³Ù
 //bool	m_needHighCPU = true;
 

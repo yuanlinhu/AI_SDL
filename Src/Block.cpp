@@ -66,7 +66,7 @@ void Block::init(int rowIndex, int colIndex, int index)
 	}
 
 	//…Ë÷√’œ∞≠ŒÔ
-	//m_type = (BlockType)blockBitMap[colIndex][rowIndex];
+	m_type = (BlockType)blockBitMap[colIndex][rowIndex];
 
 
 	{

@@ -252,10 +252,23 @@ void BlockMgr::findPath(int x, int y, int target_x, int target_y, list<Block*>& 
 
 		get9GridBlockList(curBlockOpen, nearBlockVec);
 
+		if (curBlockOpen->m_RowIndex == 1 && curBlockOpen->m_ColIndex == 0)
+		{
+			int jjj = 0;
+		}
+
+		if (curBlockOpen->m_RowIndex == 2 && curBlockOpen->m_ColIndex == 0)
+		{
+			int jjj = 0;
+		}
 		
 		for (auto& tmpNear : nearBlockVec)
 		{
 			if (tmpNear->m_RowIndex == 1 && tmpNear->m_ColIndex == 1)
+			{
+				int jjj = 0;
+			}
+			if (tmpNear->m_RowIndex == 2 && tmpNear->m_ColIndex == 0)
 			{
 				int jjj = 0;
 			}
@@ -303,7 +316,7 @@ void BlockMgr::findPath(int x, int y, int target_x, int target_y, list<Block*>& 
 					{
 						//curBlockOpen = parent;
 						int newCostG = curBlockOpen->getCostG() + AStar::calculateG(tmpNear, curBlockOpen);
-						tmpNear->setCostG(newCostG);
+						tmpNear->setCostG(costParentG);
 						tmpNear->setParent(parent);
 						//tmpNear->calculateG();
 						//curBlockOpen->calculateG();

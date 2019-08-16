@@ -16,8 +16,8 @@ public:
 	void render();
 
 	void setTimer(int second);
-	void addWidth(int w);
-	void addFontSize(int s);
+	//void addWidth(int w);
+	//void addFontSize(int s);
 
 	//void render(std::string message, int x, int y, int w, int h, std::string fontFile,
 	//	SDL_Color color, int fontSize);

@@ -318,10 +318,11 @@ void Game::render()
 	
 	m_GameMap->render();
 
-	m_FpsFont->render();
+	
 	m_triggerMgr->render();
 	m_gameObjMgr->render();
     
+	m_FpsFont->render();
 	SDL_RenderPresent(m_render);
 }
 

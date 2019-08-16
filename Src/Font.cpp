@@ -25,6 +25,7 @@ void Font::init(std::string fontFile, SDL_Color& color, int fontSize)
 
 void Font::setMessage(std::string message)
 {
+	return;
 	//Render the message to an SDL_Surface, as that's what TTF_RenderText_X returns
 	SDL_Surface *surf = TTF_RenderText_Blended(m_font, message.c_str(), m_color);
 	m_fontTexture = SDL_CreateTextureFromSurface(m_render, surf);

@@ -74,8 +74,8 @@ const int MAP_WIDTH = 800;
 const int MAP_HEIGHT = 600;
 
 //障碍物最小单位
-const int BLOCK_WIDTH = 50;
-const int BLOCK_HEIGHT = 50;
+const int BLOCK_WIDTH = 20;		//40*30
+const int BLOCK_HEIGHT = 20;
 
 
 

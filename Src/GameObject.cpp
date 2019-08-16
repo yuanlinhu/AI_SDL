@@ -90,8 +90,14 @@ void GameObject::update(Uint32 delta)
 	x_mul = (m_target_pos.x == m_cur_pos.x) ? 0 : x_mul;
 	y_mul = (m_target_pos.y == m_cur_pos.y) ? 0 : y_mul;
 
-	m_cur_pos.x += (x_mul * m_speed * delta) / 1000;
-	m_cur_pos.y += (y_mul * m_speed * delta) / 1000;
+	int xSept = (x_mul * m_speed * delta) / 1000;
+	int ySept = (y_mul * m_speed * delta) / 1000;
+	
+	xSept = (xSept == 0) ? 1 : xSept;
+	ySept = (ySept == 0) ? 1 : ySept;
+
+	m_cur_pos.x += xSept;
+	m_cur_pos.y += ySept;
 
 	stringstream strss;
 	strss << m_name << "  hp:" << m_hp;

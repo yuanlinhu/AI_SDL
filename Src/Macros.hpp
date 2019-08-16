@@ -38,7 +38,7 @@
 
 #include <cmath>
 #include <iomanip>
-
+#include <assert.h>
 
 #include "Point2D.hpp"
 

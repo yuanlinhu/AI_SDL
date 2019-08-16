@@ -82,6 +82,10 @@ void GameObject::SetRandomTargetPos()
 		BlockMgr* blockMgr= g_GameMap->getBlockMgr();
 		Block* targetBlock = blockMgr->randomWalkableBlock();
 		blockMgr->findPath(m_cur_pos.x, m_cur_pos.y, targetBlock->m_minX, targetBlock->m_minY, m_target_pos_list);
+		if (m_target_pos_list.empty())
+		{
+			assert(0);
+		}
 	}
 }
 

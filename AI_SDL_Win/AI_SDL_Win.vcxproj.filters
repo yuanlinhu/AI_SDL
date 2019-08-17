@@ -52,6 +52,12 @@
     <ClCompile Include="..\Src\AI.cpp">
       <Filter>src\AI</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\AI_Player.cpp">
+      <Filter>src\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AI_Enemy.cpp">
+      <Filter>src\AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Game.hpp">
@@ -103,6 +109,12 @@
       <Filter>src\Map</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\AI.hpp">
+      <Filter>src\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AI_Player.hpp">
+      <Filter>src\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AI_Enemy.hpp">
       <Filter>src\AI</Filter>
     </ClInclude>
   </ItemGroup>

@@ -26,6 +26,8 @@
     <ClCompile Include="..\Src\Block.cpp" />
     <ClCompile Include="..\Src\BlockMgr.cpp" />
     <ClCompile Include="..\Src\BTNode.cpp" />
+    <ClCompile Include="..\Src\BTNode_Move.cpp" />
+    <ClCompile Include="..\Src\BTNode_Sequence.cpp" />
     <ClCompile Include="..\Src\Font.cpp" />
     <ClCompile Include="..\Src\Game.cpp" />
     <ClCompile Include="..\Src\GameObject.cpp" />
@@ -47,6 +49,8 @@
     <ClInclude Include="..\Src\Block.hpp" />
     <ClInclude Include="..\Src\BlockMgr.hpp" />
     <ClInclude Include="..\Src\BTNode.hpp" />
+    <ClInclude Include="..\Src\BTNode_Move.hpp" />
+    <ClInclude Include="..\Src\BTNode_Sequence.hpp" />
     <ClInclude Include="..\Src\Font.hpp" />
     <ClInclude Include="..\Src\Game.hpp" />
     <ClInclude Include="..\Src\GameObject.hpp" />

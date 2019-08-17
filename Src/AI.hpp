@@ -23,7 +23,18 @@ public:
 	void setCurPos(int x, int y);
 	void setTargetPos(int x, int y);
 
+	void addNodeToRoot(BTNode* node);
 
+	BTNode* getRootNode() 
+	{
+		return m_rootNode;
+	}
+
+	GameObject* getObjParent()
+	{
+		return  m_objParent;
+	}
+		
 private:
 	AI() = default;
 

@@ -1,9 +1,10 @@
 #include "BTNode.hpp"
 
 
-BTNode::BTNode(BTNodeType type)
+BTNode::BTNode(BTNodeType type, GameObject* objParent)
 {
 	m_type = type;
+	m_objParent = objParent;
 }
 
 void BTNode::addChild(BTNode* node)
@@ -15,12 +16,12 @@ void BTNode::addChild(BTNode* node)
 	m_childNode.push_back(node);
 }
 
-bool BTNode::check()
+list<BTNode*>& BTNode::getChildNodeList()
 {
-	return true;
+	return m_childNode;
 }
 
-bool BTNode::run()
+GameObject* BTNode::getObjParent()
 {
-	return true;
+	return m_objParent;
 }

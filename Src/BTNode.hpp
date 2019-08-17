@@ -16,15 +16,18 @@
 class BTNode
 {
 public:
-	BTNode(BTNodeType type);
+	BTNode(BTNodeType type, GameObject* objParent);
 	
 	void addChild(BTNode* node);
-	bool check();
+	
+	virtual bool check() = 0;
+	virtual bool run(int delta) = 0;
 
-	bool run();
-
+	list<BTNode*>&		getChildNodeList();
+	GameObject*			getObjParent();
 private:
 	BTNodeType m_type;
+	GameObject* m_objParent = nullptr;
 
 	list<BTNode*>		m_childNode;
 

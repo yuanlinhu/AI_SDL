@@ -58,6 +58,12 @@
     <ClCompile Include="..\Src\AI_Enemy.cpp">
       <Filter>src\AI</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\BTNode_Move.cpp">
+      <Filter>src\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BTNode_Sequence.cpp">
+      <Filter>src\AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Game.hpp">
@@ -115,6 +121,12 @@
       <Filter>src\AI</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\AI_Enemy.hpp">
+      <Filter>src\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BTNode_Move.hpp">
+      <Filter>src\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BTNode_Sequence.hpp">
       <Filter>src\AI</Filter>
     </ClInclude>
   </ItemGroup>

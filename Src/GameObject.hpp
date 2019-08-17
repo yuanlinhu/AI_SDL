@@ -30,12 +30,30 @@ public:
 	{
 		return m_cur_pos;
 	}
+	Point2D& GetTargetPos()
+	{
+		return m_target_pos;
+	}
+
+	
+
+	void setCurPos(int x, int y)
+	{
+		m_cur_pos.x = x;
+		m_cur_pos.y = y;
+	}
+
+	Point2D& getTargetPos()
+	{
+		return m_target_pos;
+	}
 
 	void SetTargetPos(int x, int y);
 
+	float getSpeed() { return m_speed; }
 private:
 	void SetRandomTargetPos();
-	void GetTargetPos(int& x, int& y);
+	void GetNextTargetPos(int& x, int& y);
 
 
 

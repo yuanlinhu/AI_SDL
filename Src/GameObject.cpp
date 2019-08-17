@@ -115,7 +115,7 @@ void GameObject::SetRandomTargetPos()
 }
 
 
-void GameObject::GetTargetPos(int& x, int& y)
+void GameObject::GetNextTargetPos(int& x, int& y)
 {
 	if (m_target_pos_list.empty())
 	{
@@ -137,16 +137,16 @@ void GameObject::update(Uint32 delta)
 	m_AI->update(delta);
 	return;
 
-	if (m_cur_pos == m_target_pos)
-	{
-		//设置随机目标点
-		//m_target_pos.x = rand() % (WINDOW_WIDTH - m_rect.w);
-		//m_target_pos.y = rand() % (WINDOW_HEIGHT - m_rect.h);
+	//if (m_cur_pos == m_target_pos)
+	//{
+	//	//设置随机目标点
+	//	//m_target_pos.x = rand() % (WINDOW_WIDTH - m_rect.w);
+	//	//m_target_pos.y = rand() % (WINDOW_HEIGHT - m_rect.h);
 
-		GetTargetPos(m_target_pos.x, m_target_pos.y);
-		//cout << "目标为 " << m_target_pos.x << ", " << m_target_pos.y << endl;
-		return;
-	}
+	//	GetTargetPos(m_target_pos.x, m_target_pos.y);
+	//	//cout << "目标为 " << m_target_pos.x << ", " << m_target_pos.y << endl;
+	//	return;
+	//}
 
 	int x_mul = (m_target_pos.x > m_cur_pos.x) ? 1 : -1;
 	int y_mul = (m_target_pos.y > m_cur_pos.y) ? 1 : -1;

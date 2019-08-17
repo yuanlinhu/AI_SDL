@@ -4,6 +4,9 @@
 #include "GameMap.hpp"
 #include "BlockMgr.hpp"
 #include "Block.hpp"
+#include "AI.hpp"
+#include "AI_Enemy.hpp"
+#include "AI_Player.hpp"
 
 GameObject::GameObject(SDL_Renderer* render)
 {
@@ -82,6 +85,12 @@ void GameObject::render(SDL_Renderer* render)
 
 void GameObject::SetTargetPos(int x, int y)
 {
+	m_target_pos.x = x;
+	m_target_pos.y = y;
+	//m_AI->setTargetPos(x, y);
+	return;
+
+
 	BlockMgr* blockMgr = g_GameMap->getBlockMgr();
 	Block* targetBlock = blockMgr->getBlockByPoint(x, y);
 	blockMgr->findPath(m_cur_pos.x, m_cur_pos.y, targetBlock->m_minX, targetBlock->m_minY, m_target_pos_list);
@@ -124,6 +133,10 @@ void GameObject::GetTargetPos(int& x, int& y)
 void GameObject::update(Uint32 delta)
 {
 	delta = 10;
+
+	m_AI->update(delta);
+	return;
+
 	if (m_cur_pos == m_target_pos)
 	{
 		//设置随机目标点
@@ -156,6 +169,9 @@ void GameObject::update(Uint32 delta)
 	m_nameFont->setMessage(strss.str(), m_cur_pos.x + 5, m_cur_pos.y - 20, 70, 20);
 
 	m_hpFont->setPos(m_cur_pos.x + 5, m_cur_pos.y - 30);
+
+
+	m_AI->update(delta);
 }
 
 
@@ -191,6 +207,21 @@ void GameObject::add_y(int n)
 void GameObject::setType(GameObjectType type)
 {
 	m_type = type;
+}
+
+void GameObject::createAI()
+{
+	if (m_type == GOT_PLAYER)
+	{
+		m_AI = new AI_Player(this);
+	}
+	else
+	{
+		m_AI = new AI_Enemy(this);
+	}
+
+	m_AI->init();
+	
 }
 
 GameObjectType GameObject::getType()

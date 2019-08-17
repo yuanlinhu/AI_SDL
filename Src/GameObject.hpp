@@ -23,6 +23,7 @@ public:
 	void addHP(int hp);
 
 	void setType(GameObjectType type);
+	void createAI();
 	GameObjectType getType();
 
 	Point2D& getCurPos() 
@@ -59,6 +60,8 @@ private:
 	string			m_name;
 	int				m_hp;
 	list<Block*>		m_target_pos_list;
+
+	AI*				m_AI = nullptr;
 };
 
 

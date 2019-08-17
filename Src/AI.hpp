@@ -11,30 +11,31 @@
 
 #include "Macros.hpp"
 
-enum BTNodeType
-{
-	BTNT_NULL = 0,
-	
-	BTNT_ROOT,		//根节点
 
-	BTNT_SEQUENCE,	//顺序
-	BTNT_SELECT,	//选择
-
-
-	BTNT_MAX,
-};
 
 class AI
 {
 public:
+	AI(AI_Type type, GameObject* objParent);
+	virtual void init() {}
+	virtual void update(Uint32 delta) {}
 
-private:
+	void setCurPos(int x, int y);
+	void setTargetPos(int x, int y);
 
-	list<BTNode*>		m_childNode;
 
 private:
 	AI() = default;
-    
+
+
+private:
+	BTNode*		m_rootNode = nullptr;
+	AI_Type		m_Type;
+	Point2D		m_cur_pos;
+	Point2D		m_target_pos;
+	GameObject* m_objParent;
+
+
 };
 
 

@@ -58,7 +58,7 @@ class GameMap;
 class BlockMgr;
 class Block;
 class BTNode;
-
+class AI;
 
 //每秒的帧数
 const int FRAMES_PER_SECOND = 60;
@@ -131,4 +131,23 @@ enum PathType
 };
 
 
+enum AI_Type
+{
+	AIT_PLAYER,		//玩家控制AI
+	AIT_ENEMY_1,	//怪物
+};
+
+enum BTNodeType
+{
+	BTNT_NULL = 0,
+
+	BTNT_ROOT,		//根节点
+	BTNT_LEAF,		//节点		执行逻辑
+
+	BTNT_SEQUENCE,	//顺序
+	BTNT_SELECT,	//选择
+
+
+	BTNT_MAX,
+};
 #endif //Macros_hpp

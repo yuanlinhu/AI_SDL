@@ -57,6 +57,7 @@ class Trigger;
 class GameMap;
 class BlockMgr;
 class Block;
+class BTNode;
 
 
 //Ã¿ÃëµÄÖ¡Êý
@@ -84,6 +85,9 @@ extern int blockBitMap[][40];
 //bool	m_needHighCPU = true;
 
 //static SDL_Renderer* g_render = nullptr;
+
+
+
 
 enum GameObjectType
 {

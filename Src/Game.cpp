@@ -99,9 +99,11 @@ void Game::loadGameObj()
 	
 	m_GameMap->init(0, 0);
 
-	auto player = m_gameObjMgr->createGameObject(100, 100, 50, 50, "../Asset/player.jpg");
+	auto player = m_gameObjMgr->createGameObject(100, 100, BLOCK_WIDTH, BLOCK_HEIGHT, "../Asset/player.jpg");
 	player->setType(GOT_PLAYER);
 
+	auto enemy = m_gameObjMgr->createGameObject(300, 300, BLOCK_WIDTH, BLOCK_HEIGHT, "../Asset/1.png");
+	enemy->setType(GOT_ENEMY);
 
 
 }

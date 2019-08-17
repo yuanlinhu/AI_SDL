@@ -47,6 +47,11 @@ void GameObject::init(int x, int y, int w, int h, string path)
 
 	m_hp = 10000;
 	m_name = "pika";
+
+	m_cur_pos.x = x;
+	m_cur_pos.y = y;
+	m_target_pos.x = x;
+	m_target_pos.y = y;
 }
 
 GameObject::~GameObject()

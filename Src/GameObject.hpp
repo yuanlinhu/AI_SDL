@@ -30,6 +30,8 @@ public:
 		return m_cur_pos;
 	}
 
+	void SetTargetPos(int x, int y);
+
 private:
 	void SetRandomTargetPos();
 	void GetTargetPos(int& x, int& y);

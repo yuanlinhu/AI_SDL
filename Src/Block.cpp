@@ -104,7 +104,8 @@ void Block::init(int rowIndex, int colIndex, int index)
 	}
 
 	//ÉèÖÃÕÏ°­Îï
-	m_type = (BlockType)blockBitMap[colIndex][rowIndex];
+	//m_type = (BlockType)blockBitMap[colIndex][rowIndex];
+	m_type = (BlockType)((rand() % 10) > 2 ? 0 : 1);
 
 
 	{

@@ -205,6 +205,9 @@ void Game::handleMouseDown(int x, int y)
 	m_MousePos.x = x;
 	m_MousePos.y = y;
 
+	GameObject* player = m_gameObjMgr->getPlayer();
+	player->SetTargetPos(x, y);
+	return;
 	
 	//m_triggerMgr->createTrigger(TRT_AREA, x, y);
 

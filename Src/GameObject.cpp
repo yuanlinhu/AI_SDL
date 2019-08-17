@@ -75,6 +75,17 @@ void GameObject::render(SDL_Renderer* render)
 	SDL_RenderFillRect(render, &rect);
 }
 
+void GameObject::SetTargetPos(int x, int y)
+{
+	BlockMgr* blockMgr = g_GameMap->getBlockMgr();
+	Block* targetBlock = blockMgr->getBlockByPoint(x, y);
+	blockMgr->findPath(m_cur_pos.x, m_cur_pos.y, targetBlock->m_minX, targetBlock->m_minY, m_target_pos_list);
+	if (m_target_pos_list.empty())
+	{
+		assert(0);
+	}
+}
+
 void GameObject::SetRandomTargetPos()
 {
 	if (m_target_pos_list.empty())
@@ -95,7 +106,8 @@ void GameObject::GetTargetPos(int& x, int& y)
 	if (m_target_pos_list.empty())
 	{
 		//目标点为空， 重新找个随机目标
-		SetRandomTargetPos();
+		//SetRandomTargetPos();
+		return;
 	}
 
 	Block * blk = m_target_pos_list.front();
@@ -115,6 +127,7 @@ void GameObject::update(Uint32 delta)
 
 		GetTargetPos(m_target_pos.x, m_target_pos.y);
 		//cout << "目标为 " << m_target_pos.x << ", " << m_target_pos.y << endl;
+		return;
 	}
 
 	int x_mul = (m_target_pos.x > m_cur_pos.x) ? 1 : -1;

@@ -5,18 +5,19 @@
 * A_Star，		ok
 
 
+*AI 行为树
 
 * 时间类  delta_Time 			
 
 * Map类 (九宫格管理， 同步人数)	
 
-* AI  （状态机，行为树）
+* AI 状态机
 
 
 
 
 
-*UI 系统 嵌入
+* UI 系统 嵌入
 
 * trigger 伤害，AOE等			初步架构
 

@@ -6,7 +6,9 @@
 class GameMap
 {
 public:
-	GameMap();
+	GameMap(Game* parent);
+
+	void createGameObject(int x, int y);
 
 	void init(int mapW, int mapH);
 
@@ -16,7 +18,8 @@ public:
 
 	BlockMgr * getBlockMgr();
 private:
-	BlockMgr * m_BlockMgr;
+	BlockMgr * m_BlockMgr = nullptr;
+	Game*		m_parent = nullptr;
 };
 
 #endif	//GameMap_HPP

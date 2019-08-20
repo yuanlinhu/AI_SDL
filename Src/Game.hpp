@@ -57,6 +57,8 @@ public:
 	{
 		return	m_MousePos;
 	}
+
+	GameObjectMgr*	getGameObjMgr() { return m_gameObjMgr; }
 private:
 	void handleMouseDown(int x, int y);
 	void handleMouseUp(int x, int y);

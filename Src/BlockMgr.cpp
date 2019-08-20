@@ -3,6 +3,8 @@
 #include "Block.hpp"
 #include "AStar.hpp"
 
+#include "GameMap.hpp"
+
 //Block		g_BlockArray[11][15];
 
 BlockMgr::BlockMgr()
@@ -43,6 +45,8 @@ void BlockMgr::init(int mapW, int mapH, int blockW, int blockH)
 			newBlock->init(i, j, index);
 			m_BlockVec.push_back(newBlock);
 			index++;
+
+			g_GameMap->createGameObject(i * m_BlockW, j * m_BlockH);
 
 			//Block* tmp = &(g_BlockArray[i][j]);
 			//tmp->copy(newBlock);

@@ -1,11 +1,22 @@
 
 #include "GameMap.hpp"
 #include "BlockMgr.hpp"
+#include "GameObjectMgr.hpp"
+#include "GameObject.hpp"
+#include "Game.hpp"
 
-GameMap::GameMap()
+GameMap::GameMap(Game* parent)
 {
 	m_BlockMgr = new BlockMgr();
+	m_parent = parent;
 }
+void GameMap::createGameObject(int x, int y)
+{
+	auto enemy = m_parent->getGameObjMgr()->createGameObject(x, y, 5, 5, "../Asset/1.png");
+	enemy->setType(GOT_ENEMY);
+	enemy->createAI();
+}
+
 
 void GameMap::init(int mapW, int mapH)
 {

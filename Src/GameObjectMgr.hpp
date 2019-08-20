@@ -22,6 +22,7 @@ public:
 
 	void getObjectByCircle(int radius, Point2D& pos, std::vector<GameObject *>& retObjList);
 
+	std::vector<GameObject*> get_obj_list() { return m_obj_list; }
 public:
 	void setRender(SDL_Renderer* render);
 	void render();

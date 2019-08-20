@@ -129,11 +129,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\ThirdParty\SDL2-2.0.10\include;..\ThirdParty\SDL2_image-2.0.5\include;..\ThirdParty\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\ThirdParty\SDL2-2.0.10\include;..\ThirdParty\SDL2_image-2.0.5\include;..\ThirdParty\SDL2_ttf-2.0.15\include;..\ThirdParty\cimgui\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>..\ThirdParty\SDL2-2.0.10\lib\x86;..\ThirdParty\SDL2_image-2.0.5\lib\x86;..\ThirdParty\SDL2_ttf-2.0.15\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\ThirdParty\SDL2-2.0.10\lib\x86;..\ThirdParty\SDL2_image-2.0.5\lib\x86;..\ThirdParty\SDL2_ttf-2.0.15\lib\x86;..\ThirdParty\cimgui\dll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_image.lib;SDL2_ttf.lib;cimgui.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -143,7 +143,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\ThirdParty\SDL2-2.0.10\include;..\ThirdParty\SDL2_image-2.0.5\include;..\ThirdParty\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\ThirdParty\SDL2-2.0.10\include;..\ThirdParty\SDL2_image-2.0.5\include;..\ThirdParty\SDL2_ttf-2.0.15\include;..\ThirdParty\cimgui\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>..\ThirdParty\SDL2-2.0.10\lib\x64;..\ThirdParty\SDL2_image-2.0.5\lib\x64;..\ThirdParty\SDL2_ttf-2.0.15\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

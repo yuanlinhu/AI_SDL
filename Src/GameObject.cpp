@@ -65,9 +65,10 @@ GameObject::~GameObject()
 
 void GameObject::render(SDL_Renderer* render)
 {
+	
 	m_rect.x = m_cur_pos.x;
 	m_rect.y = m_cur_pos.y;
-	SDL_RenderCopy(m_render, m_Texture, NULL, &m_rect);
+	//SDL_RenderCopy(m_render, m_Texture, NULL, &m_rect);
 
 	m_nameFont->render();
 
@@ -75,6 +76,10 @@ void GameObject::render(SDL_Renderer* render)
 
 	//»­Ä¿±êµã
 	SDL_SetRenderDrawColor(render, 255, 0, 50, 0);
+	if (m_visible)
+	{
+		SDL_SetRenderDrawColor(render, 0, 255, 50, 0);
+	}
 	SDL_Rect  rect;
 	rect.x = m_target_pos.x;
 	rect.y = m_target_pos.y;

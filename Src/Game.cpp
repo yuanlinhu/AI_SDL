@@ -19,6 +19,7 @@
 #include "BlockMgr.hpp"
 #include "Block.hpp"
 #include "AStar.hpp"
+#include "Math.hpp"
 
 //SDL_Surface *message = NULL;
 //TTF_Font *font = NULL;
@@ -41,7 +42,7 @@ Game::Game()
 {
 	srand((unsigned int)time(NULL));
 	m_gameObjMgr = new GameObjectMgr();
-	m_GameMap = new GameMap();
+	m_GameMap = new GameMap(this);
 	g_GameMap = m_GameMap;
 }
 
@@ -103,7 +104,7 @@ void Game::loadGameObj()
 	player->setType(GOT_PLAYER);
 	player->createAI();
 
-	auto enemy = m_gameObjMgr->createGameObject(300, 300, BLOCK_WIDTH, BLOCK_HEIGHT, "../Asset/1.png");
+	auto enemy = m_gameObjMgr->createGameObject(200, 200, 5, 5, "../Asset/1.png");
 	enemy->setType(GOT_ENEMY);
 	enemy->createAI();
 
@@ -201,6 +202,16 @@ void Game::handleEvents()
 }
 void Game::handleMouseDown(int x, int y)
 {
+	std::vector<GameObject *> obj_list = m_gameObjMgr->get_obj_list();
+	for (auto& tmp : obj_list)
+	{
+		if (Math::isInCircle(tmp->getCurPos().x, tmp->getCurPos().y, x, y, 100))
+		{
+			tmp->set_visible(false);
+		}
+	}
+
+	return;
 	//SDL_SetRenderDrawColor(m_render, 0xFF, 0, 0x00, 0xFF);
 	//Geometry::DrawCircle(m_render, 10, x, y);
 	//Geometry::DrawRect(m_render, x, y, 100, 50);

@@ -237,14 +237,14 @@ void Game::handleMouseDown(int x, int y)
 			{
 				org.x = 500;
 				org.y = 500;
-				dir.x = 100;
-				dir.y = 10;
+				dir.x = 400;
+				dir.y = 400;
 			}
 			
 			std::vector<GameObject *> obj_list = m_gameObjMgr->get_obj_list();
 			for (auto& tmp : obj_list)
 			{
-				if (Math::isInCircleSector(org, dir, 80, 300, tmp->getCurPos()))
+				if (Math::isInCircleSector(org, dir, 60, 300, tmp->getCurPos()))
 				{
 					tmp->set_visible(false);
 				}

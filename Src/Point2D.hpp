@@ -6,6 +6,11 @@ class Point2D
 {
 public:
 	Point2D();
+	Point2D(int mX, int mY)
+	{
+		x = mX;
+		y = mY;
+	}
 	
 	bool operator==(const Point2D &ps) const
 	{

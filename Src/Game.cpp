@@ -200,16 +200,67 @@ void Game::handleEvents()
             break;
     }
 }
+
+static Point2D org(0, 0);
+static Point2D dir(0, 0);
+static int clickNum = 0;
+
 void Game::handleMouseDown(int x, int y)
 {
-	std::vector<GameObject *> obj_list = m_gameObjMgr->get_obj_list();
-	for (auto& tmp : obj_list)
+	//画扇形
 	{
-		if (Math::isInCircle(tmp->getCurPos().x, tmp->getCurPos().y, x, y, 100))
+		if (clickNum == 0)
 		{
-			tmp->set_visible(false);
+			std::vector<GameObject *> obj_list = m_gameObjMgr->get_obj_list();
+			for (auto& tmp : obj_list)
+			{
+				if (Math::isInCircleSector(org, dir, 30, 300, tmp->getCurPos()))
+				{
+					tmp->set_visible(true);
+				}
+			}
 		}
+		clickNum++;
+		
+		if (clickNum == 1)
+		{
+			org.x = x;
+			org.y = y;
+		}
+		else if (clickNum == 2)
+		{
+			clickNum = 0;
+			dir.x = x;
+			dir.y = y;
+			std::vector<GameObject *> obj_list = m_gameObjMgr->get_obj_list();
+			for (auto& tmp : obj_list)
+			{
+				if (Math::isInCircleSector(org, dir, 30, 300, tmp->getCurPos()))
+				{
+					tmp->set_visible(false);
+				}
+			}
+		}
+		//x = 100;
+		//y = 100;
+		
+		
 	}
+
+	//isInCircleSector
+
+	//画圆形
+	//{
+	//	std::vector<GameObject *> obj_list = m_gameObjMgr->get_obj_list();
+	//	for (auto& tmp : obj_list)
+	//	{
+	//		if (Math::isInCircle(tmp->getCurPos().x, tmp->getCurPos().y, x, y, 100))
+	//		{
+	//			tmp->set_visible(false);
+	//		}
+	//	}
+	//}
+	
 
 	return;
 	//SDL_SetRenderDrawColor(m_render, 0xFF, 0, 0x00, 0xFF);

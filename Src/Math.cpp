@@ -61,11 +61,29 @@ bool Math::isInCircleSector(Point2D& orgin, Point2D& dir, int degree, int radius
 	int orgDegreeMin = orgDegree - degree;
 	int orgDegreeMax = orgDegree + degree;
 
+	if (orgDegreeMin < 0)
+	{
+		orgDegreeMin += 360;
+	}
+
+	if (orgDegreeMax < 0)
+	{
+		orgDegreeMax += 360;
+	}
+
+	if (orgDegreeMin > orgDegreeMax)
+	{
+		//超过90度的时候需要以下处理
+		//int tmp = orgDegreeMin;
+		//orgDegreeMin = orgDegreeMax;
+		//orgDegreeMax = tmp;
+
+	}
 
 	int delta_Y_1 = (orgin.y - target.y);
 	int delta_X_1 = (orgin.x - target.x);
 
-	if (target.x < 100)
+	if (target.x == 110 && target.y == 110)
 	{
 		int kk = 0;
 	}

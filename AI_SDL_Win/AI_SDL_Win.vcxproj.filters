@@ -64,6 +64,9 @@
     <ClCompile Include="..\Src\BTNode_Sequence.cpp">
       <Filter>src\AI</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\Math\Vector3.cpp">
+      <Filter>src\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Game.hpp">
@@ -129,6 +132,9 @@
     <ClInclude Include="..\Src\BTNode_Sequence.hpp">
       <Filter>src\AI</Filter>
     </ClInclude>
+    <ClInclude Include="..\Src\Math\Vector3.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="1.bmp">
@@ -153,6 +159,9 @@
     </Filter>
     <Filter Include="src\Map">
       <UniqueIdentifier>{a9a62e34-5460-4c7a-8891-81d2d99c4dd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Math">
+      <UniqueIdentifier>{641d41d2-3853-4a58-a484-1747aabcc340}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

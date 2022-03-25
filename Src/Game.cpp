@@ -100,11 +100,11 @@ void Game::loadGameObj()
 	
 	m_GameMap->init(0, 0);
 
-	auto player = m_gameObjMgr->createGameObject(100, 100, BLOCK_WIDTH, BLOCK_HEIGHT, "../Asset/player.jpg");
+	auto player = m_gameObjMgr->createGameObject(100, 100, BLOCK_WIDTH, BLOCK_HEIGHT, "F:\\study\\AI_SDL\\Asset/player.jpg");
 	player->setType(GOT_PLAYER);
 	player->createAI();
 
-	auto enemy = m_gameObjMgr->createGameObject(200, 200, 5, 5, "../Asset/1.png");
+	auto enemy = m_gameObjMgr->createGameObject(200, 200, 5, 5, "F:\\study\\AI_SDL\\Asset/1.png");
 	enemy->setType(GOT_ENEMY);
 	enemy->createAI();
 

@@ -12,7 +12,7 @@ GameMap::GameMap(Game* parent)
 }
 void GameMap::createGameObject(int x, int y)
 {
-	auto enemy = m_parent->getGameObjMgr()->createGameObject(x, y, 5, 5, "../Asset/1.png");
+	auto enemy = m_parent->getGameObjMgr()->createGameObject(x, y, 5, 5, "F:\\study\\AI_SDL\\Asset/1.png");
 	enemy->setType(GOT_ENEMY);
 	enemy->createAI();
 }

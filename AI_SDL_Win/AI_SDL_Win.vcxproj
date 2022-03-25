@@ -36,6 +36,7 @@
     <ClCompile Include="..\Src\main.cpp" />
     <ClCompile Include="..\Src\GameMap.cpp" />
     <ClCompile Include="..\Src\Math.cpp" />
+    <ClCompile Include="..\Src\Math\Vector3.cpp" />
     <ClCompile Include="..\Src\Point2D.cpp" />
     <ClCompile Include="..\Src\Timer.cpp" />
     <ClCompile Include="..\Src\Trigger.cpp" />
@@ -59,6 +60,7 @@
     <ClInclude Include="..\Src\Macros.hpp" />
     <ClInclude Include="..\Src\GameMap.hpp" />
     <ClInclude Include="..\Src\Math.hpp" />
+    <ClInclude Include="..\Src\Math\Vector3.h" />
     <ClInclude Include="..\Src\Point2D.hpp" />
     <ClInclude Include="..\Src\Timer.hpp" />
     <ClInclude Include="..\Src\Trigger.hpp" />

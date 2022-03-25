@@ -71,21 +71,21 @@ private:
 	
 	int	m_countedFrames = 0;
     bool m_is_running = false;
-    SDL_Window *m_window;
-	SDL_Renderer* m_render;
-	GameObjectMgr*	m_gameObjMgr;
+    SDL_Window*		m_window = nullptr;
+	SDL_Renderer*	m_render = nullptr;
+	GameObjectMgr*	m_gameObjMgr = nullptr;
 	bool	m_needHighCPU = false;
 
-	TriggerMgr*			m_triggerMgr;
+	TriggerMgr*			m_triggerMgr = nullptr;
 	//SDL_Texture*		m_font_texture;
 	//SDL_Rect		m_font_rect;
 
 	int				m_Fps;
-	Font*			m_FpsFont;
+	Font*			m_FpsFont = nullptr;
 	Point2D			m_MousePos;
 
 
-	GameMap*			m_GameMap;
+	GameMap*			m_GameMap = nullptr;
 };
 
 

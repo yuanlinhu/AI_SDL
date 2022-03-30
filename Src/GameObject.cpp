@@ -7,6 +7,8 @@
 #include "AI.hpp"
 #include "AI_Enemy.hpp"
 #include "AI_Player.hpp"
+#include "AI/StateMachine.h"
+#include "AI/StateMove.h"
 
 GameObject::GameObject(SDL_Renderer* render)
 {
@@ -138,7 +140,9 @@ void GameObject::update(Uint32 delta)
 {
 	delta = 10;
 
-	m_AI->update(delta);
+	m_StateMachine->Update(delta);
+
+
 	return;
 
 	//if (m_cur_pos == m_target_pos)
@@ -175,7 +179,8 @@ void GameObject::update(Uint32 delta)
 	m_hpFont->setPos(m_cur_pos.x + 5, m_cur_pos.y - 30);
 
 
-	m_AI->update(delta);
+	//m_AI->update(delta);
+
 }
 
 
@@ -217,14 +222,18 @@ void GameObject::createAI()
 {
 	if (m_type == GOT_PLAYER)
 	{
-		m_AI = new AI_Player(this);
+		//m_AI = new AI_Player(this);
+		m_StateMachine = new StateMachine(this);
+		m_StateMachine->ChangeState(StateMove::Instance());
 	}
 	else
 	{
-		m_AI = new AI_Enemy(this);
+		//m_AI = new AI_Enemy(this);
+		m_StateMachine = new StateMachine(this);
+		m_StateMachine->ChangeState(StateMove::Instance());
 	}
 
-	m_AI->init();
+	//m_AI->init();
 	
 }
 

@@ -5,6 +5,7 @@
 #include "Macros.hpp"
 #include "Font.hpp"
 
+class StateMachine;
 
 class GameObject
 {
@@ -81,7 +82,9 @@ private:
 	int				m_hp;
 	list<Block*>		m_target_pos_list;
 
-	AI*				m_AI = nullptr;
+	//AI*				m_AI = nullptr;
+
+	StateMachine* m_StateMachine = nullptr;
 
 	bool m_visible = true;
 };

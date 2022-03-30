@@ -67,6 +67,9 @@
     <ClCompile Include="..\Src\Math\Vector3.cpp">
       <Filter>src\Math</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\AI\StateMove.cpp">
+      <Filter>src\AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Game.hpp">
@@ -134,6 +137,15 @@
     </ClInclude>
     <ClInclude Include="..\Src\Math\Vector3.h">
       <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AI\State.h">
+      <Filter>src\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AI\StateMachine.h">
+      <Filter>src\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AI\StateMove.h">
+      <Filter>src\AI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

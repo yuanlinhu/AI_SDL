@@ -104,15 +104,14 @@ void Block::init(int rowIndex, int colIndex, int index)
 	}
 
 	//ÉèÖÃÕÏ°­Îï
-	//m_type = (BlockType)blockBitMap[colIndex][rowIndex];
-	m_type = (BlockType)((rand() % 10) > 2 ? 0 : 1);
+	//m_type = (BlockType)((rand() % 10) > 2 ? 0 : 1);
 
 
-	{
-		m_costGFont = new Font(g_render);
-		SDL_Color textColor = { 0, 0, 0 };
-		m_costGFont->init("LATINWD.TTF", textColor, 10);
-	}
+	//{
+	//	m_costGFont = new Font(g_render);
+	//	SDL_Color textColor = { 0, 0, 0 };
+	//	m_costGFont->init("LATINWD.TTF", textColor, 10);
+	//}
 }
 
 void Block::renderFrame()
@@ -137,8 +136,6 @@ void Block::renderBlock()
 		rect.w = m_maxX - m_minX - 10;
 		rect.h = m_maxY - m_minY - 10;
 		SDL_RenderFillRect(g_render, &rect);
-
-		
 	}
 }
 
@@ -190,8 +187,8 @@ void Block::render()
 
 void Block::renderCostH()
 {
-	SDL_SetRenderDrawColor(g_render, 220, 0, 220, 0);
-	m_costGFont->render();
+	//SDL_SetRenderDrawColor(g_render, 220, 0, 220, 0);
+	//m_costGFont->render();
 }
 
 void Block::update(Uint32 delta)

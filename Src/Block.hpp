@@ -58,7 +58,7 @@ public:
 
 	
 
-	BlockType m_type;
+	BlockType m_type = BLT_NULL;
 
 	int		m_MapW = 0;
 	int		m_MapH = 0;

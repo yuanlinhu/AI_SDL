@@ -26,4 +26,8 @@ void AI_Player::update(Uint32 delta)
 	{
 		getRootNode()->run(delta);
 	}
+	else
+	{
+
+	}
 }

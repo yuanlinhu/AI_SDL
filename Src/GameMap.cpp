@@ -12,18 +12,18 @@ GameMap::GameMap(Game* parent)
 }
 void GameMap::createGameObject(int x, int y)
 {
-	auto enemy = m_parent->getGameObjMgr()->createGameObject(x, y, 5, 5, "F:\\study\\AI_SDL\\Asset/1.png");
-	enemy->setType(GOT_ENEMY);
-	enemy->createAI();
+	//auto enemy = m_parent->getGameObjMgr()->createGameObject(x, y, 5, 5, "F:\\study\\AI_SDL\\Asset/1.png");
+	//enemy->setType(GOT_ENEMY);
+	//enemy->createAI();
 }
 
 
 void GameMap::init(int mapW, int mapH)
 {
 	m_BlockMgr->init(MAP_WIDTH, MAP_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT);
-	//m_BlockMgr->addBlock(2, 3, BLT_ROCK);
-	//m_BlockMgr->addBlock(3, 5, BLT_ROCK);
-	//m_BlockMgr->addBlock(6, 7, BLT_ROCK);
+	m_BlockMgr->addBlock(2, 3, BLT_ROCK);
+	m_BlockMgr->addBlock(3, 5, BLT_ROCK);
+	m_BlockMgr->addBlock(6, 7, BLT_ROCK);
 
 }
 
@@ -34,6 +34,16 @@ void GameMap::update(Uint32 delta)
 
 void GameMap::render()
 {
+	//draw map frame
+	SDL_SetRenderDrawColor(g_render, 126, 126, 126, 0);
+	SDL_Rect rect;
+	rect.x = 0;
+	rect.y = 0;
+	rect.w = MAP_WIDTH;
+	rect.h = MAP_HEIGHT;
+
+	SDL_RenderDrawRect(g_render, &rect);
+
 	m_BlockMgr->render();
 }
 

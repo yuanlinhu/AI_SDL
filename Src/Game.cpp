@@ -104,7 +104,7 @@ void Game::loadGameObj()
 	player->setType(GOT_PLAYER);
 	player->createAI();
 
-	auto enemy = m_gameObjMgr->createGameObject(200, 200, 5, 5, "F:\\study\\AI_SDL\\Asset/1.png");
+	auto enemy = m_gameObjMgr->createGameObject(200, 200, BLOCK_WIDTH, BLOCK_HEIGHT, "F:\\study\\AI_SDL\\Asset/1.png");
 	enemy->setType(GOT_ENEMY);
 	enemy->createAI();
 
@@ -207,6 +207,13 @@ static int clickNum = 0;
 
 void Game::handleMouseDown(int x, int y)
 {
+	m_MousePos.x = x;
+	m_MousePos.y = y;
+
+	GameObject* player = m_gameObjMgr->getPlayer();
+	player->SetTargetPos(x, y);
+	return;
+
 	//画扇形
 	{
 		if (clickNum == 0)
@@ -276,12 +283,12 @@ void Game::handleMouseDown(int x, int y)
 	//Geometry::DrawCircle(m_render, 10, x, y);
 	//Geometry::DrawRect(m_render, x, y, 100, 50);
 
-	m_MousePos.x = x;
-	m_MousePos.y = y;
+	//m_MousePos.x = x;
+	//m_MousePos.y = y;
 
-	GameObject* player = m_gameObjMgr->getPlayer();
-	player->SetTargetPos(x, y);
-	return;
+	//GameObject* player = m_gameObjMgr->getPlayer();
+	//player->SetTargetPos(x, y);
+	//return;
 	
 	//m_triggerMgr->createTrigger(TRT_AREA, x, y);
 

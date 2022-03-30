@@ -65,10 +65,9 @@ GameObject::~GameObject()
 
 void GameObject::render(SDL_Renderer* render)
 {
-	
 	m_rect.x = m_cur_pos.x;
 	m_rect.y = m_cur_pos.y;
-	//SDL_RenderCopy(m_render, m_Texture, NULL, &m_rect);
+	SDL_RenderCopy(m_render, m_Texture, NULL, &m_rect);
 
 	m_nameFont->render();
 
@@ -85,7 +84,7 @@ void GameObject::render(SDL_Renderer* render)
 	rect.y = m_target_pos.y;
 	rect.w = 10;
 	rect.h = 10;
-	SDL_RenderFillRect(render, &rect);
+	//SDL_RenderFillRect(render, &rect);
 }
 
 void GameObject::SetTargetPos(int x, int y)

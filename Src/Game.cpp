@@ -352,6 +352,7 @@ void Game::handleKeyboard(SDL_Event& event)
 		return;
 	}
 	int speed = 5;
+	int delay = 5000;
 	switch (event.key.keysym.sym)
 	{
 		case SDLK_w:
@@ -391,17 +392,17 @@ void Game::handleKeyboard(SDL_Event& event)
 		}
 		case SDLK_f:
 		{
-			MessageDispatcher::Instance()->DispatchMsg(3000, GOT_PLAYER, GOT_ENEMY, MI_Attack, 10);
+			MessageDispatcher::Instance()->DispatchMsg(delay, GOT_PLAYER, GOT_ENEMY, MI_Attack, 10);
 			break;
 		}
 		case SDLK_n:
 		{
-			MessageDispatcher::Instance()->DispatchMsg(0, GOT_PLAYER, GOT_ENEMY, MI_Follow);
+			MessageDispatcher::Instance()->DispatchMsg(delay, GOT_PLAYER, GOT_ENEMY, MI_Follow);
 			break;
 		}
 		case SDLK_m:
 		{
-			MessageDispatcher::Instance()->DispatchMsg(0, GOT_PLAYER, GOT_ENEMY, MI_Follow_Stop);
+			MessageDispatcher::Instance()->DispatchMsg(delay, GOT_PLAYER, GOT_ENEMY, MI_Follow_Stop);
 			break;
 		}
 	}

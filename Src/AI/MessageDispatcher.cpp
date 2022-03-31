@@ -61,7 +61,7 @@ void MessageDispatcher::Update()
 	int nowTicks = GetTickCount();
 	for (auto iter = mTelegramList.begin(); iter != mTelegramList.end(); /**/)
 	{
-		if (iter->DispatchTime >= (nowTicks))
+		if (nowTicks >= iter->DispatchTime)
 		{
 			//¹ıÆÚ
 			HandleMsg(*iter);

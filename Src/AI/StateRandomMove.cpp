@@ -1,5 +1,8 @@
 #include "StateRandomMove.h"
 #include "../GameObject.hpp"
+#include "MessageDispatcher.h"
+#include "Telegram.h"
+#include "../GameObjectMgr.hpp"
 
 StateRandomMove* StateRandomMove::Instance()
 {
@@ -49,5 +52,31 @@ void StateRandomMove::Exit(GameObject* obj)
 }
 bool StateRandomMove::OnMessage(GameObject* obj, const Telegram& msg)
 {
+	switch (msg.MsgId)
+	{
+	case MI_Follow:
+	{
+		GameObject* player = GameObjectMgr::Instance()->getPlayer();
+		GameObject* enemy = GameObjectMgr::Instance()->getObjectByType(GOT_ENEMY);
+		if (player && enemy)
+		{
+			Point2D&  curPos = enemy->getCurPos();
+			player->SetTargetPos(curPos.x, curPos.y);
+		}
+		break;
+	}
+	case MI_Follow_Stop:
+	{
+		GameObject* player = GameObjectMgr::Instance()->getPlayer();
+		if (player)
+		{
+			Point2D&  curPos = player->getCurPos();
+			player->SetTargetPos(curPos.x, curPos.y);
+		}
+		break;
+	}
+	default:
+		break;
+	}
 	return true;
 }

@@ -14,6 +14,12 @@ GameObjectMgr::~GameObjectMgr()
 	m_render = nullptr;
 }
 
+GameObjectMgr* GameObjectMgr::Instance()
+{
+	static GameObjectMgr ins;
+	return &ins;
+}
+
 void GameObjectMgr::setRender(SDL_Renderer* render)
 {
 	m_render = render;

@@ -73,6 +73,9 @@
     <ClCompile Include="..\Src\AI\StateRandomMove.cpp">
       <Filter>src\AI\FSM</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\AI\MessageDispatcher.cpp">
+      <Filter>src\AI\FSM</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Game.hpp">
@@ -151,6 +154,12 @@
       <Filter>src\AI\BehaviorTree</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\AI\StateRandomMove.h">
+      <Filter>src\AI\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AI\Telegram.h">
+      <Filter>src\AI\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AI\MessageDispatcher.h">
       <Filter>src\AI\FSM</Filter>
     </ClInclude>
   </ItemGroup>

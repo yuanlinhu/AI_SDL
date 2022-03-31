@@ -54,6 +54,9 @@ public:
 	float getSpeed() { return m_speed; }
 
 	void set_visible(bool vis) { m_visible = vis; }
+
+
+	StateMachine*  GetStateMachine() { return m_StateMachine; }
 private:
 	void SetRandomTargetPos();
 	void GetNextTargetPos(int& x, int& y);

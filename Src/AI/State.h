@@ -2,7 +2,7 @@
 
 
 class GameObject;
-class Telegram;
+struct Telegram;
 
 class State
 {

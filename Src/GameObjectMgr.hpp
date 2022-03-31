@@ -14,6 +14,9 @@ public:
 	GameObjectMgr();
 	~GameObjectMgr();
 
+
+	static GameObjectMgr* Instance();
+
 public:
 	GameObject* createGameObject(int x, int y, int w, int h, string path);
 	GameObject* getPlayer();

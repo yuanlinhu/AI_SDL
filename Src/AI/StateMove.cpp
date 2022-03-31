@@ -1,5 +1,8 @@
 #include "StateMove.h"
 #include "../GameObject.hpp"
+#include "Telegram.h"
+#include "MessageDispatcher.h"
+
 
 StateMove* StateMove::Instance()
 {
@@ -40,5 +43,18 @@ void StateMove::Exit(GameObject* obj)
 }
 bool StateMove::OnMessage(GameObject* obj, const Telegram& msg)
 {
+	switch (msg.MsgId)
+	{
+	case MI_Follow:
+	{
+		break;
+	}
+	case MI_Follow_Stop:
+	{
+		break;
+	}
+	default:
+		break;
+	}
 	return true;
 }

@@ -58,7 +58,7 @@ public:
 		return	m_MousePos;
 	}
 
-	GameObjectMgr*	getGameObjMgr() { return m_gameObjMgr; }
+	//GameObjectMgr*	getGameObjMgr() { return m_gameObjMgr; }
 private:
 	void handleMouseDown(int x, int y);
 	void handleMouseUp(int x, int y);
@@ -73,7 +73,7 @@ private:
     bool m_is_running = false;
     SDL_Window*		m_window = nullptr;
 	SDL_Renderer*	m_render = nullptr;
-	GameObjectMgr*	m_gameObjMgr = nullptr;
+	//GameObjectMgr*	m_gameObjMgr = nullptr;
 	bool	m_needHighCPU = false;
 
 	TriggerMgr*			m_triggerMgr = nullptr;

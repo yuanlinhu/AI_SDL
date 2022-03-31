@@ -20,6 +20,8 @@
 #include "Block.hpp"
 #include "AStar.hpp"
 #include "Math.hpp"
+#include "AI/MessageDispatcher.h"
+#include "AI/Telegram.h"
 
 //SDL_Surface *message = NULL;
 //TTF_Font *font = NULL;
@@ -40,7 +42,7 @@ GameMap* g_GameMap;
 
 Game::Game()
 {
-	m_gameObjMgr = new GameObjectMgr();
+	//m_gameObjMgr = new GameObjectMgr();
 	m_GameMap = new GameMap(this);
 	g_GameMap = m_GameMap;
 }
@@ -63,6 +65,7 @@ void Game::go()
 	while (running())
 	{
 		startTicks = SDL_GetTicks();
+		MessageDispatcher::Instance()->Update();
 		handleEvents();
 		update(startTicks - lastTicks);
 		render();
@@ -99,11 +102,11 @@ void Game::loadGameObj()
 	
 	m_GameMap->init(0, 0);
 
-	auto player = m_gameObjMgr->createGameObject(100, 100, BLOCK_WIDTH, BLOCK_HEIGHT, "F:\\study\\AI_SDL\\Asset/player.jpg");
+	auto player = GameObjectMgr::Instance()->createGameObject(100, 100, BLOCK_WIDTH, BLOCK_HEIGHT, "F:\\study\\AI_SDL\\Asset/player.jpg");
 	player->setType(GOT_PLAYER);
 	player->createAI();
 
-	auto enemy = m_gameObjMgr->createGameObject(200, 200, BLOCK_WIDTH, BLOCK_HEIGHT, "F:\\study\\AI_SDL\\Asset/1.png");
+	auto enemy = GameObjectMgr::Instance()->createGameObject(200, 200, BLOCK_WIDTH, BLOCK_HEIGHT, "F:\\study\\AI_SDL\\Asset/1.png");
 	enemy->setType(GOT_ENEMY);
 	enemy->createAI();
 
@@ -149,7 +152,7 @@ void Game::init(const char* title, int x, int y, int w, int h, bool full_screen)
 
 	setViewPort();
 
-	m_gameObjMgr->setRender(m_render);
+	GameObjectMgr::Instance()->setRender(m_render);
 	m_triggerMgr = new TriggerMgr(m_render);
 
 	loadGameObj();
@@ -209,7 +212,7 @@ void Game::handleMouseDown(int x, int y)
 	m_MousePos.x = x;
 	m_MousePos.y = y;
 
-	GameObject* player = m_gameObjMgr->getPlayer();
+	GameObject* player = GameObjectMgr::Instance()->getPlayer();
 	player->SetTargetPos(x, y);
 	return;
 
@@ -217,7 +220,7 @@ void Game::handleMouseDown(int x, int y)
 	{
 		if (clickNum == 0)
 		{
-			std::vector<GameObject *> obj_list = m_gameObjMgr->get_obj_list();
+			std::vector<GameObject *> obj_list = GameObjectMgr::Instance()->get_obj_list();
 			for (auto& tmp : obj_list)
 			{
 				//if (Math::isInCircleSector(org, dir, 60, 300, tmp->getCurPos()))
@@ -247,7 +250,7 @@ void Game::handleMouseDown(int x, int y)
 				dir.y = 400;
 			}
 			
-			std::vector<GameObject *> obj_list = m_gameObjMgr->get_obj_list();
+			std::vector<GameObject *> obj_list = GameObjectMgr::Instance()->get_obj_list();
 			for (auto& tmp : obj_list)
 			{
 				if (Math::isInCircleSector(org, dir, 60, 300, tmp->getCurPos()))
@@ -343,7 +346,7 @@ void Game::handleMouseMotion(int x, int y)
 
 void Game::handleKeyboard(SDL_Event& event)
 {
-	GameObject* player = m_gameObjMgr->getPlayer();
+	GameObject* player = GameObjectMgr::Instance()->getPlayer();
 	if (nullptr == player)
 	{
 		return;
@@ -386,6 +389,21 @@ void Game::handleKeyboard(SDL_Event& event)
 			player->addHP(-speed);
 			break;
 		}
+		case SDLK_f:
+		{
+			MessageDispatcher::Instance()->DispatchMsg(3000, GOT_PLAYER, GOT_ENEMY, MI_Attack, 10);
+			break;
+		}
+		case SDLK_n:
+		{
+			MessageDispatcher::Instance()->DispatchMsg(0, GOT_PLAYER, GOT_ENEMY, MI_Follow);
+			break;
+		}
+		case SDLK_m:
+		{
+			MessageDispatcher::Instance()->DispatchMsg(0, GOT_PLAYER, GOT_ENEMY, MI_Follow_Stop);
+			break;
+		}
 	}
 }
 
@@ -395,7 +413,7 @@ void Game::update(Uint32 delta)
 	HighCpuFunc();
 	m_FpsFont->update(delta);
 	m_triggerMgr->update(this);
-	m_gameObjMgr->update(delta);
+	GameObjectMgr::Instance()->update(delta);
 	m_GameMap->update(delta);
 
 	stringstream strss;
@@ -415,7 +433,7 @@ void Game::render()
 
 	
 	m_triggerMgr->render();
-	m_gameObjMgr->render();
+	GameObjectMgr::Instance()->render();
     
 	SDL_RenderPresent(m_render);
 }
@@ -474,7 +492,7 @@ void Game::HighCpuFunc()
 
 void Game::getObjectByCircle(int radius, Point2D& pos, std::vector<GameObject *>& retObjList)
 {
-	return m_gameObjMgr->getObjectByCircle(radius, pos, retObjList);
+	return GameObjectMgr::Instance()->getObjectByCircle(radius, pos, retObjList);
 }
 
 //SDL_Texture* Game::RenderText(std::string message, std::string fontFile,

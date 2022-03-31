@@ -34,9 +34,6 @@
     <ClCompile Include="..\Src\Math.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\BTNode.cpp">
-      <Filter>src\AI</Filter>
-    </ClCompile>
     <ClCompile Include="..\Src\GameMap.cpp">
       <Filter>src\Map</Filter>
     </ClCompile>
@@ -49,26 +46,32 @@
     <ClCompile Include="..\Src\AStar.cpp">
       <Filter>src\Map</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\AI.cpp">
-      <Filter>src\AI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Src\AI_Player.cpp">
-      <Filter>src\AI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Src\AI_Enemy.cpp">
-      <Filter>src\AI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Src\BTNode_Move.cpp">
-      <Filter>src\AI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Src\BTNode_Sequence.cpp">
-      <Filter>src\AI</Filter>
-    </ClCompile>
     <ClCompile Include="..\Src\Math\Vector3.cpp">
       <Filter>src\Math</Filter>
     </ClCompile>
     <ClCompile Include="..\Src\AI\StateMove.cpp">
-      <Filter>src\AI</Filter>
+      <Filter>src\AI\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BTNode_Sequence.cpp">
+      <Filter>src\AI\BehaviorTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AI.cpp">
+      <Filter>src\AI\BehaviorTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AI_Enemy.cpp">
+      <Filter>src\AI\BehaviorTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AI_Player.cpp">
+      <Filter>src\AI\BehaviorTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BTNode.cpp">
+      <Filter>src\AI\BehaviorTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BTNode_Move.cpp">
+      <Filter>src\AI\BehaviorTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AI\StateRandomMove.cpp">
+      <Filter>src\AI\FSM</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -105,9 +108,6 @@
     <ClInclude Include="..\Src\Math.hpp">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\BTNode.hpp">
-      <Filter>src\AI</Filter>
-    </ClInclude>
     <ClInclude Include="..\Src\GameMap.hpp">
       <Filter>src\Map</Filter>
     </ClInclude>
@@ -120,32 +120,38 @@
     <ClInclude Include="..\Src\AStar.hpp">
       <Filter>src\Map</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\AI.hpp">
-      <Filter>src\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\AI_Player.hpp">
-      <Filter>src\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\AI_Enemy.hpp">
-      <Filter>src\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\BTNode_Move.hpp">
-      <Filter>src\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\BTNode_Sequence.hpp">
-      <Filter>src\AI</Filter>
-    </ClInclude>
     <ClInclude Include="..\Src\Math\Vector3.h">
       <Filter>src\Math</Filter>
     </ClInclude>
+    <ClInclude Include="..\Src\AI\StateMove.h">
+      <Filter>src\AI\FSM</Filter>
+    </ClInclude>
     <ClInclude Include="..\Src\AI\State.h">
-      <Filter>src\AI</Filter>
+      <Filter>src\AI\FSM</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\AI\StateMachine.h">
-      <Filter>src\AI</Filter>
+      <Filter>src\AI\FSM</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\AI\StateMove.h">
-      <Filter>src\AI</Filter>
+    <ClInclude Include="..\Src\AI.hpp">
+      <Filter>src\AI\BehaviorTree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AI_Enemy.hpp">
+      <Filter>src\AI\BehaviorTree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AI_Player.hpp">
+      <Filter>src\AI\BehaviorTree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BTNode.hpp">
+      <Filter>src\AI\BehaviorTree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BTNode_Move.hpp">
+      <Filter>src\AI\BehaviorTree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BTNode_Sequence.hpp">
+      <Filter>src\AI\BehaviorTree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AI\StateRandomMove.h">
+      <Filter>src\AI\FSM</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +180,12 @@
     </Filter>
     <Filter Include="src\Math">
       <UniqueIdentifier>{641d41d2-3853-4a58-a484-1747aabcc340}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\AI\FSM">
+      <UniqueIdentifier>{f8a0a0a5-251b-4789-b95e-2aa5cd2631ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\AI\BehaviorTree">
+      <UniqueIdentifier>{a6284697-0d0a-49ac-8184-9c57d75a3ab4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

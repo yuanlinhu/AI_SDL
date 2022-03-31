@@ -40,7 +40,6 @@ GameMap* g_GameMap;
 
 Game::Game()
 {
-	srand((unsigned int)time(NULL));
 	m_gameObjMgr = new GameObjectMgr();
 	m_GameMap = new GameMap(this);
 	g_GameMap = m_GameMap;

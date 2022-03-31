@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="..\Src\AI.cpp" />
     <ClCompile Include="..\Src\AI\StateMove.cpp" />
+    <ClCompile Include="..\Src\AI\StateRandomMove.cpp" />
     <ClCompile Include="..\Src\AI_Enemy.cpp" />
     <ClCompile Include="..\Src\AI_Player.cpp" />
     <ClCompile Include="..\Src\AStar.cpp" />
@@ -48,6 +49,7 @@
     <ClInclude Include="..\Src\AI\State.h" />
     <ClInclude Include="..\Src\AI\StateMachine.h" />
     <ClInclude Include="..\Src\AI\StateMove.h" />
+    <ClInclude Include="..\Src\AI\StateRandomMove.h" />
     <ClInclude Include="..\Src\AI_Enemy.hpp" />
     <ClInclude Include="..\Src\AI_Player.hpp" />
     <ClInclude Include="..\Src\AStar.hpp" />

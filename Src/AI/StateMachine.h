@@ -69,7 +69,8 @@ public:
 
 		m_pCurState = newState;
 		m_pCurState->Enter(m_pOwner);
-	}
+	} 
+
 
 	void RevertPreviousState()
 	{

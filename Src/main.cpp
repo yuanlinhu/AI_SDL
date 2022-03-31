@@ -11,6 +11,8 @@
 
 int main(int argc, char * argv[]) 
 {
+	srand((unsigned int)time(NULL));
+
     Game game;
 	game.go();
     return 0;

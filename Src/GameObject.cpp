@@ -9,6 +9,7 @@
 #include "AI_Player.hpp"
 #include "AI/StateMachine.h"
 #include "AI/StateMove.h"
+#include "AI/StateRandomMove.h"
 
 GameObject::GameObject(SDL_Renderer* render)
 {
@@ -226,11 +227,11 @@ void GameObject::createAI()
 		m_StateMachine = new StateMachine(this);
 		m_StateMachine->ChangeState(StateMove::Instance());
 	}
-	else
+	else if (m_type == GOT_ENEMY)
 	{
 		//m_AI = new AI_Enemy(this);
 		m_StateMachine = new StateMachine(this);
-		m_StateMachine->ChangeState(StateMove::Instance());
+		m_StateMachine->ChangeState(StateRandomMove::Instance());
 	}
 
 	//m_AI->init();

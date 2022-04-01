@@ -17,8 +17,13 @@ void StateMove::Enter(GameObject* obj)
 
 void StateMove::update(GameObject* obj, int delta)
 {
-	Point2D& curPos = obj->getCurPos();
-	Point2D& targetPos = obj->getTargetPos();
+#if 1
+	Vector2D& curPos = obj->getCurPos();
+	Vector2D& targetPos = obj->getTargetPos();
+	if (curPos == targetPos)
+	{
+		return;
+	}
 
 	int x_mul = (targetPos.x > curPos.x) ? 1 : -1;
 	int y_mul = (targetPos.y > curPos.y) ? 1 : -1;
@@ -35,6 +40,12 @@ void StateMove::update(GameObject* obj, int delta)
 	int newPosY = curPos.y += ySept;
 
 	obj->setCurPos(newPosX, newPosY);
+#endif
+
+#if 0
+	Vector2D& curPos = obj->getCurPos();
+	curPos += obj->getVel0city() * delta;
+#endif
 }
 
 void StateMove::Exit(GameObject* obj)

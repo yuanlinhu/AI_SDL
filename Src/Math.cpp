@@ -13,7 +13,7 @@ bool Math::isInCircle(int x, int y, int circleX, int circleY, int radius)
 	return false;
 }
 
-bool Math::isFarThanDistance(Point2D& orgin, Point2D& target, int distance)
+bool Math::isFarThanDistance(Vector2D& orgin, Vector2D& target, int distance)
 {
 	int deltaX = abs(orgin.x - target.x);
 	int deltaY = abs(orgin.y - target.y);
@@ -26,7 +26,7 @@ bool Math::isFarThanDistance(Point2D& orgin, Point2D& target, int distance)
 }
 
 //根据两个点 计算出 角度范围， 需要考虑象限
-void CalculateDegree(Point2D& orgin, Point2D& target, int& curDegree)
+void CalculateDegree(Vector2D& orgin, Vector2D& target, int& curDegree)
 {
 	int mulX = 1;
 	int mulY = 1;
@@ -80,7 +80,7 @@ void CalculateDegree(Point2D& orgin, Point2D& target, int& curDegree)
 
 }
 
-bool Math::isInCircleSector(Point2D& orgin, Point2D& dir, int degree, int radius, Point2D& target)
+bool Math::isInCircleSector(Vector2D& orgin, Vector2D& dir, int degree, int radius, Vector2D& target)
 {
 	//首先判断距离
 	if (true == isFarThanDistance(orgin, target, radius))

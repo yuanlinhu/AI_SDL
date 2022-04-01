@@ -14,6 +14,7 @@
 GameObject::GameObject(SDL_Renderer* render)
 {
 	m_render = render;
+	m_Mass = 1.0;
 }
 
 void GameObject::init(int x, int y, int w, int h, string path)
@@ -140,6 +141,13 @@ void GameObject::GetNextTargetPos(int& x, int& y)
 void GameObject::update(Uint32 delta)
 {
 	delta = 10;
+
+	m_Force = m_target_pos - m_cur_pos;
+	m_Force.Normalize();
+	Vector2D acceleration = m_Force / m_Mass;
+	m_vVelocity += acceleration * delta;
+
+	//m_speed = m_vVelocity.Length();
 
 	m_StateMachine->Update(delta);
 

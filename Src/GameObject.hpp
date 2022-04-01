@@ -4,6 +4,7 @@
 
 #include "Macros.hpp"
 #include "Font.hpp"
+#include "Math/Vector2D.h"
 
 class StateMachine;
 
@@ -27,15 +28,20 @@ public:
 	void createAI();
 	GameObjectType getType();
 
-	Point2D& getCurPos() 
+	Vector2D& getCurPos()
 	{
 		return m_cur_pos;
 	}
-	Point2D& GetTargetPos()
+	Vector2D& GetTargetPos()
 	{
 		return m_target_pos;
 	}
 
+
+	Vector2D& getVel0city()
+	{
+		return m_vVelocity;
+	}
 	
 
 	void setCurPos(int x, int y)
@@ -44,7 +50,7 @@ public:
 		m_cur_pos.y = y;
 	}
 
-	Point2D& getTargetPos()
+	Vector2D& getTargetPos()
 	{
 		return m_target_pos;
 	}
@@ -77,9 +83,7 @@ private:
 
 	GameObjectType	m_type;
 
-	Point2D		m_cur_pos;
-	Point2D		m_target_pos;
-	float m_speed = 100.0f;
+	
 
 	string			m_name;
 	int				m_hp;
@@ -90,6 +94,16 @@ private:
 	StateMachine* m_StateMachine = nullptr;
 
 	bool m_visible = true;
+
+
+	Vector2D		m_cur_pos;
+	Vector2D		m_target_pos;
+	float m_speed = 100.0f;			//速率
+
+	Vector2D		m_Force;		//力量
+	Vector2D		m_vVelocity;		//速度
+	double		m_MaxForce;			//力
+	double		m_Mass = 1500.0;				//
 };
 
 

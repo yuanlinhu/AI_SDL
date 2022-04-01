@@ -31,8 +31,8 @@ bool BTNode_Move::run(int delta)
 	{
 		return false;
 	}
-	Point2D& curPos = obj->getCurPos();
-	Point2D& targetPos = obj->getTargetPos();
+	Vector2D& curPos = obj->getCurPos();
+	Vector2D& targetPos = obj->getTargetPos();
 
 	int x_mul = (targetPos.x > curPos.x) ? 1 : -1;
 	int y_mul = (targetPos.y > curPos.y) ? 1 : -1;

@@ -106,9 +106,9 @@ void Game::loadGameObj()
 	player->setType(GOT_PLAYER);
 	player->createAI();
 
-	auto enemy = GameObjectMgr::Instance()->createGameObject(200, 200, BLOCK_WIDTH, BLOCK_HEIGHT, "F:\\study\\AI_SDL\\Asset/1.png");
-	enemy->setType(GOT_ENEMY);
-	enemy->createAI();
+	//auto enemy = GameObjectMgr::Instance()->createGameObject(200, 200, BLOCK_WIDTH, BLOCK_HEIGHT, "F:\\study\\AI_SDL\\Asset/1.png");
+	//enemy->setType(GOT_ENEMY);
+	//enemy->createAI();
 
 }
 
@@ -203,8 +203,8 @@ void Game::handleEvents()
     }
 }
 
-static Point2D org(0, 0);
-static Point2D dir(0, 0);
+static Vector2D org(0, 0);
+static Vector2D dir(0, 0);
 static int clickNum = 0;
 
 void Game::handleMouseDown(int x, int y)

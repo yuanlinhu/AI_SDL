@@ -17,8 +17,8 @@ void StateRandomMove::Enter(GameObject* obj)
 
 void StateRandomMove::update(GameObject* obj, int delta)
 {
-	Point2D& curPos = obj->getCurPos();
-	Point2D& targetPos = obj->getTargetPos();
+	Vector2D& curPos = obj->getCurPos();
+	Vector2D& targetPos = obj->getTargetPos();
 
 	if (curPos == targetPos)
 	{
@@ -33,6 +33,7 @@ void StateRandomMove::update(GameObject* obj, int delta)
 
 		x_mul = (targetPos.x == curPos.x) ? 0 : x_mul;
 		y_mul = (targetPos.y == curPos.y) ? 0 : y_mul;
+
 
 		float speed = obj->getSpeed();
 		int xSept = (x_mul * speed * delta) / 1000;
@@ -60,7 +61,7 @@ bool StateRandomMove::OnMessage(GameObject* obj, const Telegram& msg)
 		GameObject* enemy = GameObjectMgr::Instance()->getObjectByType(GOT_ENEMY);
 		if (player && enemy)
 		{
-			Point2D&  curPos = enemy->getCurPos();
+			Vector2D&  curPos = enemy->getCurPos();
 			player->SetTargetPos(curPos.x, curPos.y);
 		}
 		break;
@@ -70,7 +71,7 @@ bool StateRandomMove::OnMessage(GameObject* obj, const Telegram& msg)
 		GameObject* player = GameObjectMgr::Instance()->getPlayer();
 		if (player)
 		{
-			Point2D&  curPos = player->getCurPos();
+			Vector2D&  curPos = player->getCurPos();
 			player->SetTargetPos(curPos.x, curPos.y);
 		}
 		break;

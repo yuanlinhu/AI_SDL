@@ -76,6 +76,9 @@
     <ClCompile Include="..\Src\AI\MessageDispatcher.cpp">
       <Filter>src\AI\FSM</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\Math\Vector2d.cpp">
+      <Filter>src\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Game.hpp">
@@ -161,6 +164,12 @@
     </ClInclude>
     <ClInclude Include="..\Src\AI\MessageDispatcher.h">
       <Filter>src\AI\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Math\Vector2D.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Math\utils.h">
+      <Filter>src\Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
